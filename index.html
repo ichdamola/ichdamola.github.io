@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adedamola Adedapo</title>
-    <meta name="description" content="Backend Engineer specializing in scalable APIs, microservices, cloud, and AI-driven systems.">
+    <meta name="description" content="Platform & DevSecOps Engineer with 6+ years of experience designing, securing, and scaling cloud infrastructure and backend systems.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDJMMjguNDI2NCA4VjI0TDE2IDMwTDMuNTczNiAyNFY4TDE2IDJaIiBzdHJva2U9IiM2NGZmZGEiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0iIzBhMTkyZiIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM2NGZmZGEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkE8L3RleHQ+Cjwvc3ZnPgo=">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -417,10 +420,9 @@
             outline: 0;
         }
 
-        .about-image .wrapper:hover .img,
-        .about-image .wrapper:focus .img {
+        .about-image .wrapper:hover .face-sketch,
+        .about-image .wrapper:focus .face-sketch {
             filter: none;
-            mix-blend-mode: normal;
         }
 
         .about-image .wrapper:hover:before,
@@ -460,7 +462,7 @@
             z-index: -1;
         }
 
-        .about-image .img {
+        .face-sketch {
             position: relative;
             border-radius: var(--border-radius);
             mix-blend-mode: multiply;
@@ -468,6 +470,37 @@
             transition: var(--transition);
             max-width: 100%;
             height: auto;
+        }
+
+        /* Animated Face Sketch SVG */
+        .face-sketch svg {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .face-sketch path {
+            stroke: var(--navy);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 3s ease-in-out forwards;
+        }
+
+        .face-sketch path:nth-child(1) { animation-delay: 0s; }
+        .face-sketch path:nth-child(2) { animation-delay: 0.2s; }
+        .face-sketch path:nth-child(3) { animation-delay: 0.4s; }
+        .face-sketch path:nth-child(4) { animation-delay: 0.6s; }
+        .face-sketch path:nth-child(5) { animation-delay: 0.8s; }
+        .face-sketch path:nth-child(6) { animation-delay: 1s; }
+        .face-sketch path:nth-child(7) { animation-delay: 1.2s; }
+        .face-sketch path:nth-child(8) { animation-delay: 1.4s; }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
         }
 
         /* Experience section */
@@ -1144,9 +1177,9 @@
         <section class="hero">
             <h1>Hi, my name is</h1>
             <h2>Adedamola Adedapo.</h2>
-            <h3>I build things for the web.</h3>
+            <h3>I design and secure cloud infrastructure.</h3>
             <p>
-                I'm a Backend Engineer based in Nigeria, specialized in building scalable APIs, microservices, and distributed systems. I am passionate about Python and automation, and am interested in pursuing innovation in AI-driven backend systems.
+                I'm a Platform & DevSecOps Engineer with 6+ years of experience designing, securing, and scaling cloud infrastructure and backend systems. I specialize in Terraform, AWS, Kubernetes, and automation, with a passion for building robust, secure, and efficient platforms.
             </p>
             <a class="email-link" href="mailto:adedamola.adedapo1@gmail.com" target="_blank" rel="noopener noreferrer">Get In Touch</a>
         </section>
@@ -1158,32 +1191,49 @@
                 <div>
                     <div class="about-text">
                         <p>
-                            I'm a Backend Engineer with <strong>6+ years' experience</strong> in Python, Django Rest Framework, and FastAPI. I specialize in building scalable APIs, microservices, and distributed systems with PostgreSQL, Redis, Docker, and Kubernetes.
+                            I'm a Platform & DevSecOps Engineer with <strong>6+ years' experience</strong> specializing in designing, securing, and scaling cloud infrastructure. I have expertise in Terraform, AWS, Kubernetes, Docker, and CI/CD pipelines, with a proven track record of improving system reliability and automation.
                         </p>
                         <p>
-                            My recent work includes integrating <a href="https://www.langchain.com/" target="_blank" rel="noopener noreferrer">LangChain/LLMs</a> into production systems and optimizing deployments on AWS and GCP. I'm passionate about creating robust, efficient backend solutions that power modern applications.
+                            My recent work includes enforcing security policies, implementing infrastructure as code, and building fault-tolerant systems. I'm passionate about <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">Infrastructure as Code</a> and creating secure, scalable platforms that enable teams to deploy with confidence.
                         </p>
                         <p>
                             Here are a few technologies I've been working with recently:
                         </p>
                     </div>
                     <ul class="skills-list">
-                        <li>Python (3.x)</li>
-                        <li>Django Rest Framework</li>
-                        <li>FastAPI</li>
-                        <li>PostgreSQL</li>
-                        <li>Redis</li>
-                        <li>Docker</li>
+                        <li>Terraform</li>
+                        <li>AWS (EC2, RDS, S3)</li>
                         <li>Kubernetes</li>
-                        <li>AWS</li>
-                        <li>LangChain</li>
-                        <li>Go</li>
+                        <li>Docker</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Python</li>
+                        <li>Prometheus & Grafana</li>
+                        <li>GitLab/GitHub Actions</li>
+                        <li>PostgreSQL</li>
+                        <li>Bash</li>
                     </ul>
                 </div>
                 <div class="about-image">
                     <div class="wrapper">
-                        <div style="width: 100%; height: 300px; background: var(--green); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-sm);">
-                            Profile Image
+                        <div class="face-sketch">
+                            <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Face outline -->
+                                <path d="M80 100 Q80 50 150 50 Q220 50 220 100 L220 250 Q220 320 150 320 Q80 320 80 250 Z"/>
+                                <!-- Left eye -->
+                                <path d="M110 130 Q125 120 140 130 Q125 140 110 130"/>
+                                <!-- Right eye -->
+                                <path d="M160 130 Q175 120 190 130 Q175 140 160 130"/>
+                                <!-- Nose -->
+                                <path d="M150 150 L145 170 L150 180 L155 170 Z"/>
+                                <!-- Mouth -->
+                                <path d="M130 210 Q150 220 170 210"/>
+                                <!-- Beard outline -->
+                                <path d="M100 240 Q150 280 200 240 Q200 290 150 300 Q100 290 100 240"/>
+                                <!-- Hair -->
+                                <path d="M85 100 Q80 80 90 70 Q110 50 150 50 Q190 50 210 70 Q220 80 215 100"/>
+                                <!-- Neck -->
+                                <path d="M140 320 L140 380 L160 380 L160 320"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -1197,36 +1247,58 @@
                 <div class="job-content">
                     <div>
                         <h3>
-                            <span>Backend Engineer / Automation Specialist</span>
+                            <span>DevSecOps Engineer</span>
                             <span class="company">
                                 &nbsp;@&nbsp;
                                 <a href="#" target="_blank" rel="noopener noreferrer">Nomad Internet</a>
                             </span>
                         </h3>
-                        <p class="range">December 2024 - Present</p>
+                        <p class="range">December 2024 - September 2025</p>
                         <div>
                             <ul>
-                                <li>Automated billing & SIM activation workflows, reducing onboarding time by 40%</li>
-                                <li>Streamlined customer provisioning processes and improved system reliability through comprehensive automation strategies</li>
-                                <li>Built scalable backend infrastructure supporting telecommunications services</li>
+                                <li>Developed and enforced internal security policies, reducing access risks and improving compliance</li>
+                                <li>Hardened server infrastructure and successfully mitigated a live brute-force SSH attack, preserving uptime</li>
+                                <li>Spearheaded centralized access controls with SSO, MFA, and RBAC, enforcing least-privilege access</li>
+                                <li>Integrated SAST/DAST into GitLab CI/CD pipelines, enabling early vulnerability detection</li>
+                                <li>Deployed real-time security monitoring with Prometheus and Grafana for faster threat detection</li>
                             </ul>
                         </div>
                     </div>
 
                     <div style="margin-top: 50px;">
                         <h3>
-                            <span>Senior Backend Engineer</span>
+                            <span>Platform Engineering Lead</span>
                             <span class="company">
                                 &nbsp;@&nbsp;
-                                <a href="#" target="_blank" rel="noopener noreferrer">Uburu.ai</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer">Uburu Technology Platforms</a>
                             </span>
                         </h3>
-                        <p class="range">February 2023 - November 2024</p>
+                        <p class="range">December 2024 - November 2025</p>
                         <div>
                             <ul>
-                                <li>Built OCR + ETL pipelines digitising 50k+ medical records for AI healthcare analytics</li>
-                                <li>Designed and implemented scalable data processing architectures</li>
-                                <li>Enabled advanced machine learning applications in healthcare through robust backend systems</li>
+                                <li>Migrated workloads to AWS using Terraform and IaC, cutting costs by 20% and improving resilience</li>
+                                <li>Built fault-tolerant OCR + ETL pipelines for 50k+ records with monitoring and error handling</li>
+                                <li>Designed observability solutions with Prometheus + Grafana, reducing troubleshooting time by 35%</li>
+                                <li>Implemented CI/CD pipelines (GitLab/GitHub Actions), streamlining deployments and reducing risks</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 50px;">
+                        <h3>
+                            <span>Backend Engineer</span>
+                            <span class="company">
+                                &nbsp;@&nbsp;
+                                <a href="#" target="_blank" rel="noopener noreferrer">Umba</a>
+                            </span>
+                        </h3>
+                        <p class="range">March 2023 - January 2024</p>
+                        <div>
+                            <ul>
+                                <li>Automated loan repayment workflows on AWS, improving system reliability by 30%</li>
+                                <li>Built data quality monitoring and alerting pipelines, cutting production issues by 40%</li>
+                                <li>Optimized backend and cloud infrastructure for large-scale data processing, lowering costs</li>
+                                <li>Applied DevOps practices (CI/CD, observability) to strengthen backend operations</li>
                             </ul>
                         </div>
                     </div>
@@ -1242,9 +1314,10 @@
                         <p class="range">March 2022 - January 2023</p>
                         <div>
                             <ul>
-                                <li>Scaled backend for 200k+ monthly users, introduced TDD & CI/CD pipelines</li>
-                                <li>Led engineering team in implementing robust testing practices and deployment automation</li>
-                                <li>Significantly improved code quality and release velocity across the platform</li>
+                                <li>Scaled backend and infrastructure to support 200k+ monthly users with <100ms API latency</li>
+                                <li>Introduced CI/CD pipelines and SRE practices, halving MTTR and improving release quality</li>
+                                <li>Managed high-availability AWS deployments (EC2, S3, SNS) with Docker containerization</li>
+                                <li>Directed engineering team operations, authored runbooks, and conducted post-incident reviews</li>
                             </ul>
                         </div>
                     </div>
@@ -1261,27 +1334,24 @@
                         <div>
                             <p class="project-overline">Featured Project</p>
                             <h3 class="project-title">
-                                <a href="#" target="_blank" rel="noopener noreferrer">LLM-Powered Fintech APIs</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer">Cloud Security Infrastructure</a>
                             </h3>
                             <div class="project-description">
                                 <p>
-                                    Integrated advanced language models into financial services, reducing manual support by 35% through intelligent automation and natural language processing capabilities. Built scalable API endpoints handling complex financial queries.
+                                    Built comprehensive security infrastructure with centralized access controls, SSO, MFA, and RBAC implementation. Integrated automated security scanning into CI/CD pipelines and deployed real-time monitoring systems for threat detection.
                                 </p>
                             </div>
                             <ul class="project-tech-list">
-                                <li>Python</li>
-                                <li>FastAPI</li>
-                                <li>LangChain</li>
-                                <li>PostgreSQL</li>
-                                <li>Redis</li>
-                                <li>Docker</li>
+                                <li>Terraform</li>
+                                <li>AWS</li>
+                                <li>Kubernetes</li>
+                                <li>GitLab CI/CD</li>
+                                <li>Prometheus</li>
+                                <li>Grafana</li>
                             </ul>
                             <div class="project-links">
                                 <a href="#" aria-label="GitHub Link" target="_blank" rel="noopener noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                                <a href="#" aria-label="External Link" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><title>External Link</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
                             </div>
                         </div>
@@ -1289,7 +1359,7 @@
                     <div class="project-image">
                         <a href="#" target="_blank" rel="noopener noreferrer">
                             <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--green), var(--blue)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-lg); font-weight: 600;">
-                                Fintech API
+                                Security Platform
                             </div>
                         </a>
                     </div>
@@ -1300,27 +1370,24 @@
                         <div>
                             <p class="project-overline">Featured Project</p>
                             <h3 class="project-title">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Healthcare Data Digitization</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer">Healthcare Data Pipeline</a>
                             </h3>
                             <div class="project-description">
                                 <p>
-                                    Developed comprehensive OCR and ETL pipelines processing 50k+ medical records, enabling AI-driven healthcare analytics and improving patient care workflows. Implemented robust data validation and security measures.
+                                    Developed fault-tolerant OCR and ETL pipelines processing 50k+ medical records with comprehensive monitoring and error handling. Implemented Infrastructure as Code patterns for scalable, maintainable deployments.
                                 </p>
                             </div>
                             <ul class="project-tech-list">
                                 <li>Python</li>
-                                <li>Django</li>
+                                <li>AWS</li>
+                                <li>Terraform</li>
+                                <li>Docker</li>
                                 <li>PostgreSQL</li>
-                                <li>Celery</li>
-                                <li>AWS S3</li>
                                 <li>Kubernetes</li>
                             </ul>
                             <div class="project-links">
                                 <a href="#" aria-label="GitHub Link" target="_blank" rel="noopener noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                                <a href="#" aria-label="External Link" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><title>External Link</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
                             </div>
                         </div>
@@ -1328,7 +1395,7 @@
                     <div class="project-image">
                         <a href="#" target="_blank" rel="noopener noreferrer">
                             <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--blue), var(--green)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-lg); font-weight: 600;">
-                                Healthcare ETL
+                                Data Pipeline
                             </div>
                         </a>
                     </div>
@@ -1339,27 +1406,24 @@
                         <div>
                             <p class="project-overline">Featured Project</p>
                             <h3 class="project-title">
-                                <a href="#" target="_blank" rel="noopener noreferrer">E-commerce Platform Scaling</a>
+                                <a href="#" target="_blank" rel="noopener noreferrer">E-commerce Infrastructure</a>
                             </h3>
                             <div class="project-description">
                                 <p>
-                                    Architected and optimized Django-based e-commerce backend to support 200k+ concurrent users with sub-100ms latency through strategic caching and database optimization. Implemented comprehensive monitoring and alerting systems.
+                                    Architected and optimized cloud infrastructure to support 200k+ concurrent users with sub-100ms latency. Implemented comprehensive CI/CD pipelines and SRE practices, halving MTTR and improving release quality.
                                 </p>
                             </div>
                             <ul class="project-tech-list">
-                                <li>Django</li>
+                                <li>AWS EC2</li>
+                                <li>Docker</li>
+                                <li>CI/CD</li>
                                 <li>PostgreSQL</li>
-                                <li>Redis</li>
-                                <li>Nginx</li>
-                                <li>AWS</li>
-                                <li>Terraform</li>
+                                <li>Monitoring</li>
+                                <li>Load Balancing</li>
                             </ul>
                             <div class="project-links">
                                 <a href="#" aria-label="GitHub Link" target="_blank" rel="noopener noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                                <a href="#" aria-label="External Link" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><title>External Link</title><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                                 </a>
                             </div>
                         </div>
@@ -1367,7 +1431,7 @@
                     <div class="project-image">
                         <a href="#" target="_blank" rel="noopener noreferrer">
                             <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--pink), var(--green)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-lg); font-weight: 600;">
-                                E-commerce API
+                                Cloud Infrastructure
                             </div>
                         </a>
                     </div>
@@ -1470,6 +1534,31 @@
 
         // Add initial loading state
         document.body.classList.add('loading');
+
+        // Restart animation when section comes into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const svg = entry.target.querySelector('.face-sketch svg');
+                    if (svg) {
+                        // Reset animation by cloning and replacing the SVG
+                        const newSvg = svg.cloneNode(true);
+                        svg.parentNode.replaceChild(newSvg, svg);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe the about section
+        const aboutSection = document.querySelector('#about');
+        if (aboutSection) {
+            observer.observe(aboutSection);
+        }
     </script>
 </body>
 </html>

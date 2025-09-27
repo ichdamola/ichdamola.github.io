@@ -1,0 +1,64 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill: #0a192f; }
+      .sketch {
+        stroke: #64ffda;
+        stroke-width: 1.2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 50;
+        stroke-dashoffset: 50;
+        animation: draw 1.5s ease-out forwards;
+      }
+      
+      .sketch-1 { animation-delay: 0s; }
+      .sketch-2 { animation-delay: 0.2s; }
+      .sketch-3 { animation-delay: 0.4s; }
+      .sketch-4 { animation-delay: 0.6s; }
+      .sketch-5 { animation-delay: 0.8s; }
+      .sketch-6 { animation-delay: 1s; }
+      .sketch-7 { animation-delay: 1.2s; }
+      
+      @keyframes draw {
+        to { stroke-dashoffset: 0; }
+      }
+      
+      /* Restart animation every 5 seconds */
+      .sketch {
+        animation: draw 1.5s ease-out forwards, restart 5s infinite;
+      }
+      
+      @keyframes restart {
+        0%, 30% { stroke-dashoffset: 0; }
+        31% { stroke-dashoffset: 50; }
+        100% { stroke-dashoffset: 0; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" class="bg"/>
+  
+  <!-- Face outline -->
+  <path class="sketch sketch-1" d="M9 11 Q9 7 16 7 Q23 7 23 11 L23 20 Q23 25 16 25 Q9 25 9 20 Z"/>
+  
+  <!-- Left eye -->
+  <circle class="sketch sketch-2" cx="13" cy="13" r="1"/>
+  
+  <!-- Right eye -->
+  <circle class="sketch sketch-3" cx="19" cy="13" r="1"/>
+  
+  <!-- Nose -->
+  <path class="sketch sketch-4" d="M16 15 L15 17 L16 18"/>
+  
+  <!-- Mouth -->
+  <path class="sketch sketch-5" d="M13 21 Q16 23 19 21"/>
+  
+  <!-- Beard suggestion -->
+  <path class="sketch sketch-6" d="M11 22 Q16 26 21 22"/>
+  
+  <!-- Hair line -->
+  <path class="sketch sketch-7" d="M10 11 Q16 5 22 11"/>
+</svg>
