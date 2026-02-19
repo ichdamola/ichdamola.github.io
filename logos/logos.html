@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGOS — The Living Word</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void:#08080e; --base:#0f0f1a; --raised:#161625; --float:#1e1e32;
+  --hover:#252540; --active:#2e2e52;
+  --gold:#f0a500; --gold-dim:#c47f00; --gold-glow:rgba(240,165,0,0.16);
+  --red:#e05c5c; --green:#4caf7d;
+  --hi:#f0ece0; --mid:#9a96b0; --lo:#4e4a6a;
+  --border:rgba(255,255,255,0.07); --border-lit:rgba(240,165,0,0.3);
+  --ph:88px; --sw:240px; --radius:12px; --rsm:7px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--void);color:var(--hi);display:flex;flex-direction:column}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--active);border-radius:2px}
+
+/* ── LAYOUT ── */
+.shell{flex:1;display:grid;grid-template-columns:var(--sw) 1fr;overflow:hidden;min-height:0}
+
+/* ── SIDEBAR ── */
+.sidebar{background:var(--base);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.logo-wrap{padding:22px 18px 14px;flex-shrink:0;display:flex;align-items:center;gap:10px}
+.logo-icon{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),#e05c5c);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 4px 18px rgba(240,165,0,0.3);flex-shrink:0}
+.logo-text{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:-0.5px}
+.logo-sub{font-size:0.56rem;letter-spacing:3px;color:var(--lo);display:block;margin-top:1px}
+.nav-sep{height:1px;background:var(--border);margin:6px 14px}
+.nav-section{padding:6px 10px;flex-shrink:0}
+.nav-lbl{font-family:'Syne',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:2px;color:var(--lo);padding:6px 8px 3px}
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--rsm);cursor:pointer;font-size:0.85rem;font-weight:500;color:var(--mid);transition:all .15s}
+.nav-item:hover{background:var(--hover);color:var(--hi)}
+.nav-item.active{background:var(--active);color:var(--gold)}
+.nav-item .ni{width:17px;text-align:center;font-size:.95rem}
+
+/* ── BOOKMARKS SIDEBAR ── */
+.bm-sb-item{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;transition:all .12s}
+.bm-sb-item:hover{background:var(--hover)}
+.bm-sb-ref{font-size:.8rem;color:var(--mid);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bm-sb-del{background:none;border:none;color:transparent;cursor:pointer;font-size:.72rem;padding:1px 3px}
+.bm-sb-item:hover .bm-sb-del{color:var(--lo)}
+.bm-sb-del:hover{color:var(--red) !important}
+.bm-collapse-btn{background:none;border:none;color:var(--lo);cursor:pointer;font-size:.65rem;padding:1px 4px;transition:color .15s}
+.bm-collapse-btn:hover{color:var(--mid)}
+
+/* ── PLAYLIST SIDEBAR LIST ── */
+.pl-sidebar{flex:1;overflow-y:auto;padding:0 10px 12px}
+.pl-sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 4px}
+.pl-sidebar-lbl{font-family:'Syne',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:2px;color:var(--lo)}
+.pl-new-btn{background:none;border:none;color:var(--lo);cursor:pointer;font-size:1rem;line-height:1;padding:2px 4px;border-radius:4px;transition:color .15s}
+.pl-new-btn:hover{color:var(--gold)}
+.pl-sb-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:6px;cursor:pointer;transition:all .12s}
+.pl-sb-item:hover{background:var(--hover)}
+.pl-sb-item.active{background:var(--gold-glow);color:var(--gold)}
+.pl-sb-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.pl-sb-name{font-size:0.82rem;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--mid)}
+.pl-sb-item.active .pl-sb-name{color:var(--gold)}
+.pl-sb-count{font-size:0.68rem;color:var(--lo);flex-shrink:0}
+
+/* ── MAIN ── */
+.main{display:flex;flex-direction:column;overflow:hidden;background:var(--base)}
+.topbar{display:flex;align-items:center;gap:10px;padding:14px 22px;background:rgba(15,15,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);flex-shrink:0;z-index:10}
+.search-wrap{position:relative;flex:1;max-width:380px}
+.s-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--lo);font-size:.85rem;pointer-events:none}
+.search-field{width:100%;background:var(--float);border:1px solid var(--border);border-radius:50px;color:var(--hi);padding:9px 14px 9px 34px;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s,background .2s}
+.search-field::placeholder{color:var(--lo)}
+.search-field:focus{border-color:var(--border-lit);background:var(--hover)}
+.topbar-r{display:flex;align-items:center;gap:8px;margin-left:auto}
+.icon-btn{width:34px;height:34px;border-radius:50%;background:var(--float);border:1px solid var(--border);color:var(--mid);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .15s}
+.icon-btn:hover{background:var(--hover);color:var(--hi);border-color:var(--border-lit)}
+
+/* ── VIEWS ── */
+.view{display:none;flex:1;overflow-y:auto;padding:24px}
+.view.active{display:block}
+.sec-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;margin-bottom:4px}
+.sec-sub{font-size:.82rem;color:var(--mid);margin-bottom:20px}
+
+/* ── LIBRARY CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:32px}
+.book-card{background:var(--raised);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .2s;border:1px solid transparent;position:relative}
+.book-card:hover{transform:translateY(-3px);border-color:var(--border-lit);box-shadow:0 8px 28px rgba(0,0,0,.5)}
+.book-card:hover .card-play{opacity:1;transform:translateY(0)}
+.card-art{aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card-art-em{font-size:2rem;z-index:1;position:relative;opacity:.7}
+.card-art-ab{font-family:'Syne',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:2px;opacity:.45;z-index:1;position:relative;margin-top:3px}
+.card-play{position:absolute;right:8px;bottom:8px;width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#000;z-index:2;opacity:0;transform:translateY(4px);transition:all .2s;box-shadow:0 4px 14px rgba(240,165,0,.45)}
+.card-body{padding:9px 11px 11px}
+.card-name{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-ch{font-size:.7rem;color:var(--lo);margin-top:1px}
+
+/* ── CHAPTER VIEW ── */
+.ch-hero{display:flex;gap:22px;align-items:flex-end;padding:0 0 22px;min-height:170px}
+.hero-art{width:150px;height:150px;border-radius:var(--radius);flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+.hero-art-em{font-size:3.2rem;opacity:.7}
+.hero-art-ab{font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:3px;opacity:.45;margin-top:3px}
+.hero-meta{flex:1}
+.hero-type{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;color:var(--gold);margin-bottom:7px}
+.hero-title{font-family:'DM Serif Display',serif;font-size:2.4rem;line-height:1.1;margin-bottom:9px}
+.hero-desc{font-size:.82rem;color:var(--mid);margin-bottom:14px;line-height:1.6}
+.hero-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.hbtn{display:flex;align-items:center;gap:6px;padding:9px 20px;border-radius:50px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;transition:all .2s}
+.hbtn.pri{background:var(--gold);color:#000;box-shadow:0 4px 18px rgba(240,165,0,.3)}
+.hbtn.pri:hover{background:#ffbb20;transform:scale(1.03)}
+.hbtn.sec{background:var(--float);color:var(--hi);border:1px solid var(--border)}
+.hbtn.sec:hover{background:var(--hover);border-color:var(--border-lit)}
+/* add to playlist dropdown */
+.add-pl-wrap{position:relative;display:inline-block}
+.add-pl-menu{display:none;position:absolute;top:calc(100% + 6px);left:0;min-width:220px;background:var(--float);border:1px solid var(--border-lit);border-radius:var(--rsm);z-index:200;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+.add-pl-menu.open{display:block}
+.apm-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:.85rem;color:var(--mid);transition:background .12s}
+.apm-item:hover{background:var(--hover);color:var(--hi)}
+.apm-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.apm-new{color:var(--gold);border-top:1px solid var(--border);font-style:italic}
+
+.ch-pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.ch-pill{padding:5px 12px;border-radius:50px;font-size:.75rem;font-weight:500;background:var(--raised);color:var(--mid);border:1px solid var(--border);cursor:pointer;transition:all .15s}
+.ch-pill:hover{background:var(--hover);color:var(--hi)}
+.ch-pill.active{background:var(--gold-glow);color:var(--gold);border-color:var(--border-lit)}
+
+.tl-header{display:grid;grid-template-columns:36px 1fr auto;gap:10px;padding:6px 10px;font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:1.5px;color:var(--lo);border-bottom:1px solid var(--border);margin-bottom:3px}
+.track{display:grid;grid-template-columns:36px 1fr auto;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;align-items:start;transition:background .12s;border:1px solid transparent}
+.track:hover{background:var(--raised)}
+.track.playing{background:var(--gold-glow);border-color:rgba(240,165,0,.14)}
+.track.speaking{background:rgba(240,165,0,.1);border-color:rgba(240,165,0,.18)}
+.tn{font-family:'Syne',sans-serif;font-size:.75rem;font-weight:600;color:var(--lo);text-align:right;padding-top:3px}
+.track.playing .tn,.track.speaking .tn{color:var(--gold)}
+.play-bars{display:flex;align-items:flex-end;justify-content:flex-end;gap:2px;height:14px}
+.pb{width:3px;background:var(--gold);border-radius:1px;animation:pb var(--d,.6s) ease-in-out infinite alternate}
+.pb:nth-child(2){--d:.9s}.pb:nth-child(3){--d:.75s}
+@keyframes pb{from{height:3px}to{height:13px}}
+.tv{font-size:.88rem;line-height:1.75;color:var(--hi);padding-top:1px;user-select:text}
+.track-actions{display:flex;gap:5px;align-items:center;opacity:0;transition:opacity .15s}
+.track:hover .track-actions{opacity:1}
+.ta-btn{display:flex;align-items:center;gap:3px;padding:4px 9px;background:var(--active);border:1px solid var(--border-lit);color:var(--gold);border-radius:50px;font-size:.68rem;font-weight:700;font-family:'Syne',sans-serif;cursor:pointer;transition:all .15s;white-space:nowrap}
+.ta-btn:hover{background:var(--gold);color:#000}
+/* dropdown inside track */
+.track-pl-menu{display:none;position:absolute;top:calc(100% + 4px);right:0;min-width:200px;background:var(--float);border:1px solid var(--border-lit);border-radius:var(--rsm);z-index:200;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+.track-pl-menu.open{display:block}
+.tpm-item{display:flex;align-items:center;gap:9px;padding:9px 13px;cursor:pointer;font-size:.82rem;color:var(--mid);transition:background .12s}
+.tpm-item:hover{background:var(--hover);color:var(--hi)}
+.tpm-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.tpm-new{color:var(--gold);border-top:1px solid var(--border)}
+.ta-wrap{position:relative}
+
+/* ── PLAYLIST VIEW ── */
+.pl-hero{display:flex;gap:22px;align-items:flex-end;padding:0 0 22px;position:relative}
+.pl-art{width:150px;height:150px;border-radius:var(--radius);flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:2.8rem;box-shadow:0 14px 40px rgba(0,0,0,.6);position:relative;cursor:pointer}
+.pl-art-emoji{position:relative;z-index:1}
+.pl-art-overlay{position:absolute;inset:0;background:rgba(0,0,0,.4);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;font-size:.7rem;font-family:'Syne',sans-serif;letter-spacing:1px;color:white}
+.pl-art:hover .pl-art-overlay{opacity:1}
+
+.pl-meta{flex:1;min-width:0}
+.pl-type{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:3px;color:var(--gold);margin-bottom:7px}
+/* inline editable name */
+.pl-name-wrap{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.pl-name-display{font-family:'DM Serif Display',serif;font-size:2.2rem;line-height:1.1;cursor:text;border:2px solid transparent;border-radius:6px;padding:2px 6px;margin:-2px -6px;transition:border-color .2s}
+.pl-name-display:hover{border-color:var(--border-lit)}
+.pl-name-input{font-family:'DM Serif Display',serif;font-size:2.2rem;line-height:1.1;background:transparent;border:2px solid var(--gold);border-radius:6px;color:var(--hi);outline:none;padding:2px 6px;width:100%}
+.pl-stats{font-size:.82rem;color:var(--mid);margin-bottom:14px}
+.pl-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+
+/* add verse row inside playlist view */
+.add-verse-row{display:flex;gap:8px;align-items:center;padding:12px 14px;background:var(--raised);border:1px dashed rgba(240,165,0,.2);border-radius:var(--rsm);margin-bottom:16px;cursor:text}
+.av-input{flex:1;background:transparent;border:none;color:var(--hi);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none}
+.av-input::placeholder{color:var(--lo)}
+.av-btn{padding:6px 14px;background:var(--gold);color:#000;border:none;border-radius:50px;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap}
+.av-btn:hover{background:#ffbb20}
+
+.pl-tl-row{display:grid;grid-template-columns:36px 1fr auto;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;align-items:start;transition:background .12s;border:1px solid transparent}
+.pl-tl-row:hover{background:var(--raised)}
+.pl-tl-row.active{background:var(--gold-glow);border-color:rgba(240,165,0,.14)}
+.pl-tl-row.speaking{background:rgba(240,165,0,.1);border-color:rgba(240,165,0,.18)}
+.ptn{font-family:'Syne',sans-serif;font-size:.72rem;color:var(--lo);text-align:right;padding-top:3px}
+.pl-tl-row.active .ptn,.pl-tl-row.speaking .ptn{color:var(--gold)}
+.ptr{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:var(--gold);margin-bottom:2px}
+.ptt{font-size:.85rem;line-height:1.7;color:var(--hi);user-select:text}
+.pl-row-del{background:none;border:none;color:transparent;cursor:pointer;font-size:.85rem;padding:3px 5px;border-radius:4px;transition:all .15s;align-self:center}
+.pl-tl-row:hover .pl-row-del{color:var(--lo)}
+.pl-row-del:hover{color:var(--red) !important;background:rgba(224,92,92,.1)}
+
+.drag-handle{cursor:grab;color:var(--lo);font-size:.9rem;margin-right:2px;opacity:0;transition:opacity .15s}
+.pl-tl-row:hover .drag-handle{opacity:1}
+
+.empty-pl{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:50px;text-align:center;color:var(--lo)}
+.empty-pl-icon{font-size:3rem;opacity:.3}
+
+/* ── EMOJI PICKER ── */
+.emoji-overlay{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+.emoji-overlay.open{display:flex}
+.emoji-box{background:var(--float);border:1px solid var(--border-lit);border-radius:var(--radius);padding:20px;width:340px;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.emoji-title{font-family:'Syne',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:2px;color:var(--lo);margin-bottom:14px}
+.emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.em-opt{font-size:1.5rem;cursor:pointer;border-radius:6px;padding:6px;text-align:center;transition:background .12s;line-height:1}
+.em-opt:hover{background:var(--hover)}
+.color-row{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.col-opt{width:26px;height:26px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.col-opt:hover,.col-opt.active{border-color:white;transform:scale(1.15)}
+.emoji-close{margin-top:14px;width:100%;padding:8px;background:var(--raised);border:1px solid var(--border);border-radius:var(--rsm);color:var(--mid);font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all .15s}
+.emoji-close:hover{background:var(--hover);color:var(--hi)}
+
+/* ── SEARCH VIEW ── */
+.sh-item{display:flex;gap:12px;padding:10px 12px;border-radius:8px;background:var(--raised);cursor:pointer;transition:all .15s;align-items:center;border:1px solid transparent;margin-bottom:6px}
+.sh-item:hover{background:var(--float);border-color:var(--border-lit)}
+.sh-ref{font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:96px}
+.sh-text{font-size:.84rem;color:var(--mid);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sh-add{margin-left:auto;flex-shrink:0;position:relative}
+
+/* ── SCHEDULE VIEW ── */
+.sched-form-card{background:var(--raised);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin-bottom:22px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:11px;margin-bottom:11px}
+.fg{display:flex;flex-direction:column;gap:4px}
+.fg label{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:1.5px;color:var(--lo)}
+.fi{background:var(--float);border:1px solid var(--border);border-radius:var(--rsm);color:var(--hi);padding:8px 11px;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s}
+.fi::placeholder{color:var(--lo)}
+.fi:focus{border-color:var(--border-lit)}
+.fi option{background:var(--raised)}
+.day-pills{display:flex;gap:5px;flex-wrap:wrap;margin:9px 0}
+.day-pill{padding:4px 11px;border-radius:50px;font-size:.72rem;font-weight:600;font-family:'Syne',sans-serif;background:var(--float);color:var(--mid);border:1px solid var(--border);cursor:pointer;transition:all .15s}
+.day-pill.on{background:var(--gold-glow);color:var(--gold);border-color:var(--border-lit)}
+.sched-row{display:flex;align-items:center;gap:14px;background:var(--raised);border:1px solid var(--border);border-radius:var(--radius);padding:13px 16px;margin-bottom:9px;transition:all .15s}
+.sched-row.enabled{border-color:rgba(240,165,0,.14);background:rgba(240,165,0,.03)}
+.tog{position:relative;width:38px;height:22px;flex-shrink:0}
+.tog input{opacity:0;width:0;height:0}
+.tog-track{position:absolute;inset:0;background:var(--hover);border-radius:11px;cursor:pointer;transition:background .2s}
+.tog input:checked+.tog-track{background:var(--gold)}
+.tog-track::after{content:'';position:absolute;width:16px;height:16px;background:white;border-radius:50%;top:3px;left:3px;transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+.tog input:checked+.tog-track::after{transform:translateX(16px)}
+.sched-time{font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:700;color:var(--hi);min-width:72px;letter-spacing:-1px}
+.sched-info{flex:1}
+.sched-passage{font-size:.88rem;color:var(--gold);font-weight:500}
+.sched-label{font-size:.77rem;font-style:italic;color:var(--mid);margin-top:1px}
+.sched-days{font-size:.7rem;color:var(--lo);margin-top:2px;font-family:'Syne',sans-serif;letter-spacing:.3px}
+.sched-del{background:none;border:none;color:var(--lo);cursor:pointer;font-size:.95rem;padding:4px;border-radius:4px;transition:color .15s}
+.sched-del:hover{color:var(--red)}
+
+/* ── PLAYER BAR ── */
+.player{height:var(--ph);background:rgba(8,8,14,.97);border-top:1px solid var(--border);backdrop-filter:blur(30px);display:grid;grid-template-columns:280px 1fr 220px;align-items:center;padding:0 22px;gap:14px;flex-shrink:0;z-index:50}
+.np{display:flex;align-items:center;gap:11px}
+.np-art{width:50px;height:50px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.25rem;box-shadow:0 4px 14px rgba(0,0,0,.5);position:relative;overflow:hidden;background:var(--raised)}
+.np-art.spin::before{content:'';position:absolute;inset:-4px;background:conic-gradient(var(--gold),transparent);animation:rot 3s linear infinite;opacity:.35}
+@keyframes rot{to{transform:rotate(360deg)}}
+.np-info{min-width:0}
+.np-ref{font-family:'Syne',sans-serif;font-size:.77rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-book{font-size:.7rem;color:var(--lo);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.np-bm{background:none;border:none;color:var(--lo);cursor:pointer;font-size:.95rem;padding:3px;transition:color .15s;flex-shrink:0}
+.np-bm:hover,.np-bm.on{color:var(--gold)}
+
+.pc{display:flex;flex-direction:column;align-items:center;gap:7px}
+.ctrl-row{display:flex;align-items:center;gap:14px}
+.pb-btn{background:none;border:none;color:var(--mid);cursor:pointer;font-size:1rem;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pb-btn:hover{color:var(--hi)}
+.pb-btn.mode-on{color:var(--gold)}
+.pb-play{width:42px;height:42px;background:var(--hi);color:var(--void);border-radius:50%;font-size:.95rem}
+.pb-play:hover{background:white;transform:scale(1.05)}
+.prog-wrap{display:flex;align-items:center;gap:9px;width:100%;max-width:420px}
+.t-lbl{font-family:'Syne',sans-serif;font-size:.6rem;color:var(--lo);min-width:30px}
+.t-lbl:last-child{text-align:left}
+.prog-bar{flex:1;height:4px;background:var(--hover);border-radius:2px;position:relative;cursor:pointer;overflow:visible}
+.prog-fill{height:100%;background:linear-gradient(to right,var(--gold),#ffcc50);border-radius:2px;transition:width .3s linear;position:relative}
+.prog-fill::after{content:'';position:absolute;right:-5px;top:-4px;width:11px;height:11px;background:white;border-radius:50%;opacity:0;transition:opacity .15s;box-shadow:0 2px 5px rgba(0,0,0,.4)}
+.prog-bar:hover .prog-fill::after{opacity:1}
+
+.pr{display:flex;align-items:center;gap:9px;justify-content:flex-end}
+.vis{display:flex;align-items:flex-end;gap:2px;height:22px;opacity:0;transition:opacity .3s}
+.vis.on{opacity:1}
+.vb{width:3px;background:linear-gradient(to top,var(--gold),#ffcc50);border-radius:1px;animation:vba var(--vd,.5s) ease-in-out infinite alternate;height:var(--vh,4px)}
+@keyframes vba{to{height:calc(var(--vh) * 4 + 3px)}}
+.spd-pill{padding:4px 8px;border-radius:4px;background:var(--raised);border:1px solid var(--border);color:var(--mid);font-family:'Syne',sans-serif;font-size:.63rem;font-weight:700;cursor:pointer;transition:all .15s}
+.spd-pill:hover{border-color:var(--border-lit);color:var(--gold)}
+.vox-pick{background:var(--raised);border:1px solid var(--border);border-radius:6px;color:var(--mid);padding:4px 6px;font-family:'DM Sans',sans-serif;font-size:.7rem;outline:none;max-width:105px;cursor:pointer}
+.vox-pick option{background:var(--raised)}
+.vol-wrap{display:flex;align-items:center;gap:7px}
+.vol-ico{font-size:.85rem;color:var(--lo);cursor:pointer}
+.vol-sl{-webkit-appearance:none;width:72px;height:4px;background:var(--hover);border-radius:2px;outline:none;cursor:pointer}
+.vol-sl::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;background:white;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+
+/* ── CONFIRM MODAL ── */
+.modal-overlay{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.65);backdrop-filter:blur(6px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--float);border:1px solid var(--border-lit);border-radius:var(--radius);padding:24px;width:320px;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.modal h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(--hi);margin-bottom:8px}
+.modal p{font-size:.85rem;color:var(--mid);line-height:1.6;margin-bottom:18px}
+.modal-btns{display:flex;gap:9px;justify-content:flex-end}
+.mbtn{padding:8px 18px;border-radius:50px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.5px;transition:all .15s}
+.mbtn.cancel{background:var(--raised);color:var(--mid);border:1px solid var(--border)}
+.mbtn.cancel:hover{color:var(--hi)}
+.mbtn.danger{background:var(--red);color:white}
+.mbtn.danger:hover{background:#f07070}
+.mbtn.confirm{background:var(--gold);color:#000}
+.mbtn.confirm:hover{background:#ffbb20}
+
+/* ── NEW PLAYLIST MODAL ── */
+.np-modal{background:var(--float);border:1px solid var(--border-lit);border-radius:var(--radius);padding:24px;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.7)}
+.np-modal h3{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--hi);margin-bottom:4px}
+.np-modal p{font-size:.8rem;color:var(--lo);margin-bottom:18px}
+.np-modal input{width:100%;background:var(--hover);border:1px solid var(--border);border-radius:var(--rsm);color:var(--hi);padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:.95rem;outline:none;margin-bottom:14px;transition:border-color .2s}
+.np-modal input:focus{border-color:var(--border-lit)}
+.np-em-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.np-em{font-size:1.4rem;cursor:pointer;border-radius:6px;padding:5px;transition:background .12s;line-height:1}
+.np-em:hover,.np-em.on{background:var(--hover)}
+.np-col-row{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.np-col{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s}
+.np-col:hover,.np-col.on{border-color:white;transform:scale(1.2)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:calc(var(--ph) + 14px);left:50%;transform:translateX(-50%) translateY(10px);background:var(--float);border:1px solid var(--border-lit);color:var(--hi);padding:9px 20px;border-radius:50px;font-size:.85rem;font-weight:500;box-shadow:0 8px 28px rgba(0,0,0,.5);opacity:0;transition:all .3s;z-index:999;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── LOADING ── */
+.loading{display:flex;gap:5px;align-items:center;justify-content:center;padding:50px;color:var(--lo);font-size:.85rem}
+.ld{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:ld 1.2s ease-in-out infinite}
+.ld:nth-child(2){animation-delay:.2s}.ld:nth-child(3){animation-delay:.4s}
+@keyframes ld{0%,80%,100%{transform:scale(.6);opacity:.3}40%{transform:scale(1);opacity:1}}
+
+/* ── DAILY VERSE ── */
+.dv-card{background:linear-gradient(135deg,rgba(240,165,0,.12),rgba(224,92,92,.08));border:1px solid rgba(240,165,0,.2);border-radius:var(--radius);padding:22px 24px;margin-bottom:28px;position:relative;overflow:hidden}
+.dv-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(240,165,0,.15),transparent 70%);pointer-events:none}
+.dv-label{font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:2.5px;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.dv-label-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+.dv-text{font-family:'DM Serif Display',serif;font-size:1.15rem;line-height:1.75;color:var(--hi);margin-bottom:10px;user-select:text}
+.dv-ref{font-family:'Syne',sans-serif;font-size:.7rem;color:var(--gold);letter-spacing:.5px}
+.dv-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.dv-btn{display:flex;align-items:center;gap:5px;padding:6px 14px;border-radius:50px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.5px;transition:all .15s}
+.dv-btn.play{background:var(--gold);color:#000}
+.dv-btn.play:hover{background:#ffbb20}
+.dv-btn.add{background:var(--raised);color:var(--mid);border:1px solid var(--border)}
+.dv-btn.add:hover{color:var(--hi);border-color:var(--border-lit)}
+.dv-btn.bm{background:var(--raised);color:var(--mid);border:1px solid var(--border)}
+.dv-btn.bm:hover{color:var(--gold);border-color:var(--border-lit)}
+
+/* ── READING PLANS ── */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:28px}
+.plan-card{background:var(--raised);border:1px solid var(--border);border-radius:var(--radius);padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.plan-card:hover{border-color:var(--border-lit);background:var(--float);transform:translateY(-2px)}
+.plan-card.enrolled{border-color:rgba(240,165,0,.3)}
+.plan-badge{position:absolute;top:12px;right:12px;font-family:'Syne',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:50px}
+.plan-badge.active{background:var(--gold-glow);color:var(--gold);border:1px solid var(--border-lit)}
+.plan-badge.done{background:rgba(76,175,125,.15);color:var(--green);border:1px solid rgba(76,175,125,.3)}
+.plan-icon{font-size:2rem;margin-bottom:10px}
+.plan-name{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;color:var(--hi);margin-bottom:4px}
+.plan-desc{font-size:.78rem;color:var(--mid);line-height:1.5;margin-bottom:12px}
+.plan-meta{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.plan-tag{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:1px;padding:3px 8px;border-radius:50px;background:var(--float);color:var(--lo);border:1px solid var(--border)}
+.plan-prog-wrap{margin-top:10px}
+.plan-prog-lbl{display:flex;justify-content:space-between;font-family:'Syne',sans-serif;font-size:.62rem;color:var(--lo);margin-bottom:5px}
+.plan-prog-bar{height:4px;background:var(--hover);border-radius:2px;overflow:hidden}
+.plan-prog-fill{height:100%;background:linear-gradient(to right,var(--gold),#ffcc50);border-radius:2px;transition:width .4s}
+.plan-enroll-btn{width:100%;padding:8px;border-radius:var(--rsm);border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.5px;transition:all .15s;margin-top:10px}
+.plan-enroll-btn.enroll{background:var(--gold-glow);color:var(--gold);border:1px solid var(--border-lit)}
+.plan-enroll-btn.enroll:hover{background:var(--gold);color:#000}
+.plan-enroll-btn.unenroll{background:var(--raised);color:var(--lo);border:1px solid var(--border)}
+.plan-enroll-btn.unenroll:hover{color:var(--red);border-color:rgba(224,92,92,.3)}
+
+/* plan detail */
+.plan-detail-header{display:flex;gap:16px;align-items:center;margin-bottom:20px}
+.plan-detail-icon{font-size:3rem}
+.plan-today-card{background:var(--raised);border:1px solid var(--border-lit);border-radius:var(--radius);padding:16px 18px;margin-bottom:20px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:all .15s}
+.plan-today-card:hover{background:var(--float)}
+.plan-today-label{font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:3px}
+.plan-today-ref{font-size:.95rem;font-weight:500}
+.plan-today-play{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#000;flex-shrink:0;margin-left:auto;transition:all .15s}
+.plan-today-play:hover{background:#ffbb20;transform:scale(1.05)}
+.plan-day-list{display:grid;gap:6px}
+.plan-day-row{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:8px;background:var(--raised);border:1px solid transparent;cursor:pointer;transition:all .12s}
+.plan-day-row:hover{background:var(--float);border-color:var(--border)}
+.plan-day-row.today{border-color:rgba(240,165,0,.25);background:var(--gold-glow)}
+.plan-day-row.done{opacity:.55}
+.plan-day-num{font-family:'Syne',sans-serif;font-size:.68rem;font-weight:700;color:var(--lo);min-width:40px}
+.plan-day-row.today .plan-day-num{color:var(--gold)}
+.plan-day-ref{font-size:.85rem;color:var(--hi);flex:1}
+.plan-day-check{font-size:1rem;color:var(--green)}
+.plan-day-row.done .plan-day-ref{color:var(--lo)}
+
+@media(max-width:800px){
+  :root{--sw:0px;--ph:80px}
+  .sidebar{display:none}
+  .player{grid-template-columns:1fr;padding:0 14px}
+  .np,.pr{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+<!-- ════════ SIDEBAR ════════ -->
+<aside class="sidebar">
+  <div class="logo-wrap">
+    <div class="logo-icon">✦</div>
+    <div>
+      <div class="logo-text" style="font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;letter-spacing:-.5px">LOGOS</div>
+      <span class="logo-sub">THE LIVING WORD · KJV</span>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-lbl">BROWSE</div>
+    <div class="nav-item active" id="nav-library" onclick="goView('library',this)"><span class="ni">⊞</span> Library</div>
+    <div class="nav-item" id="nav-search" onclick="goView('search',this)"><span class="ni">⌕</span> Search</div>
+    <div class="nav-item" id="nav-plans" onclick="goView('plans',this)"><span class="ni">📅</span> Reading Plans</div>
+    <div class="nav-item" id="nav-schedule" onclick="goView('schedule',this)"><span class="ni">⏰</span> Scheduled</div>
+  </div>
+
+  <div class="nav-sep"></div>
+
+  <!-- BOOKMARKS -->
+  <div style="padding:0 10px;flex-shrink:0">
+    <div class="pl-sidebar-header">
+      <span class="pl-sidebar-lbl">BOOKMARKS</span>
+      <button class="bm-collapse-btn" id="bmToggle" onclick="toggleBmSection()" title="Toggle">▾</button>
+    </div>
+    <div id="bmSbList" style="margin-bottom:4px"></div>
+  </div>
+
+  <div class="nav-sep"></div>
+
+  <div class="pl-sidebar">
+    <div class="pl-sidebar-header">
+      <span class="pl-sidebar-lbl">MY PLAYLISTS</span>
+      <button class="pl-new-btn" title="New playlist" onclick="openNewPlaylistModal()">＋</button>
+    </div>
+    <div id="plSbList"></div>
+  </div>
+</aside>
+
+<!-- ════════ MAIN ════════ -->
+<main class="main">
+  <div class="topbar">
+    <div class="search-wrap">
+      <span class="s-icon">⌕</span>
+      <input class="search-field" id="searchField" placeholder="Search verses, topics…" onkeydown="if(event.key==='Enter')doSearch()">
+    </div>
+    <div class="topbar-r">
+      <div class="icon-btn" title="New Playlist" onclick="openNewPlaylistModal()">＋</div>
+      <div class="icon-btn" title="Reading Plans" onclick="goView('plans',document.getElementById('nav-plans'))">📅</div>
+      <div class="icon-btn" title="Schedule" onclick="goView('schedule',document.getElementById('nav-schedule'))">⏰</div>
+    </div>
+  </div>
+
+  <!-- LIBRARY -->
+  <div class="view active" id="view-library">
+    <!-- Daily Verse Widget -->
+    <div class="dv-card" id="dvCard">
+      <div class="dv-label"><span class="dv-label-dot"></span>VERSE OF THE DAY</div>
+      <div class="dv-text" id="dvText" style="color:var(--lo);font-style:italic">Loading today's verse…</div>
+      <div class="dv-ref" id="dvRef"></div>
+      <div class="dv-actions" id="dvActions" style="display:none">
+        <button class="dv-btn play" onclick="playDailyVerse()">▶ Listen</button>
+        <button class="dv-btn add" onclick="addDailyToPlaylist()">＋ Add to Playlist</button>
+        <button class="dv-btn bm" onclick="bookmarkDaily()">🔖 Bookmark</button>
+      </div>
+    </div>
+    <div id="libraryContent"></div>
+  </div>
+
+  <!-- CHAPTER -->
+  <div class="view" id="view-chapter">
+    <div id="chHero"></div>
+    <div class="ch-pills" id="chPills"></div>
+    <div class="tl-header"><span style="text-align:right">#</span><span>VERSE</span><span></span></div>
+    <div id="tracklist"><div class="loading"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div></div>
+  </div>
+
+  <!-- PLAYLIST DETAIL -->
+  <div class="view" id="view-playlist">
+    <div id="plHeroArea"></div>
+    <div class="add-verse-row" onclick="document.getElementById('avInput').focus()">
+      <span style="font-size:.9rem;color:var(--lo);flex-shrink:0">＋</span>
+      <input class="av-input" id="avInput" placeholder="Add verse… e.g. John 3:16 or Romans 8:28" onkeydown="if(event.key==='Enter')addVerseToCurrentPl()">
+      <button class="av-btn" onclick="addVerseToCurrentPl()">Add</button>
+    </div>
+    <div id="plTracklist"></div>
+  </div>
+
+  <!-- READING PLANS -->
+  <div class="view" id="view-plans">
+    <div id="plansContent"></div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="view" id="view-search">
+    <div class="sec-title">Search the Scripture</div>
+    <div class="sec-sub">Find verses by keyword, phrase, or topic</div>
+    <div style="display:flex;gap:9px;margin-bottom:20px">
+      <input class="fi" id="searchMain" style="flex:1;font-size:.92rem;padding:10px 13px" placeholder="e.g. faith, grace, do not fear…">
+      <button class="hbtn pri" style="border-radius:50px;font-size:.82rem" onclick="doSearchMain()">Search</button>
+    </div>
+    <div id="searchArea"></div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="view" id="view-schedule">
+    <div class="sec-title">Scheduled Readings</div>
+    <div class="sec-sub">Read scripture aloud automatically at set times — keep this tab open</div>
+    <div class="sched-form-card">
+      <div class="form-grid">
+        <div class="fg"><label>TIME</label><input type="time" class="fi" id="schTime"></div>
+        <div class="fg"><label>PASSAGE</label><input type="text" class="fi" id="schPassage" placeholder="John 3:16"></div>
+        <div class="fg"><label>LABEL</label><input type="text" class="fi" id="schLabel" placeholder="Morning prayer…"></div>
+        <div class="fg"><label>REPEAT</label>
+          <select class="fi" id="schRepeat" onchange="document.getElementById('schDays').style.display=this.value==='custom'?'block':'none'">
+            <option value="daily">Every Day</option>
+            <option value="weekdays">Weekdays</option>
+            <option value="weekends">Weekends</option>
+            <option value="custom">Custom</option>
+            <option value="once">Once</option>
+          </select>
+        </div>
+      </div>
+      <div id="schDays" style="display:none">
+        <div class="day-pills">
+          <span class="day-pill" data-d="0" onclick="this.classList.toggle('on')">SUN</span>
+          <span class="day-pill" data-d="1" onclick="this.classList.toggle('on')">MON</span>
+          <span class="day-pill" data-d="2" onclick="this.classList.toggle('on')">TUE</span>
+          <span class="day-pill" data-d="3" onclick="this.classList.toggle('on')">WED</span>
+          <span class="day-pill" data-d="4" onclick="this.classList.toggle('on')">THU</span>
+          <span class="day-pill" data-d="5" onclick="this.classList.toggle('on')">FRI</span>
+          <span class="day-pill" data-d="6" onclick="this.classList.toggle('on')">SAT</span>
+        </div>
+      </div>
+      <button class="hbtn pri" onclick="addSchedule()">＋ Add Schedule</button>
+    </div>
+    <div id="schedList"></div>
+    <div style="margin-top:12px;font-size:.78rem;color:var(--lo);font-style:italic" id="schStatus">Checking every 30 seconds…</div>
+  </div>
+</main>
+</div>
+
+<!-- ════════ PLAYER ════════ -->
+<div class="player">
+  <div class="np">
+    <div class="np-art" id="npArt">✦</div>
+    <div class="np-info">
+      <div class="np-ref" id="npRef">Nothing playing</div>
+      <div class="np-book" id="npBook">Open a book or playlist</div>
+    </div>
+    <button class="np-bm" id="npBmBtn" onclick="bookmarkNow()">🔖</button>
+  </div>
+
+  <div class="pc">
+    <div class="ctrl-row">
+      <button class="pb-btn" id="btnShuffle" onclick="toggleShuffle()" title="Shuffle">⇄</button>
+      <button class="pb-btn" onclick="prevTrack()" title="Previous">⏮</button>
+      <button class="pb-btn pb-play" id="mainPlay" onclick="mainPlayPause()">▶</button>
+      <button class="pb-btn" onclick="nextTrack()" title="Next">⏭</button>
+      <button class="pb-btn" id="btnRepeat" onclick="toggleRepeat()" title="Repeat">↻</button>
+    </div>
+    <div class="prog-wrap">
+      <span class="t-lbl" style="text-align:right" id="tEl">0:00</span>
+      <div class="prog-bar" id="progBar" onclick="seekClick(event)">
+        <div class="prog-fill" id="progFill" style="width:0%"></div>
+      </div>
+      <span class="t-lbl" id="tTot">0:00</span>
+    </div>
+  </div>
+
+  <div class="pr">
+    <div class="vis" id="vis">
+      <div class="vb" style="--vd:.5s;--vh:6px"></div><div class="vb" style="--vd:.7s;--vh:10px"></div>
+      <div class="vb" style="--vd:.4s;--vh:4px"></div><div class="vb" style="--vd:.9s;--vh:8px"></div>
+      <div class="vb" style="--vd:.6s;--vh:12px"></div><div class="vb" style="--vd:.55s;--vh:5px"></div>
+      <div class="vb" style="--vd:.8s;--vh:9px"></div><div class="vb" style="--vd:.45s;--vh:6px"></div>
+    </div>
+    <span class="spd-pill" id="spdPill" onclick="cycleSpeed()">1×</span>
+    <select class="vox-pick" id="voicePick"></select>
+    <div class="vol-wrap">
+      <span class="vol-ico" onclick="toggleMute()">🔊</span>
+      <input type="range" class="vol-sl" id="volSl" min="0" max="1" step="0.05" value="1">
+    </div>
+  </div>
+</div>
+
+<!-- ════════ NEW PLAYLIST MODAL ════════ -->
+<div class="modal-overlay" id="newPlModal">
+  <div class="np-modal">
+    <h3>New Playlist</h3>
+    <p>Give your playlist a name, pick an icon and colour</p>
+    <input type="text" id="newPlName" placeholder="e.g. Morning Devotions, Psalms of Peace…" maxlength="40">
+    <div style="font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:1.5px;color:var(--lo);margin-bottom:8px">ICON</div>
+    <div class="np-em-row" id="newPlEmojis"></div>
+    <div style="font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:1.5px;color:var(--lo);margin-bottom:8px">COLOUR</div>
+    <div class="np-col-row" id="newPlColors"></div>
+    <div class="modal-btns">
+      <button class="mbtn cancel" onclick="closeModal('newPlModal')">Cancel</button>
+      <button class="mbtn confirm" onclick="createPlaylist()">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div class="modal-overlay" id="delModal">
+  <div class="modal">
+    <h3 id="delModalTitle">Delete Playlist?</h3>
+    <p id="delModalBody">This cannot be undone.</p>
+    <div class="modal-btns">
+      <button class="mbtn cancel" onclick="closeModal('delModal')">Cancel</button>
+      <button class="mbtn danger" id="delConfirmBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD TO PLAYLIST CHOICE MODAL (from search) -->
+<div class="modal-overlay" id="pickPlModal">
+  <div class="modal" style="width:300px">
+    <h3 style="margin-bottom:14px">Add to Playlist</h3>
+    <div id="pickPlList" style="max-height:260px;overflow-y:auto;margin-bottom:14px"></div>
+    <div class="modal-btns">
+      <button class="mbtn cancel" onclick="closeModal('pickPlModal')">Cancel</button>
+      <button class="mbtn confirm" onclick="pickPlCreateNew()">＋ New Playlist</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════
+// BIBLE DATA
+// ════════════════════════════════════════════════
+const TESTAMENTS=[
+  {label:'OLD TESTAMENT',books:[
+    {n:'Genesis',s:'GEN',c:50},{n:'Exodus',s:'EXO',c:40},{n:'Leviticus',s:'LEV',c:27},
+    {n:'Numbers',s:'NUM',c:36},{n:'Deuteronomy',s:'DEU',c:34},{n:'Joshua',s:'JOS',c:24},
+    {n:'Judges',s:'JDG',c:21},{n:'Ruth',s:'RUT',c:4},{n:'1 Samuel',s:'1SA',c:31},
+    {n:'2 Samuel',s:'2SA',c:24},{n:'1 Kings',s:'1KI',c:22},{n:'2 Kings',s:'2KI',c:25},
+    {n:'1 Chronicles',s:'1CH',c:29},{n:'2 Chronicles',s:'2CH',c:36},{n:'Ezra',s:'EZR',c:10},
+    {n:'Nehemiah',s:'NEH',c:13},{n:'Esther',s:'EST',c:10},{n:'Job',s:'JOB',c:42},
+    {n:'Psalms',s:'PSA',c:150},{n:'Proverbs',s:'PRO',c:31},{n:'Ecclesiastes',s:'ECC',c:12},
+    {n:'Song of Solomon',s:'SNG',c:8},{n:'Isaiah',s:'ISA',c:66},{n:'Jeremiah',s:'JER',c:52},
+    {n:'Lamentations',s:'LAM',c:5},{n:'Ezekiel',s:'EZK',c:48},{n:'Daniel',s:'DAN',c:12},
+    {n:'Hosea',s:'HOS',c:14},{n:'Joel',s:'JOL',c:3},{n:'Amos',s:'AMO',c:9},
+    {n:'Obadiah',s:'OBA',c:1},{n:'Jonah',s:'JON',c:4},{n:'Micah',s:'MIC',c:7},
+    {n:'Nahum',s:'NAH',c:3},{n:'Habakkuk',s:'HAB',c:3},{n:'Zephaniah',s:'ZEP',c:3},
+    {n:'Haggai',s:'HAG',c:2},{n:'Zechariah',s:'ZEC',c:14},{n:'Malachi',s:'MAL',c:4}
+  ]},
+  {label:'NEW TESTAMENT',books:[
+    {n:'Matthew',s:'MAT',c:28},{n:'Mark',s:'MRK',c:16},{n:'Luke',s:'LUK',c:24},
+    {n:'John',s:'JHN',c:21},{n:'Acts',s:'ACT',c:28},{n:'Romans',s:'ROM',c:16},
+    {n:'1 Corinthians',s:'1CO',c:16},{n:'2 Corinthians',s:'2CO',c:13},
+    {n:'Galatians',s:'GAL',c:6},{n:'Ephesians',s:'EPH',c:6},{n:'Philippians',s:'PHP',c:4},
+    {n:'Colossians',s:'COL',c:4},{n:'1 Thessalonians',s:'1TH',c:5},{n:'2 Thessalonians',s:'2TH',c:3},
+    {n:'1 Timothy',s:'1TI',c:6},{n:'2 Timothy',s:'2TI',c:4},{n:'Titus',s:'TIT',c:3},
+    {n:'Philemon',s:'PHM',c:1},{n:'Hebrews',s:'HEB',c:13},{n:'James',s:'JAS',c:5},
+    {n:'1 Peter',s:'1PE',c:5},{n:'2 Peter',s:'2PE',c:3},{n:'1 John',s:'1JN',c:5},
+    {n:'2 John',s:'2JN',c:1},{n:'3 John',s:'3JN',c:1},{n:'Jude',s:'JUD',c:1},
+    {n:'Revelation',s:'REV',c:22}
+  ]}
+];
+const BOOKS=TESTAMENTS.flatMap(t=>t.books);
+
+const BOOK_COLORS=[
+  ['#b5451b','#e8722a'],['#7b3f00','#c4852c'],['#1a5c2e','#33a85c'],['#4a3080','#8a62d4'],
+  ['#1a3e6e','#3a7dcc'],['#8b1a1a','#d44444'],['#2d5a27','#5cb85c'],['#8b6914','#c9a92e'],
+  ['#2c3e6e','#5470cc'],['#6e2c2c','#c45c5c'],['#1a5c50','#33b09a'],['#5c4a1a','#b89440'],
+  ['#3d1a6e','#7a3dd4'],['#1a3d5c','#3a7aad'],['#5c2c1a','#b0562e'],['#2c5c1a','#5aad33'],
+  ['#6e3d1a','#c47033'],['#1a5c5c','#33b0b0'],['#4d2c6e','#9a56d4'],['#1a4a6e','#3396cc'],
+  ['#6e1a1a','#d43333'],['#2c5c40','#5aad7a'],['#6e5c1a','#c4aa33'],['#1a2e6e','#3358cc'],
+  ['#5c1a3d','#b03375'],['#3d5c1a','#7ab033'],['#1a5c3d','#33b079'],['#6e4d1a','#c49233']
+];
+
+const BOOK_EMOJIS={GEN:'🌍',EXO:'✡️',LEV:'📜',NUM:'🔢',DEU:'⚖️',JOS:'⚔️',JDG:'🛡️',RUT:'🌾','1SA':'👑','2SA':'🏰','1KI':'🕌','2KI':'🔥','1CH':'📖','2CH':'📖',EZR:'🏗️',NEH:'🧱',EST:'👸',JOB:'🌪️',PSA:'🎵',PRO:'💡',ECC:'🌀',SNG:'🌹',ISA:'⚡',JER:'😢',LAM:'💧',EZK:'👁️',DAN:'🦁',HOS:'💔',JOL:'🦟',AMO:'⚡',OBA:'🏔️',JON:'🐋',MIC:'🕊️',NAH:'🌩️',HAB:'🌄',ZEP:'🌊',HAG:'🏛️',ZEC:'🌟',MAL:'☀️',MAT:'⭐',MRK:'⚡',LUK:'💛',JHN:'💡',ACT:'🕊️',ROM:'📜','1CO':'🤝','2CO':'❤️',GAL:'🔓',EPH:'🛡️',PHP:'😊',COL:'👑','1TH':'🙏','2TH':'🙏','1TI':'✍️','2TI':'✝️',TIT:'📋',PHM:'🤲',HEB:'⛩️',JAS:'🌊','1PE':'💎','2PE':'⚠️','1JN':'❤️','2JN':'✉️','3JN':'✉️',JUD:'⚠️',REV:'🌈'};
+
+const PL_EMOJIS=['📖','🙏','✝️','✨','🌟','🌹','🕊️','🎵','💛','💎','🔥','⭐','🌿','🏔️','🌊','🌈','💡','❤️','🌸','⚡','🦋','🌙','☀️','🕌','📿','🌺','🏛️','🎶'];
+const PL_COLORS=['#f0a500','#e05c5c','#4caf7d','#5b8af0','#a86dd4','#e0845c','#5cc4c4','#d45c8a','#8ac45c','#c45c5c','#5c8ad4','#d4c45c'];
+
+// ════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════
+let playlists = JSON.parse(localStorage.getItem('logos_pls') || '[]');
+let schedules = JSON.parse(localStorage.getItem('logos_scheds') || '[]');
+let bookmarks = JSON.parse(localStorage.getItem('logos_bm') || '[]');
+let planProgress = JSON.parse(localStorage.getItem('logos_plan_prog') || '{}'); // {planId: {enrolled, completedDays:[]}}
+let currentBook=null, currentChapter=1, currentVerses=[];
+let activePlId=null;
+let playingCtx=null;
+let isPlaying=false, isPaused=false, doRepeat=false, doShuffle=false, stopRequested=false;
+let shuffleOrder=[];
+let voices=[], speedIdx=2;
+const SPEEDS=[0.6,0.8,1,1.2,1.5];
+let ttsDuration=0, ttsStart=0, progTimer=null;
+let isMuted=false, volPrev=1;
+let newPlEmoji='📖', newPlColor='#f0a500';
+let pendingAddVerse=null;
+let dvData=null; // today's daily verse {ref, text}
+let bmSectionOpen=true;
+// ════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════
+function init(){
+  buildLibrary();
+  buildNewPlModal();
+  renderPlSidebar();
+  renderBookmarks();
+  buildReadingPlans();
+  loadVoices();
+  loadDailyVerse();
+  renderSchedules();
+  startScheduleChecker();
+  // Fix: volume slider actually sets utterance volume via SpeechSynthesis
+  document.getElementById('volSl').addEventListener('input', e => {
+    volPrev = parseFloat(e.target.value);
+    // volume is applied per utterance; no live API for current utterance
+  });
+  document.addEventListener('click', closeOpenMenus);
+}
+
+// ════════════════════════════════════════════════
+// LIBRARY
+// ════════════════════════════════════════════════
+function buildLibrary(){
+  let h='';
+  TESTAMENTS.forEach(t=>{
+    h+=`<div class="sec-title" style="margin-bottom:4px">${t.label}</div>
+    <div class="sec-sub">${t.books.length} books</div>
+    <div class="cards-grid" style="margin-bottom:32px">`;
+    t.books.forEach(b=>{
+      const gi=BOOKS.indexOf(b);
+      const [c1,c2]=BOOK_COLORS[gi%BOOK_COLORS.length];
+      const em=BOOK_EMOJIS[b.s]||'📖';
+      h+=`<div class="book-card" onclick="openBook(${gi})">
+        <div class="card-art" style="background:linear-gradient(135deg,${c1},${c2})">
+          <div class="card-art-em">${em}</div>
+          <div class="card-art-ab">${b.s}</div>
+          <div class="card-play" onclick="event.stopPropagation();openBookAndPlay(${gi})">▶</div>
+        </div>
+        <div class="card-body">
+          <div class="card-name">${b.n}</div>
+          <div class="card-ch">${b.c} chapters</div>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  });
+  document.getElementById('libraryContent').innerHTML=h;
+}
+
+// ════════════════════════════════════════════════
+// OPEN BOOK / CHAPTER
+// ════════════════════════════════════════════════
+function openBook(idx){
+  currentBook=BOOKS[idx]; currentChapter=1;
+  goView('chapter',null,false);
+  buildChapterHero(idx);
+  buildChapterPills(idx);
+  loadChapter();
+}
+function openBookAndPlay(idx){openBook(idx);setTimeout(()=>playChapter(),1200);}
+
+function buildChapterHero(idx){
+  const b=BOOKS[idx];
+  const [c1,c2]=BOOK_COLORS[idx%BOOK_COLORS.length];
+  const em=BOOK_EMOJIS[b.s]||'📖';
+  const test=TESTAMENTS[0].books.includes(b)?'OLD TESTAMENT':'NEW TESTAMENT';
+  document.getElementById('chHero').innerHTML=`
+    <div class="ch-hero">
+      <div class="hero-art" style="background:linear-gradient(135deg,${c1},${c2})">
+        <div class="hero-art-em">${em}</div><div class="hero-art-ab">${b.s}</div>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-type">${test}</div>
+        <div class="hero-title">${b.n}</div>
+        <div class="hero-desc">${b.c} chapters · King James Version</div>
+        <div class="hero-actions">
+          <button class="hbtn pri" onclick="playChapter()">▶ Play Chapter</button>
+          <div class="add-pl-wrap" id="heroAddWrap">
+            <button class="hbtn sec" onclick="event.stopPropagation();toggleMenu('heroAddMenu')">＋ Add to Playlist ▾</button>
+            <div class="add-pl-menu" id="heroAddMenu">${buildPlMenuHtml('chapter')}</div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+function buildChapterPills(idx){
+  const b=BOOKS[idx];
+  let h='';
+  for(let i=1;i<=b.c;i++) h+=`<span class="ch-pill ${i===1?'active':''}" id="pill${i}" onclick="selectChapter(${i},this)">${i}</span>`;
+  document.getElementById('chPills').innerHTML=h;
+}
+
+function selectChapter(n,el){
+  currentChapter=n;
+  document.querySelectorAll('.ch-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  loadChapter();
+}
+
+function loadChapter(){
+  document.getElementById('tracklist').innerHTML=`<div class="loading"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div>`;
+  fetch(`https://bible-api.com/${encodeURIComponent(currentBook.n+' '+currentChapter)}`)
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.error){document.getElementById('tracklist').innerHTML=`<div style="padding:40px;color:var(--lo);text-align:center">⚠️ ${d.error}</div>`;return;}
+      currentVerses=d.verses||[];
+      renderTracklist();
+    })
+    .catch(()=>{document.getElementById('tracklist').innerHTML=`<div style="padding:40px;color:var(--lo);text-align:center">⚠️ Network error</div>`;});
+}
+
+function renderTracklist(){
+  document.getElementById('tracklist').innerHTML=currentVerses.map((v,i)=>`
+    <div class="track" id="tr${v.verse}" onclick="playVerseAtIdx(${i})">
+      <div class="tn" id="tn${v.verse}">${v.verse}</div>
+      <div class="tv">${esc(v.text.trim())}</div>
+      <div class="track-actions">
+        <div class="ta-wrap" id="taw${i}">
+          <button class="ta-btn" onclick="event.stopPropagation();toggleMenu('tpm${i}')">＋ Playlist ▾</button>
+          <div class="add-pl-menu track-pl-menu" id="tpm${i}">${buildPlMenuHtml('verse',i)}</div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════
+// PLAYLIST MENU HELPERS
+// ════════════════════════════════════════════════
+function buildPlMenuHtml(src, idx){
+  let h='';
+  if(!playlists.length) h=`<div class="apm-item" style="color:var(--lo);font-style:italic;cursor:default">No playlists yet</div>`;
+  playlists.forEach(pl=>{
+    h+=`<div class="apm-item" onclick="event.stopPropagation();addSrcToPlaylist('${pl.id}','${src}',${idx??'null'})">
+      <div class="apm-dot" style="background:${pl.color}"></div>${pl.name}
+      <span style="margin-left:auto;font-size:.68rem;color:var(--lo)">${pl.verses.length}</span>
+    </div>`;
+  });
+  h+=`<div class="apm-item apm-new" onclick="event.stopPropagation();openNewPlAndAdd('${src}',${idx??'null'})">＋ New Playlist</div>`;
+  return h;
+}
+
+function toggleMenu(id){
+  const el=document.getElementById(id);
+  const wasOpen=el.classList.contains('open');
+  closeOpenMenus();
+  if(!wasOpen) el.classList.add('open');
+}
+
+function closeOpenMenus(){
+  document.querySelectorAll('.add-pl-menu.open,.track-pl-menu.open').forEach(m=>m.classList.remove('open'));
+}
+
+function addSrcToPlaylist(plId, src, verseIdx){
+  closeOpenMenus();
+  if(src==='verse'){
+    const v=currentVerses[verseIdx];
+    const ref=`${currentBook.n} ${currentChapter}:${v.verse}`;
+    addVerseRef(plId,ref,v.text.trim());
+  } else if(src==='chapter'){
+    if(!currentVerses.length){showToast('Chapter not loaded yet');return;}
+    let added=0;
+    currentVerses.forEach(v=>{
+      const ref=`${currentBook.n} ${currentChapter}:${v.verse}`;
+      added+=addVerseRef(plId,ref,v.text.trim(),true);
+    });
+    savePl();renderPlSidebar();
+    showToast(`✔ Added ${added} verses to "${getPlById(plId)?.name}"`);
+  }
+}
+
+// returns 1 if added, 0 if dup
+function addVerseRef(plId,ref,text,silent=false){
+  const pl=getPlById(plId);
+  if(!pl) return 0;
+  if(pl.verses.find(v=>v.ref===ref)){if(!silent)showToast('Already in playlist');return 0;}
+  pl.verses.push({ref,text});
+  savePl();renderPlSidebar();
+  if(!silent) showToast(`✔ Added to "${pl.name}"`);
+  if(activePlId===plId) renderPlTracklist(plId);
+  return 1;
+}
+
+function openNewPlAndAdd(src,idx){
+  closeOpenMenus();
+  // store pending, open modal
+  pendingAddVerse={src,idx};
+  openNewPlaylistModal();
+}
+
+// ════════════════════════════════════════════════
+// PLAYLISTS — CREATE / DELETE / RENAME
+// ════════════════════════════════════════════════
+function savePl(){localStorage.setItem('logos_pls',JSON.stringify(playlists));}
+function getPlById(id){return playlists.find(p=>p.id===id);}
+
+function openNewPlaylistModal(){
+  newPlEmoji='📖'; newPlColor='#f0a500';
+  document.getElementById('newPlName').value='';
+  // refresh selection state
+  document.querySelectorAll('.np-em').forEach((e,i)=>{e.classList.toggle('on',PL_EMOJIS[i]===newPlEmoji);});
+  document.querySelectorAll('.np-col').forEach((e,i)=>{e.classList.toggle('on',PL_COLORS[i]===newPlColor);});
+  openModal('newPlModal');
+  setTimeout(()=>document.getElementById('newPlName').focus(),100);
+}
+
+function buildNewPlModal(){
+  document.getElementById('newPlEmojis').innerHTML=PL_EMOJIS.map((em,i)=>
+    `<span class="np-em ${i===0?'on':''}" onclick="pickPlEmoji('${em}',this)">${em}</span>`
+  ).join('');
+  document.getElementById('newPlColors').innerHTML=PL_COLORS.map((c,i)=>
+    `<span class="np-col ${i===0?'on':''}" style="background:${c}" onclick="pickPlColor('${c}',this)"></span>`
+  ).join('');
+}
+
+function pickPlEmoji(em,el){
+  newPlEmoji=em;
+  document.querySelectorAll('.np-em').forEach(e=>e.classList.remove('on'));
+  el.classList.add('on');
+}
+function pickPlColor(c,el){
+  newPlColor=c;
+  document.querySelectorAll('.np-col').forEach(e=>e.classList.remove('on'));
+  el.classList.add('on');
+}
+
+function createPlaylist(){
+  const name=document.getElementById('newPlName').value.trim();
+  if(!name){document.getElementById('newPlName').focus();showToast('Enter a name');return;}
+  const pl={id:'pl_'+Date.now(),name,emoji:newPlEmoji,color:newPlColor,verses:[]};
+  playlists.unshift(pl);
+  savePl();renderPlSidebar();
+  closeModal('newPlModal');
+  showToast(`✔ Created "${name}"`);
+  // if pending add
+  if(pendingAddVerse){
+    const {src,idx}=pendingAddVerse;
+    pendingAddVerse=null;
+    addSrcToPlaylist(pl.id,src,idx);
+  }
+  // open the new playlist
+  openPlaylist(pl.id);
+}
+
+function openPlaylist(id){
+  activePlId=id;
+  const pl=getPlById(id);
+  if(!pl) return;
+  goView('playlist',null,false);
+  renderPlHero(id);
+  renderPlTracklist(id);
+  // highlight sidebar
+  document.querySelectorAll('.pl-sb-item').forEach(e=>e.classList.toggle('active',e.dataset.id===id));
+}
+
+function renderPlHero(id){
+  const pl=getPlById(id);
+  if(!pl) return;
+  document.getElementById('plHeroArea').innerHTML=`
+    <div class="pl-hero">
+      <div class="pl-art" style="background:linear-gradient(135deg,${pl.color}88,${pl.color}44)" onclick="openEmojiPicker('${id}')">
+        <span class="pl-art-emoji">${pl.emoji}</span>
+        <div class="pl-art-overlay">Change Icon</div>
+      </div>
+      <div class="pl-meta">
+        <div class="pl-type">PLAYLIST</div>
+        <div class="pl-name-wrap">
+          <div class="pl-name-display" id="plNameDisp" onclick="startRename('${id}')">${esc(pl.name)}</div>
+        </div>
+        <div class="pl-stats" id="plStats">${pl.verses.length} verse${pl.verses.length!==1?'s':''}</div>
+        <div class="pl-actions">
+          <button class="hbtn pri" onclick="playPlaylist('${id}')">▶ Play All</button>
+          <button class="hbtn sec" onclick="shufflePlayPlaylist('${id}')">⇄ Shuffle</button>
+          <button class="hbtn sec" style="color:var(--red);border-color:rgba(224,92,92,.3)" onclick="confirmDeletePlaylist('${id}')">🗑 Delete</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function startRename(id){
+  const pl=getPlById(id);
+  if(!pl) return;
+  const disp=document.getElementById('plNameDisp');
+  const inp=document.createElement('input');
+  inp.className='pl-name-input';
+  inp.value=pl.name;
+  disp.replaceWith(inp);
+  inp.focus(); inp.select();
+  function commit(){
+    const v=inp.value.trim();
+    if(v) pl.name=v;
+    savePl();renderPlSidebar();
+    renderPlHero(id);renderPlTracklist(id);
+  }
+  inp.addEventListener('blur',commit);
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter')inp.blur();if(e.key==='Escape'){inp.value=pl.name;inp.blur();}});
+}
+
+function confirmDeletePlaylist(id){
+  const pl=getPlById(id);
+  if(!pl) return;
+  document.getElementById('delModalTitle').textContent=`Delete "${pl.name}"?`;
+  document.getElementById('delModalBody').textContent=`This will permanently remove all ${pl.verses.length} verses in this playlist.`;
+  document.getElementById('delConfirmBtn').onclick=()=>deletePlaylist(id);
+  openModal('delModal');
+}
+
+function deletePlaylist(id){
+  const pl=getPlById(id);
+  const name=pl?.name;
+  playlists=playlists.filter(p=>p.id!==id);
+  savePl();renderPlSidebar();
+  closeModal('delModal');
+  showToast(`Deleted "${name}"`);
+  if(activePlId===id){activePlId=null;goView('library',document.getElementById('nav-library'));}
+  if(playingCtx?.plId===id) stopAll();
+}
+
+// ── Emoji picker inside playlist hero ──
+function openEmojiPicker(id){
+  // inline mini-picker (reuse emoji opts)
+  // For simplicity: cycle through emojis on click
+  const pl=getPlById(id);
+  if(!pl) return;
+  const cur=PL_EMOJIS.indexOf(pl.emoji);
+  pl.emoji=PL_EMOJIS[(cur+1)%PL_EMOJIS.length];
+  savePl();renderPlHero(id);renderPlSidebar();
+}
+
+// ════════════════════════════════════════════════
+// PLAYLIST TRACKLIST
+// ════════════════════════════════════════════════
+function renderPlTracklist(id){
+  const pl=getPlById(id);
+  if(!pl) return;
+  // update stats
+  const statsEl=document.getElementById('plStats');
+  if(statsEl) statsEl.textContent=`${pl.verses.length} verse${pl.verses.length!==1?'s':''}`;
+
+  const el=document.getElementById('plTracklist');
+  if(!pl.verses.length){
+    el.innerHTML=`<div class="empty-pl"><div class="empty-pl-icon">🎵</div><div>This playlist is empty.</div><div style="font-size:.8rem;margin-top:6px">Type a reference above, or add from the Library.</div></div>`;
+    return;
+  }
+  const ctxIdx=playingCtx?.plId===id?playingCtx.idx:-1;
+  el.innerHTML=pl.verses.map((v,i)=>`
+    <div class="pl-tl-row ${i===ctxIdx&&isPlaying?'speaking':''}" id="plr${id}_${i}" ondblclick="jumpPlaylist('${id}',${i})">
+      <div class="ptn">${i===ctxIdx&&isPlaying?'<div class="play-bars"><div class="pb"></div><div class="pb"></div><div class="pb"></div></div>':i+1}</div>
+      <div>
+        <div class="ptr">${v.ref}</div>
+        <div class="ptt">${esc(v.text)}</div>
+      </div>
+      <button class="pl-row-del" title="Remove" onclick="event.stopPropagation();removeFromPlaylist('${id}',${i})">✕</button>
+    </div>`).join('');
+}
+
+function removeFromPlaylist(id,idx){
+  const pl=getPlById(id);
+  if(!pl) return;
+  const ref=pl.verses[idx]?.ref;
+  pl.verses.splice(idx,1);
+  savePl();renderPlTracklist(id);renderPlSidebar();
+  showToast(`Removed ${ref}`);
+  if(playingCtx?.plId===id && playingCtx.idx>=idx){
+    playingCtx.idx=Math.max(0,playingCtx.idx-1);
+  }
+}
+
+function addVerseToCurrentPl(){
+  if(!activePlId){showToast('Open a playlist first');return;}
+  const raw=document.getElementById('avInput').value.trim();
+  if(!raw) return;
+  document.getElementById('avInput').value='';
+  fetch(`https://bible-api.com/${encodeURIComponent(raw)}`)
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.error){showToast('Not found: '+raw);return;}
+      let added=0;
+      (d.verses||[]).forEach(v=>{
+        const ref=`${v.book_name} ${v.chapter}:${v.verse}`;
+        added+=addVerseRef(activePlId,ref,v.text.trim(),true);
+      });
+      savePl();renderPlSidebar();renderPlTracklist(activePlId);renderPlHero(activePlId);
+      showToast(`✔ Added ${added} verse${added!==1?'s':''}`);
+    })
+    .catch(()=>showToast('Network error'));
+}
+
+// ════════════════════════════════════════════════
+// SIDEBAR RENDER
+// ════════════════════════════════════════════════
+function renderPlSidebar(){
+  const el=document.getElementById('plSbList');
+  if(!playlists.length){
+    el.innerHTML=`<div style="padding:8px;font-size:.78rem;color:var(--lo);font-style:italic;text-align:center">No playlists yet</div>`;
+    return;
+  }
+  el.innerHTML=playlists.map(pl=>`
+    <div class="pl-sb-item ${activePlId===pl.id?'active':''}" data-id="${pl.id}" onclick="openPlaylist('${pl.id}')">
+      <div class="pl-sb-dot" style="background:${pl.color}"></div>
+      <span class="pl-sb-name">${esc(pl.name)}</span>
+      <span class="pl-sb-count">${pl.verses.length}</span>
+    </div>`).join('');
+}
+
+// ════════════════════════════════════════════════
+// PLAYBACK
+// ════════════════════════════════════════════════
+function loadVoices(){
+  function set(){
+    voices=speechSynthesis.getVoices();
+    const vp=document.getElementById('voicePick');
+    vp.innerHTML=voices.map((v,i)=>`<option value="${i}">${v.name.substring(0,22)}</option>`).join('');
+    const prefs=['Google UK English Male','UK English Male','Daniel','Karen','Samantha','Alex'];
+    for(const p of prefs){const idx=voices.findIndex(v=>v.name.includes(p.split(' ')[0]));if(idx>=0){vp.value=idx;break;}}
+  }
+  set(); speechSynthesis.onvoiceschanged=set;
+}
+
+function speak(text,ref,onEnd){
+  // cancel existing utterance without triggering the stop-guard
+  speechSynthesis.cancel();
+  stopRequested=false;
+  if(!text) return;
+  const utter=new SpeechSynthesisUtterance(text);
+  utter.rate=SPEEDS[speedIdx];
+  utter.volume=parseFloat(document.getElementById('volSl').value);
+  const vi=parseInt(document.getElementById('voicePick').value);
+  if(voices[vi]) utter.voice=voices[vi];
+  const wc=text.split(' ').length;
+  ttsDuration=(wc/150)*60/SPEEDS[speedIdx];
+  ttsStart=Date.now();
+  document.getElementById('npRef').textContent=ref||'Playing…';
+  document.getElementById('tTot').textContent=fmt(ttsDuration);
+  startProg(ttsDuration);
+  document.getElementById('vis').classList.add('on');
+  document.getElementById('mainPlay').textContent='⏸';
+  document.getElementById('npArt').classList.add('spin');
+  isPlaying=true; isPaused=false;
+  function resetUI(){
+    clearProg();
+    document.getElementById('vis').classList.remove('on');
+    document.getElementById('mainPlay').textContent='▶';
+    document.getElementById('npArt').classList.remove('spin');
+    document.getElementById('progFill').style.width='0%';
+    document.getElementById('tEl').textContent='0:00';
+    clearHighlight();
+  }
+  utter.onend=()=>{
+    if(stopRequested) return; // user hit stop — don't auto-advance
+    resetUI();
+    isPlaying=false;
+    if(onEnd) onEnd(); // triggers advance()
+  };
+  utter.onerror=()=>{ resetUI(); isPlaying=false; };
+  speechSynthesis.speak(utter);
+}
+
+function stopAll(){
+  stopRequested=true; // block onEnd from triggering advance
+  speechSynthesis.cancel();
+  isPlaying=false; isPaused=false;
+  clearProg();
+  document.getElementById('vis').classList.remove('on');
+  document.getElementById('mainPlay').textContent='▶';
+  document.getElementById('npArt').classList.remove('spin');
+  document.getElementById('progFill').style.width='0%';
+  document.getElementById('tEl').textContent='0:00';
+  clearHighlight();
+}
+
+function startProg(total){
+  clearProg();
+  ttsStart=Date.now(); ttsDuration=total;
+  progTimer=setInterval(()=>{
+    const el=(Date.now()-ttsStart)/1000;
+    document.getElementById('progFill').style.width=Math.min(100,(el/total)*100)+'%';
+    document.getElementById('tEl').textContent=fmt(el);
+  },200);
+}
+function clearProg(){clearInterval(progTimer);}
+function fmt(s){const m=Math.floor(s/60),sc=Math.floor(s%60);return`${m}:${String(sc).padStart(2,'0')}`;}
+
+function clearHighlight(){
+  document.querySelectorAll('.track.playing,.track.speaking').forEach(e=>{e.classList.remove('playing','speaking');});
+  document.querySelectorAll('.pl-tl-row.active,.pl-tl-row.speaking').forEach(e=>e.classList.remove('active','speaking'));
+  currentVerses.forEach(v=>{const tn=document.getElementById(`tn${v.verse}`);if(tn)tn.innerHTML=v.verse;});
+}
+
+// ── Chapter playback ──
+function playChapter(){
+  if(!currentVerses.length){showToast('Chapter not loaded yet');return;}
+  const verses=currentVerses.map(v=>({ref:`${currentBook.n} ${currentChapter}:${v.verse}`,text:`Verse ${v.verse}. ${v.text.trim()}`}));
+  playingCtx={type:'chapter',verses,idx:0};
+  playCtxItem();
+  highlightChapterProg();
+  setNpBook(`${currentBook.n} · Ch. ${currentChapter}`);
+}
+
+function playVerseAtIdx(i){
+  if(!currentVerses.length) return;
+  const verses=currentVerses.map(v=>({ref:`${currentBook.n} ${currentChapter}:${v.verse}`,text:`Verse ${v.verse}. ${v.text.trim()}`}));
+  playingCtx={type:'chapter',verses,idx:i};
+  playCtxItem();
+  setNpBook(`${currentBook.n} · Ch. ${currentChapter}`);
+}
+
+function highlightChapterProg(){
+  let i=0;
+  function step(){
+    if(i>=currentVerses.length||!speechSynthesis.speaking){clearHighlight();return;}
+    clearHighlight();
+    const v=currentVerses[i];
+    const tr=document.getElementById(`tr${v.verse}`), tn=document.getElementById(`tn${v.verse}`);
+    if(tr){tr.classList.add('speaking');tr.scrollIntoView({behavior:'smooth',block:'nearest'});}
+    if(tn) tn.innerHTML='<div class="play-bars"><div class="pb"></div><div class="pb"></div><div class="pb"></div></div>';
+    const ms=(v.text.split(' ').length/(150*SPEEDS[speedIdx]))*60000;
+    i++; setTimeout(step,ms);
+  }
+  step();
+}
+
+// ── Playlist playback ──
+function playPlaylist(id){
+  const pl=getPlById(id); if(!pl||!pl.verses.length){showToast('Playlist is empty');return;}
+  stopRequested=false;
+  if(doShuffle){
+    shuffleOrder=[...Array(pl.verses.length).keys()].sort(()=>Math.random()-.5);
+    playingCtx={type:'playlist',plId:id,verses:pl.verses,idx:shuffleOrder[0]};
+  } else {
+    playingCtx={type:'playlist',plId:id,verses:pl.verses,idx:0};
+  }
+  playCtxItem();
+  setNpBook(pl.name);
+}
+
+function shufflePlayPlaylist(id){
+  const pl=getPlById(id); if(!pl||!pl.verses.length){showToast('Playlist is empty');return;}
+  doShuffle=true;
+  updateModeButtons();
+  shuffleOrder=[...Array(pl.verses.length).keys()].sort(()=>Math.random()-.5);
+  playingCtx={type:'playlist',plId:id,verses:pl.verses,idx:shuffleOrder[0]};
+  stopRequested=false;
+  playCtxItem();
+  setNpBook(pl.name);
+}
+
+function jumpPlaylist(id,idx){
+  const pl=getPlById(id); if(!pl) return;
+  stopRequested=false;
+  playingCtx={type:'playlist',plId:id,verses:pl.verses,idx};
+  playCtxItem();
+  setNpBook(pl.name);
+}
+
+function playCtxItem(){
+  if(!playingCtx||!playingCtx.verses.length) return;
+  const item=playingCtx.verses[playingCtx.idx];
+  if(!item) return;
+  // always advance when done — stopAll() blocks this via stopRequested flag
+  speak(item.text||item.ref, item.ref, advance);
+  document.getElementById('npRef').textContent=item.ref;
+  // highlight active row in playlist view
+  if(playingCtx.plId) renderPlTracklist(playingCtx.plId);
+  const row=document.getElementById(`plr${playingCtx.plId}_${playingCtx.idx}`);
+  if(row) row.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function advance(){
+  if(!playingCtx) return;
+  const len=playingCtx.verses.length;
+
+  if(doShuffle){
+    // Rebuild shuffle order if it doesn't match current playlist size
+    if(shuffleOrder.length!==len){
+      shuffleOrder=[...Array(len).keys()].sort(()=>Math.random()-.5);
+    }
+    const ci=shuffleOrder.indexOf(playingCtx.idx);
+    const ni=ci+1;
+    if(ni>=shuffleOrder.length){
+      if(doRepeat){ playingCtx.idx=shuffleOrder[0]; }
+      else { stopAll(); return; }
+    } else {
+      playingCtx.idx=shuffleOrder[ni];
+    }
+  } else {
+    playingCtx.idx++;
+    if(playingCtx.idx>=len){
+      if(doRepeat){ playingCtx.idx=0; }
+      else { stopAll(); return; }
+    }
+  }
+  playCtxItem();
+  if(playingCtx.plId) setNpBook(getPlById(playingCtx.plId)?.name||'');
+}
+
+function prevTrack(){
+  if(!playingCtx) return;
+  stopRequested=false;
+  speechSynthesis.cancel();
+  if(doShuffle&&shuffleOrder.length){
+    const ci=shuffleOrder.indexOf(playingCtx.idx);
+    playingCtx.idx=shuffleOrder[Math.max(0,ci-1)];
+  } else {
+    playingCtx.idx=Math.max(0,playingCtx.idx-1);
+  }
+  playCtxItem();
+}
+function nextTrack(){
+  if(!playingCtx){if(playlists.length) playPlaylist(playlists[0].id); return;}
+  stopRequested=false;
+  speechSynthesis.cancel();
+  const len=playingCtx.verses.length;
+  if(doShuffle&&shuffleOrder.length){
+    const ci=shuffleOrder.indexOf(playingCtx.idx);
+    playingCtx.idx=shuffleOrder[(ci+1)%shuffleOrder.length];
+  } else {
+    playingCtx.idx=(playingCtx.idx+1)%len;
+  }
+  playCtxItem();
+}
+
+function mainPlayPause(){
+  if(speechSynthesis.speaking&&!speechSynthesis.paused){
+    speechSynthesis.pause(); isPaused=true;
+    document.getElementById('mainPlay').textContent='▶';
+    document.getElementById('vis').classList.remove('on');
+    clearProg();
+  } else if(speechSynthesis.paused){
+    speechSynthesis.resume(); isPaused=false;
+    document.getElementById('mainPlay').textContent='⏸';
+    document.getElementById('vis').classList.add('on');
+    startProg(ttsDuration-(Date.now()-ttsStart)/1000);
+  } else {
+    if(playingCtx) playCtxItem();
+    else if(playlists.length) playPlaylist(playlists[0].id);
+    else showToast('Open a book or playlist to start');
+  }
+}
+
+function toggleRepeat(){
+  doRepeat=!doRepeat; updateModeButtons();
+  showToast(doRepeat?'🔁 Repeat ON':'🔁 Repeat OFF');
+}
+function toggleShuffle(){
+  doShuffle=!doShuffle;
+  if(doShuffle){
+    const len=playingCtx?.verses?.length||0;
+    if(len>0) shuffleOrder=[...Array(len).keys()].sort(()=>Math.random()-.5);
+  }
+  updateModeButtons();
+  showToast(doShuffle?'⇄ Shuffle ON':'⇄ Shuffle OFF');
+}
+function updateModeButtons(){
+  ['btnRepeat','btnRepeat2'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.toggle('mode-on',doRepeat);});
+  ['btnShuffle','btnShuffle2'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.toggle('mode-on',doShuffle);});
+}
+
+function cycleSpeed(){
+  speedIdx=(speedIdx+1)%SPEEDS.length;
+  document.getElementById('spdPill').textContent=SPEEDS[speedIdx]+'×';
+  showToast('Speed: '+SPEEDS[speedIdx]+'×');
+}
+
+function toggleMute(){
+  isMuted=!isMuted;
+  const s=document.getElementById('volSl');
+  if(isMuted){volPrev=s.value;s.value=0;}else s.value=volPrev;
+  document.querySelector('.vol-ico').textContent=isMuted?'🔇':'🔊';
+}
+
+function seekClick(e){
+  if(!ttsDuration) return;
+  const bar=document.getElementById('progBar');
+  const pct=e.offsetX/bar.offsetWidth;
+  document.getElementById('progFill').style.width=(pct*100)+'%';
+  document.getElementById('tEl').textContent=fmt(pct*ttsDuration);
+}
+
+function setNpBook(s){document.getElementById('npBook').textContent=s;}
+
+function setNpArt(em,c1,c2){
+  const a=document.getElementById('npArt');
+  a.style.background=`linear-gradient(135deg,${c1},${c2})`;
+  a.textContent=em;
+}
+
+function bookmarkNow(){
+  if(!currentBook) { showToast('Open a book first'); return; }
+  const ref=`${currentBook.n} ${currentChapter}`;
+  if(bookmarks.find(b=>b.ref===ref)){ showToast('Already bookmarked'); return; }
+  bookmarks.unshift({ref, book:currentBook.n, chapter:currentChapter, saved:Date.now()});
+  saveBookmarks();
+  renderBookmarks();
+  showToast(`🔖 Bookmarked ${ref}`);
+}
+
+function bookmarkDaily(){
+  if(!dvData) return;
+  // Parse ref like "John 3:16"
+  const parts=dvData.ref.split(' ');
+  const chapVerse=parts[parts.length-1].split(':')[0];
+  const bookName=parts.slice(0,-1).join(' ');
+  const ref=`${bookName} ${chapVerse}`;
+  if(bookmarks.find(b=>b.ref===ref)){ showToast('Already bookmarked'); return; }
+  bookmarks.unshift({ref, book:bookName, chapter:parseInt(chapVerse), saved:Date.now()});
+  saveBookmarks();
+  renderBookmarks();
+  showToast(`🔖 Bookmarked ${dvData.ref}`);
+}
+
+function saveBookmarks(){ localStorage.setItem('logos_bm', JSON.stringify(bookmarks)); }
+
+function removeBookmark(ref){
+  bookmarks=bookmarks.filter(b=>b.ref!==ref);
+  saveBookmarks(); renderBookmarks();
+  showToast('Bookmark removed');
+}
+
+function toggleBmSection(){
+  bmSectionOpen=!bmSectionOpen;
+  document.getElementById('bmSbList').style.display=bmSectionOpen?'block':'none';
+  document.getElementById('bmToggle').textContent=bmSectionOpen?'▾':'▸';
+}
+
+function renderBookmarks(){
+  const el=document.getElementById('bmSbList');
+  if(!el) return;
+  if(!bookmarks.length){
+    el.innerHTML=`<div style="padding:4px 8px;font-size:.76rem;color:var(--lo);font-style:italic">No bookmarks yet</div>`;
+    return;
+  }
+  el.innerHTML=bookmarks.slice(0,8).map(b=>`
+    <div class="bm-sb-item" onclick="goToBookmark('${b.book.replace(/'/g,"\\'")}',${b.chapter})">
+      <span style="font-size:.8rem">🔖</span>
+      <span class="bm-sb-ref">${b.ref}</span>
+      <button class="bm-sb-del" onclick="event.stopPropagation();removeBookmark('${b.ref.replace(/'/g,"\\'")}')">✕</button>
+    </div>`).join('');
+  if(bookmarks.length>8) el.innerHTML+=`<div style="padding:4px 8px;font-size:.72rem;color:var(--lo);text-align:center">+${bookmarks.length-8} more</div>`;
+}
+
+function goToBookmark(bookName, chapter){
+  const idx=BOOKS.findIndex(b=>b.n===bookName);
+  if(idx<0) return;
+  currentBook=BOOKS[idx]; currentChapter=chapter;
+  goView('chapter',null,false);
+  buildChapterHero(idx);
+  buildChapterPills(idx);
+  // set the active pill
+  setTimeout(()=>{
+    const pill=document.getElementById(`pill${chapter}`);
+    if(pill){ pill.classList.add('active'); pill.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
+    loadChapter();
+  },50);
+}
+
+// ════════════════════════════════════════════════
+// DAILY VERSE
+// ════════════════════════════════════════════════
+const DAILY_VERSES=[
+  'John 3:16','Psalm 23:1','Romans 8:28','Philippians 4:13','Proverbs 3:5',
+  'Isaiah 40:31','Jeremiah 29:11','Matthew 5:9','Romans 12:2','Psalm 46:1',
+  'Galatians 5:22','Ephesians 2:8','Hebrews 11:1','1 Corinthians 13:4',
+  'Joshua 1:9','2 Timothy 3:16','Psalm 119:105','Romans 5:8','Matthew 6:33',
+  'Philippians 4:6','John 14:6','Psalm 27:1','1 John 4:19','Colossians 3:23',
+  'Romans 8:1','John 16:33','Psalm 37:4','Isaiah 41:10','Matthew 11:28',
+  'Proverbs 31:25','Acts 1:8','James 1:5','Psalm 91:1','Romans 6:23',
+  'Micah 6:8','Psalm 139:14','John 15:13','2 Corinthians 5:17','Luke 6:31',
+  'Proverbs 22:6','Deuteronomy 31:6','Matthew 28:19','Psalm 1:1','John 10:10',
+  'Ephesians 3:20','1 Peter 5:7','Psalm 16:8','Hebrews 4:16','Romans 15:13'
+];
+
+function loadDailyVerse(){
+  // Pick verse deterministically by day-of-year so it changes daily
+  const now=new Date();
+  const dayOfYear=Math.floor((now-(new Date(now.getFullYear(),0,0)))/(86400000));
+  const ref=DAILY_VERSES[dayOfYear % DAILY_VERSES.length];
+  fetch(`https://bible-api.com/${encodeURIComponent(ref)}`)
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.verses&&d.verses.length){
+        const v=d.verses[0];
+        dvData={ref:`${v.book_name} ${v.chapter}:${v.verse}`, text:v.text.trim()};
+        document.getElementById('dvText').style.fontStyle='normal';
+        document.getElementById('dvText').style.color='';
+        document.getElementById('dvText').textContent=dvData.text;
+        document.getElementById('dvRef').textContent=`— ${dvData.ref}`;
+        document.getElementById('dvActions').style.display='flex';
+      }
+    })
+    .catch(()=>{
+      document.getElementById('dvText').textContent='Could not load today\'s verse. Check your connection.';
+    });
+}
+
+function playDailyVerse(){
+  if(!dvData) return;
+  playingCtx={type:'single', verses:[{ref:dvData.ref,text:dvData.text}], idx:0};
+  stopRequested=false;
+  speak(dvData.text, dvData.ref, null);
+  document.getElementById('npBook').textContent='Daily Verse';
+}
+
+function addDailyToPlaylist(){
+  if(!dvData) return;
+  pendingAddVerse={ref:dvData.ref, text:dvData.text};
+  if(!playlists.length){ openNewPlaylistModal(); return; }
+  openPickPl_direct(dvData.ref, dvData.text);
+}
+
+function openPickPl_direct(ref, text){
+  pendingAddVerse={ref, text};
+  const el=document.getElementById('pickPlList');
+  el.innerHTML=playlists.map(pl=>`
+    <div class="apm-item" onclick="addPendingToPl('${pl.id}')">
+      <div class="apm-dot" style="background:${pl.color}"></div>
+      <span>${pl.name}</span>
+      <span style="margin-left:auto;font-size:.7rem;color:var(--lo)">${pl.verses.length}</span>
+    </div>`).join('');
+  openModal('pickPlModal');
+}
+
+// ════════════════════════════════════════════════
+// READING PLANS
+// ════════════════════════════════════════════════
+const READING_PLANS=[
+  {
+    id:'psalms30', icon:'🎵', name:'Psalms in 30 Days',
+    desc:'Read through all 150 Psalms across 30 days — a Psalm for every mood and season.',
+    tags:['30 DAYS','POETRY','WORSHIP'],
+    days: (() => {
+      // 150 Psalms split into 30 groups of 5
+      const d=[];
+      for(let i=0;i<30;i++) d.push({label:`Day ${i+1}`, refs:[`Psalms ${i*5+1}`,`Psalms ${i*5+2}`,`Psalms ${i*5+3}`,`Psalms ${i*5+4}`,`Psalms ${i*5+5}`].join(' · ')});
+      return d;
+    })()
+  },
+  {
+    id:'proverbs31', icon:'💡', name:'Proverbs in 31 Days',
+    desc:'One chapter of Proverbs per day. Perfect for a month of practical wisdom.',
+    tags:['31 DAYS','WISDOM','DAILY'],
+    days: Array.from({length:31},(_, i)=>({label:`Day ${i+1}`, refs:`Proverbs ${i+1}`}))
+  },
+  {
+    id:'gospels', icon:'⭐', name:'The Four Gospels',
+    desc:'Matthew, Mark, Luke and John — the life and teachings of Jesus in 89 days.',
+    tags:['89 DAYS','NEW TESTAMENT','GOSPELS'],
+    days: (() => {
+      const plan=[];
+      const books=[{n:'Matthew',c:28},{n:'Mark',c:16},{n:'Luke',c:24},{n:'John',c:21}];
+      let day=1;
+      books.forEach(b=>{ for(let c=1;c<=b.c;c++) plan.push({label:`Day ${day++}`, refs:`${b.n} ${c}`}); });
+      return plan;
+    })()
+  },
+  {
+    id:'ntplan', icon:'✝️', name:'New Testament in 90 Days',
+    desc:'Read through the entire New Testament, roughly 3 chapters per day.',
+    tags:['90 DAYS','NEW TESTAMENT','FULL'],
+    days: (() => {
+      const ntBooks=[{n:'Matthew',c:28},{n:'Mark',c:16},{n:'Luke',c:24},{n:'John',c:21},{n:'Acts',c:28},{n:'Romans',c:16},{n:'1 Corinthians',c:16},{n:'2 Corinthians',c:13},{n:'Galatians',c:6},{n:'Ephesians',c:6},{n:'Philippians',c:4},{n:'Colossians',c:4},{n:'1 Thessalonians',c:5},{n:'2 Thessalonians',c:3},{n:'1 Timothy',c:6},{n:'2 Timothy',c:4},{n:'Titus',c:3},{n:'Philemon',c:1},{n:'Hebrews',c:13},{n:'James',c:5},{n:'1 Peter',c:5},{n:'2 Peter',c:3},{n:'1 John',c:5},{n:'2 John',c:1},{n:'3 John',c:1},{n:'Jude',c:1},{n:'Revelation',c:22}];
+      const allCh=[]; ntBooks.forEach(b=>{ for(let c=1;c<=b.c;c++) allCh.push(`${b.n} ${c}`); });
+      const days=[]; const perDay=Math.ceil(allCh.length/90);
+      for(let i=0;i<90;i++){ const chunk=allCh.slice(i*perDay,(i+1)*perDay); if(chunk.length) days.push({label:`Day ${i+1}`,refs:chunk.join(' · ')}); }
+      return days;
+    })()
+  },
+  {
+    id:'comfort', icon:'🕊️', name:'Comfort & Hope',
+    desc:'20 hand-picked passages on God\'s comfort, peace, and unshakeable hope.',
+    tags:['20 DAYS','DEVOTIONAL','COMFORT'],
+    days:[
+      {label:'Day 1',refs:'Psalm 23'},{label:'Day 2',refs:'Isaiah 40'},{label:'Day 3',refs:'John 14'},
+      {label:'Day 4',refs:'Romans 8'},{label:'Day 5',refs:'Philippians 4'},{label:'Day 6',refs:'Psalm 91'},
+      {label:'Day 7',refs:'Isaiah 43'},{label:'Day 8',refs:'Matthew 5'},{label:'Day 9',refs:'Lamentations 3'},
+      {label:'Day 10',refs:'Psalm 46'},{label:'Day 11',refs:'1 Peter 1'},{label:'Day 12',refs:'Hebrews 12'},
+      {label:'Day 13',refs:'Psalm 27'},{label:'Day 14',refs:'2 Corinthians 4'},{label:'Day 15',refs:'Revelation 21'},
+      {label:'Day 16',refs:'Psalm 34'},{label:'Day 17',refs:'Romans 5'},{label:'Day 18',refs:'John 16'},
+      {label:'Day 19',refs:'Psalm 103'},{label:'Day 20',refs:'Jeremiah 29'}
+    ]
+  },
+  {
+    id:'faith', icon:'🔥', name:'Faith & Courage',
+    desc:'14 chapters that will stir your faith and embolden your spirit.',
+    tags:['14 DAYS','FAITH','COURAGE'],
+    days:[
+      {label:'Day 1',refs:'Hebrews 11'},{label:'Day 2',refs:'Joshua 1'},{label:'Day 3',refs:'Daniel 3'},
+      {label:'Day 4',refs:'1 Samuel 17'},{label:'Day 5',refs:'Acts 4'},{label:'Day 6',refs:'James 2'},
+      {label:'Day 7',refs:'Romans 4'},{label:'Day 8',refs:'Psalm 118'},{label:'Day 9',refs:'Luke 8'},
+      {label:'Day 10',refs:'Ezekiel 37'},{label:'Day 11',refs:'Acts 27'},{label:'Day 12',refs:'1 Kings 18'},
+      {label:'Day 13',refs:'John 11'},{label:'Day 14',refs:'Revelation 2'}
+    ]
+  }
+];
+
+let activePlanView=null; // id of plan being viewed in detail
+
+function savePlanProg(){ localStorage.setItem('logos_plan_prog',JSON.stringify(planProgress)); }
+
+function buildReadingPlans(){
+  renderPlansList();
+}
+
+function renderPlansList(){
+  const enrolled=READING_PLANS.filter(p=>planProgress[p.id]?.enrolled);
+  const available=READING_PLANS.filter(p=>!planProgress[p.id]?.enrolled);
+  let h='';
+  if(enrolled.length){
+    h+=`<div class="sec-title" style="margin-bottom:4px">My Plans</div>
+    <div class="sec-sub">Tap a plan to see today's reading</div>
+    <div class="plan-grid" style="margin-bottom:28px">`;
+    enrolled.forEach(p=>{ h+=planCardHtml(p,true); });
+    h+=`</div>`;
+  }
+  h+=`<div class="sec-title" style="margin-bottom:4px">Available Plans</div>
+  <div class="sec-sub">Enrol in a reading plan to track your daily progress</div>
+  <div class="plan-grid">`;
+  available.forEach(p=>{ h+=planCardHtml(p,false); });
+  h+=`</div>`;
+  document.getElementById('plansContent').innerHTML=h;
+}
+
+function planCardHtml(p, enrolled){
+  const prog=planProgress[p.id]||{completedDays:[]};
+  const done=prog.completedDays?.length||0;
+  const total=p.days.length;
+  const pct=enrolled?Math.round((done/total)*100):0;
+  const today=getEnrolledDay(p.id);
+  return `<div class="plan-card ${enrolled?'enrolled':''}" onclick="openPlanDetail('${p.id}')">
+    ${enrolled?`<span class="plan-badge active">IN PROGRESS</span>`:''}
+    <div class="plan-icon">${p.icon}</div>
+    <div class="plan-name">${p.name}</div>
+    <div class="plan-desc">${p.desc}</div>
+    <div class="plan-meta">${p.tags.map(t=>`<span class="plan-tag">${t}</span>`).join('')}</div>
+    ${enrolled?`
+    <div class="plan-prog-wrap">
+      <div class="plan-prog-lbl"><span>Day ${today} of ${total}</span><span>${pct}%</span></div>
+      <div class="plan-prog-bar"><div class="plan-prog-fill" style="width:${pct}%"></div></div>
+    </div>`:''}
+    <button class="plan-enroll-btn ${enrolled?'unenroll':'enroll'}"
+      onclick="event.stopPropagation();${enrolled?`unenrollPlan('${p.id}')`:`enrollPlan('${p.id}')`}">
+      ${enrolled?'Unenrol':'Enrol in Plan'}
+    </button>
+  </div>`;
+}
+
+function enrollPlan(id){
+  if(!planProgress[id]) planProgress[id]={enrolled:false,startDate:null,completedDays:[]};
+  planProgress[id].enrolled=true;
+  planProgress[id].startDate=new Date().toDateString();
+  savePlanProg(); renderPlansList();
+  showToast(`📅 Enrolled! Check your daily reading.`);
+}
+function unenrollPlan(id){
+  if(!confirm('Unenrol from this plan? Your progress will be lost.')) return;
+  delete planProgress[id];
+  savePlanProg(); renderPlansList();
+  if(activePlanView===id){activePlanView=null;renderPlansList();}
+  showToast('Unenrolled from plan');
+}
+
+function getEnrolledDay(id){
+  const prog=planProgress[id];
+  if(!prog||!prog.startDate) return 1;
+  const start=new Date(prog.startDate);
+  const today=new Date();
+  const diff=Math.floor((today-start)/(86400000));
+  return Math.min(diff+1, READING_PLANS.find(p=>p.id===id)?.days.length||1);
+}
+
+function openPlanDetail(id){
+  activePlanView=id;
+  const plan=READING_PLANS.find(p=>p.id===id);
+  if(!plan) return;
+  const prog=planProgress[id]||{completedDays:[]};
+  const todayDay=getEnrolledDay(id);
+  const todayEntry=plan.days[todayDay-1];
+  const enrolled=prog.enrolled;
+
+  let h=`<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+    <button class="hbtn sec" style="padding:6px 14px;font-size:.78rem" onclick="renderPlansList();activePlanView=null">← Back</button>
+    <span style="font-size:.8rem;color:var(--lo)">Reading Plans</span>
+  </div>
+  <div class="plan-detail-header">
+    <div class="plan-detail-icon">${plan.icon}</div>
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:4px">READING PLAN</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1.1;margin-bottom:6px">${plan.name}</div>
+      <div style="font-size:.82rem;color:var(--mid)">${plan.desc}</div>
+    </div>
+  </div>`;
+
+  if(enrolled && todayEntry){
+    const done=prog.completedDays.includes(todayDay-1);
+    h+=`<div class="plan-today-card" onclick="readPlanDay('${id}',${todayDay-1})">
+      <div>
+        <div class="plan-today-label">TODAY · DAY ${todayDay}</div>
+        <div class="plan-today-ref">${todayEntry.refs}</div>
+        ${done?`<div style="font-size:.72rem;color:var(--green);margin-top:3px">✔ Completed</div>`:''}
+      </div>
+      <div class="plan-today-play">▶</div>
+    </div>`;
+  } else if(!enrolled){
+    h+=`<div style="text-align:center;padding:20px;margin-bottom:20px">
+      <button class="plan-enroll-btn enroll" style="max-width:280px;margin:0 auto" onclick="enrollPlan('${id}');openPlanDetail('${id}')">Enrol in this Plan</button>
+    </div>`;
+  }
+
+  h+=`<div style="font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--lo);margin-bottom:10px">ALL ${plan.days.length} DAYS</div>
+  <div class="plan-day-list">`;
+  plan.days.forEach((day,i)=>{
+    const isDone=prog.completedDays?.includes(i);
+    const isToday=enrolled&&i===todayDay-1;
+    h+=`<div class="plan-day-row ${isToday?'today':''} ${isDone?'done':''}" onclick="readPlanDay('${id}',${i})">
+      <div class="plan-day-num">${day.label}</div>
+      <div class="plan-day-ref">${day.refs}</div>
+      ${isDone?'<span class="plan-day-check">✔</span>':''}
+    </div>`;
+  });
+  h+=`</div>`;
+  document.getElementById('plansContent').innerHTML=h;
+}
+
+function readPlanDay(planId, dayIdx){
+  const plan=READING_PLANS.find(p=>p.id===planId);
+  if(!plan) return;
+  const day=plan.days[dayIdx];
+  if(!day) return;
+  // Mark as done
+  if(!planProgress[planId]) planProgress[planId]={enrolled:true,startDate:new Date().toDateString(),completedDays:[]};
+  if(!planProgress[planId].completedDays.includes(dayIdx)){
+    planProgress[planId].completedDays.push(dayIdx);
+    savePlanProg();
+    showToast(`✔ Day ${dayIdx+1} marked complete`);
+  }
+  // Play first ref
+  const firstRef=day.refs.split(' · ')[0];
+  fetch(`https://bible-api.com/${encodeURIComponent(firstRef)}`)
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.verses){
+        const verses=d.verses.map(v=>({ref:`${v.book_name} ${v.chapter}:${v.verse}`, text:`Verse ${v.verse}. ${v.text.trim()}`}));
+        playingCtx={type:'plan', verses, idx:0};
+        stopRequested=false;
+        playCtxItem();
+        document.getElementById('npBook').textContent=`${plan.name} · ${day.label}`;
+        showToast(`▶ Reading ${firstRef}`);
+      }
+    })
+    .catch(()=>showToast('Network error'));
+  // re-render detail to update checkmarks
+  setTimeout(()=>openPlanDetail(planId), 300);
+}
+
+
+function doSearch(){
+  const q=document.getElementById('searchField').value.trim();
+  if(!q) return;
+  document.getElementById('searchMain').value=q;
+  goView('search',document.getElementById('nav-search'));
+  doSearchMain();
+}
+function doSearchMain(){
+  const q=document.getElementById('searchMain').value.trim();
+  if(!q) return;
+  const el=document.getElementById('searchArea');
+  el.innerHTML=`<div class="loading"><div class="ld"></div><div class="ld"></div><div class="ld"></div></div>`;
+  fetch(`https://bible-api.com/?q=${encodeURIComponent(q)}&translation=kjv`)
+    .then(r=>r.json())
+    .then(d=>{
+      if(!d.verses||!d.verses.length){el.innerHTML=`<div style="color:var(--lo);padding:40px;text-align:center">No results for "${q}"</div>`;return;}
+      const hits=d.verses.slice(0,30);
+      el.innerHTML=`<div style="font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:1.5px;color:var(--lo);margin-bottom:12px">${hits.length} RESULTS</div>`+
+        hits.map(v=>`
+          <div class="sh-item">
+            <div class="sh-ref">${v.book_name} ${v.chapter}:${v.verse}</div>
+            <div class="sh-text">${v.text.trim()}</div>
+            <div class="sh-add add-pl-wrap" id="shaw${v.book_name}${v.chapter}${v.verse}" style="flex-shrink:0">
+              <button class="ta-btn" onclick="event.stopPropagation();openPickPl('${esc(v.book_name)}','${v.chapter}','${v.verse}','${esc(v.text.trim()).replace(/'/g,'\\\'')}')">＋ Add ▾</button>
+            </div>
+          </div>`).join('');
+    })
+    .catch(()=>{el.innerHTML=`<div style="color:var(--lo);padding:40px;text-align:center">Search failed</div>`;});
+}
+
+// pick-playlist modal (from search)
+function openPickPl(book,chap,verse,text){
+  closeOpenMenus();
+  pendingAddVerse={ref:`${book} ${chap}:${verse}`,text};
+  const el=document.getElementById('pickPlList');
+  if(!playlists.length){
+    el.innerHTML=`<div style="color:var(--lo);font-size:.85rem;text-align:center;padding:20px">No playlists yet</div>`;
+  } else {
+    el.innerHTML=playlists.map(pl=>`
+      <div class="apm-item" onclick="addPendingToPl('${pl.id}')">
+        <div class="apm-dot" style="background:${pl.color}"></div>
+        <span>${pl.name}</span>
+        <span style="margin-left:auto;font-size:.7rem;color:var(--lo)">${pl.verses.length}</span>
+      </div>`).join('');
+  }
+  openModal('pickPlModal');
+}
+function addPendingToPl(plId){
+  if(!pendingAddVerse) return;
+  addVerseRef(plId,pendingAddVerse.ref,pendingAddVerse.text);
+  pendingAddVerse=null;
+  closeModal('pickPlModal');
+}
+function pickPlCreateNew(){
+  closeModal('pickPlModal');
+  openNewPlaylistModal();
+}
+
+// ════════════════════════════════════════════════
+// SCHEDULES
+// ════════════════════════════════════════════════
+function addSchedule(){
+  const time=document.getElementById('schTime').value;
+  const passage=document.getElementById('schPassage').value.trim();
+  const label=document.getElementById('schLabel').value.trim();
+  const repeat=document.getElementById('schRepeat').value;
+  if(!time||!passage){showToast('Time and passage are required');return;}
+  let days=[];
+  if(repeat==='custom'){
+    document.querySelectorAll('#schDays .day-pill.on').forEach(p=>days.push(parseInt(p.dataset.d)));
+    if(!days.length){showToast('Select at least one day');return;}
+  }
+  schedules.push({id:Date.now(),time,passage,label,repeat,days,enabled:true});
+  localStorage.setItem('logos_scheds',JSON.stringify(schedules));
+  renderSchedules();
+  showToast(`⏰ Scheduled for ${time}`);
+  document.getElementById('schTime').value='';
+  document.getElementById('schPassage').value='';
+  document.getElementById('schLabel').value='';
+  document.querySelectorAll('#schDays .day-pill').forEach(p=>p.classList.remove('on'));
+}
+function toggleSched(id){
+  const s=schedules.find(s=>s.id===id); if(s)s.enabled=!s.enabled;
+  localStorage.setItem('logos_scheds',JSON.stringify(schedules)); renderSchedules();
+}
+function deleteSched(id){
+  schedules=schedules.filter(s=>s.id!==id);
+  localStorage.setItem('logos_scheds',JSON.stringify(schedules)); renderSchedules();
+}
+function getDayLbl(s){
+  if(s.repeat==='once')return'Once';if(s.repeat==='daily')return'Every day';
+  if(s.repeat==='weekdays')return'Mon–Fri';if(s.repeat==='weekends')return'Sat–Sun';
+  if(s.repeat==='custom'){const d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];return s.days.map(i=>d[i]).join(' · ');}
+  return '';
+}
+function renderSchedules(){
+  const el=document.getElementById('schedList');
+  if(!schedules.length){el.innerHTML=`<div style="color:var(--lo);text-align:center;padding:40px;font-style:italic;font-size:.85rem">No schedules yet</div>`;return;}
+  el.innerHTML=schedules.map(s=>`
+    <div class="sched-row ${s.enabled?'enabled':''}">
+      <label class="tog"><input type="checkbox" ${s.enabled?'checked':''} onchange="toggleSched(${s.id})"><span class="tog-track"></span></label>
+      <div class="sched-time">${s.time}</div>
+      <div class="sched-info">
+        <div class="sched-passage">${s.passage}</div>
+        ${s.label?`<div class="sched-label">${s.label}</div>`:''}
+        <div class="sched-days">${getDayLbl(s)}</div>
+      </div>
+      <button class="sched-del" onclick="deleteSched(${s.id})">🗑</button>
+    </div>`).join('');
+}
+function startScheduleChecker(){
+  function check(){
+    const now=new Date();
+    const hhmm=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+    const day=now.getDay();
+    schedules.forEach(s=>{
+      if(!s.enabled||s.time!==hhmm) return;
+      let fire=false;
+      if(s.repeat==='once')fire=true;else if(s.repeat==='daily')fire=true;
+      else if(s.repeat==='weekdays')fire=day>=1&&day<=5;
+      else if(s.repeat==='weekends')fire=day===0||day===6;
+      else if(s.repeat==='custom')fire=s.days.includes(day);
+      if(!fire) return;
+      const key=`sch_${s.id}_${hhmm}_${now.toDateString()}`;
+      if(sessionStorage.getItem(key)) return;
+      sessionStorage.setItem(key,'1');
+      showToast(`⏰ ${s.label||s.passage}`);
+      fetch(`https://bible-api.com/${encodeURIComponent(s.passage)}`)
+        .then(r=>r.json())
+        .then(d=>{if(d.verses){speak(d.verses.map(v=>`Verse ${v.verse}. ${v.text.trim()}`).join(' '),s.passage,null);}});
+      if(s.repeat==='once'){s.enabled=false;localStorage.setItem('logos_scheds',JSON.stringify(schedules));renderSchedules();}
+    });
+    document.getElementById('schStatus').textContent=`⏰ Last checked: ${hhmm} · ${schedules.filter(s=>s.enabled).length} active`;
+  }
+  setInterval(check,30000); check();
+}
+
+// ════════════════════════════════════════════════
+// VIEW SWITCHING
+// ════════════════════════════════════════════════
+function goView(name,navEl,scrollTop=true){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(`view-${name}`).classList.add('active');
+  if(scrollTop) document.getElementById(`view-${name}`).scrollTop=0;
+  if(navEl){
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    navEl.classList.add('active');
+  }
+  // Re-render plans list when navigating to plans (to reflect latest enrolments)
+  if(name==='plans' && !activePlanView) renderPlansList();
+}
+
+// ════════════════════════════════════════════════
+// MODAL HELPERS
+// ════════════════════════════════════════════════
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');pendingAddVerse=null;}
+// close modal on backdrop click
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');});
+});
+
+// ════════════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════════════
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+let toastT;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+init();
+</script>
+</body>
+</html>
