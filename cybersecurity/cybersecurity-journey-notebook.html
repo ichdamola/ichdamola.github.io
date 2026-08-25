@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Cybersecurity Learning Journey — Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&family=Gaegu:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FDF6E9;
+    --paper-shadow: #E8DFC7;
+    --ink: #1B1B1B;
+    --ink-soft: #3D3D3D;
+    --red: #C92A2A;
+    --blue: #1864AB;
+    --green: #2B8A3E;
+    --orange: #D97706;
+    --purple: #6B21A8;
+    --teal: #087F8C;
+    --highlight-yellow: #FFE066;
+    --highlight-pink: #FFB8B8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Patrick Hand', 'Kalam', cursive;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(90deg, transparent 0%, transparent 79px, #E8CDCD 79px, #E8CDCD 80px, transparent 80px),
+      repeating-linear-gradient(180deg, transparent 0px, transparent 31px, #CFC5A8 31px, #CFC5A8 32px);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+
+  .notebook {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 60px 60px 100px;
+    background: rgba(253, 246, 233, 0.4);
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.05),
+      0 20px 40px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    position: relative;
+  }
+
+  /* Cover page */
+  .cover {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-bottom: 3px dashed var(--ink);
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .cover-tag {
+    display: inline-block;
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    color: var(--red);
+    border: 2px solid var(--red);
+    padding: 4px 14px;
+    border-radius: 20px;
+    transform: rotate(-3deg);
+    margin-bottom: 24px;
+    background: var(--paper);
+  }
+
+  h1.cover-title {
+    font-family: 'Caveat', cursive;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  h1.cover-title .accent-blue {
+    color: var(--blue);
+    display: inline-block;
+    transform: rotate(-2deg);
+  }
+
+  h1.cover-title .accent-red {
+    color: var(--red);
+    display: inline-block;
+    transform: rotate(1.5deg);
+  }
+
+  .cover-subtitle {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 22px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+
+  .cover-meta {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
+    color: var(--ink-soft);
+  }
+
+  .cover-meta .meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cover-meta .meta-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .cover-meta .meta-label {
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* Sections */
+  .section {
+    margin: 60px 0;
+    position: relative;
+  }
+
+  .section-number {
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    color: var(--paper);
+    background: var(--ink);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 44px;
+    font-weight: 700;
+    transform: rotate(-4deg);
+    margin-right: 12px;
+  }
+
+  h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  h2 .highlight-strip {
+    background: linear-gradient(180deg, transparent 55%, var(--highlight-yellow) 55%, var(--highlight-yellow) 90%, transparent 90%);
+    padding: 0 6px;
+  }
+
+  h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--blue);
+    margin: 32px 0 12px;
+  }
+
+  h4 {
+    font-family: 'Kalam', cursive;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 20px 0 8px;
+  }
+
+  p {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+
+  .lede {
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    max-width: 620px;
+  }
+
+  strong { color: var(--red); font-weight: 700; }
+  em { color: var(--blue); font-style: normal; text-decoration: underline wavy var(--blue); text-underline-offset: 3px; }
+
+  /* Doodle blocks */
+  .doodle-frame {
+    margin: 30px auto;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+  }
+
+  .doodle-frame svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .doodle-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin-top: 10px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Sticky note */
+  .sticky {
+    background: #FFF8B8;
+    padding: 18px 22px;
+    margin: 24px 0;
+    box-shadow: 2px 3px 6px rgba(0,0,0,0.15);
+    transform: rotate(-1deg);
+    font-family: 'Kalam', cursive;
+    font-size: 17px;
+    color: var(--ink);
+    max-width: 500px;
+    position: relative;
+  }
+
+  .sticky::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 40px;
+    width: 60px;
+    height: 20px;
+    background: rgba(255, 200, 100, 0.6);
+    border-radius: 2px;
+  }
+
+  .sticky.pink { background: #FFD5D5; transform: rotate(1.2deg); }
+  .sticky.blue { background: #C7E0FF; transform: rotate(-1.5deg); }
+  .sticky.green { background: #C7F0D5; transform: rotate(0.8deg); }
+
+  .sticky-title {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* Checklist */
+  .checklist {
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px dashed var(--ink-soft);
+    padding: 24px 28px;
+    margin: 20px 0;
+    border-radius: 6px;
+  }
+
+  .checklist ul { list-style: none; }
+  .checklist li {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px;
+    padding: 6px 0 6px 34px;
+    position: relative;
+    color: var(--ink);
+  }
+
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid var(--ink);
+    border-radius: 3px;
+    background: var(--paper);
+  }
+
+  .checklist li.done::before {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .checklist li.done::after {
+    content: '✓';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Kalam', cursive;
+  }
+
+  .checklist li.done {
+    color: var(--ink-soft);
+  }
+
+  /* Week grid */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+  }
+
+  .week-card {
+    background: var(--paper);
+    border: 2.5px solid var(--ink);
+    padding: 16px 18px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 var(--ink);
+    position: relative;
+    transition: transform 0.15s;
+  }
+
+  .week-card:nth-child(odd) { transform: rotate(-0.6deg); }
+  .week-card:nth-child(even) { transform: rotate(0.5deg); }
+  .week-card:hover { transform: rotate(0) translateY(-2px); }
+
+  .week-card .week-num {
+    font-family: 'Caveat', cursive;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--red);
+  }
+
+  .week-card .week-topic {
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 4px 0 8px;
+  }
+
+  .week-card .week-desc {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* Comparison table */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+  }
+
+  .compare-col {
+    padding: 24px;
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    background: var(--paper);
+  }
+
+  .compare-col.crossed {
+    border-color: var(--red);
+    position: relative;
+    opacity: 0.7;
+  }
+
+  .compare-col.crossed::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-image: linear-gradient(135deg, transparent 48%, var(--red) 48%, var(--red) 52%, transparent 52%);
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .compare-col.winner {
+    border-color: var(--green);
+    background: #E8F5E9;
+  }
+
+  .compare-col h4 {
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Caveat', cursive;
+    margin-bottom: 12px;
+  }
+
+  .compare-col.crossed h4 { color: var(--red); }
+  .compare-col.winner h4 { color: var(--green); }
+
+  .compare-col ul { list-style: none; padding: 0; }
+  .compare-col li {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 17px;
+    padding: 4px 0 4px 24px;
+    position: relative;
+  }
+  .compare-col.crossed li::before {
+    content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: bold;
+  }
+  .compare-col.winner li::before {
+    content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: bold;
+  }
+
+  /* Arrow annotations */
+  .annotation {
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--red);
+    transform: rotate(-3deg);
+    margin: 0 8px;
+  }
+
+  /* Divider doodles */
+  .divider {
+    display: block;
+    margin: 40px auto;
+    width: 200px;
+    height: 20px;
+  }
+
+  /* Concept cards */
+  .concept-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 30px 0;
+    align-items: center;
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 10px 4px; }
+    .notebook { padding: 30px 24px 30px 40px; }
+    h1.cover-title { font-size: 48px; }
+    .concept-row { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+    .cover-meta { flex-wrap: wrap; gap: 20px; }
+  }
+
+  /* Callouts */
+  .callout-arrow {
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--red);
+  }
+
+  /* Signature */
+  .signature-line {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 2px dashed var(--ink-soft);
+    text-align: right;
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    color: var(--ink-soft);
+  }
+
+  .signature-line strong {
+    color: var(--ink);
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 30px;
+    display: block;
+    margin-top: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="notebook">
+
+<!-- ================ COVER ================ -->
+<section class="cover">
+  <span class="cover-tag">✎ personal notebook · vol. 1</span>
+  <h1 class="cover-title">
+    Our <span class="accent-blue">Cyber</span><span class="accent-red">Security</span><br>
+    Learning Journey
+  </h1>
+  <p class="cover-subtitle">everything we've figured out so far ✦ a sketchbook summary</p>
+
+  <div class="cover-meta">
+    <div class="meta-item">
+      <span class="meta-value">8</span>
+      <span class="meta-label">Saturdays</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">0</span>
+      <span class="meta-label">Setup Headaches</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">1</span>
+      <span class="meta-label">Browser Tab</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================ SECTION 1: THE PLAN ================ -->
+<section class="section">
+  <h2><span class="section-number">1</span><span class="highlight-strip">What we planned</span></h2>
+  <p class="lede">Two months. Every Saturday. Absolute beginner → intermediate. Practical, not academic. Here's the road we mapped out:</p>
+
+  <!-- DOODLE 1: The 8-week journey path -->
+  <div class="doodle-frame">
+    <svg viewBox="0 0 780 260" xmlns="http://www.w3.org/2000/svg">
+      <!-- Winding path -->
+      <path d="M 30 130 Q 90 60, 140 130 T 260 130 Q 330 200, 400 130 T 540 130 Q 610 60, 680 130 T 750 130"
+            fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"
+            stroke-dasharray="6 8" opacity="0.7"/>
+
+      <!-- Stop 1: Foundations -->
+      <circle cx="50" cy="130" r="18" fill="#FDF6E9" stroke="#C92A2A" stroke-width="3"/>
+      <text x="50" y="137" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#C92A2A">1</text>
+      <text x="50" y="90" text-anchor="middle" font-family="Kalam" font-size="13" fill="#1B1B1B">Foundations</text>
+      <text x="50" y="175" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">CIA · lab setup</text>
+
+      <!-- Stop 2: Networks -->
+      <circle cx="140" cy="130" r="18" fill="#FDF6E9" stroke="#1864AB" stroke-width="3"/>
+      <text x="140" y="137" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#1864AB">2</text>
+      <text x="140" y="90" text-anchor="middle" font-family="Kalam" font-size="13" fill="#1B1B1B">Networks</text>
+      <text x="140" y="175" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">TCP · pcaps</text>
+
+      <!-- Stop 3: OS + CLI -->
+      <circle cx="230" cy="130" r="18" fill="#FDF6E9" stroke="#2B8A3E" stroke-width="3"/>
+      <text x="230" y="137" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#2B8A3E">3</text>
+      <text x="230" y="90" text-anchor="middle" font-family="Kalam" font-size="13" fill="#1B1B1B">OS + CLI</text>
+      <text x="230" y="175" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">bash · Windows</text>
+
+      <!-- Stop 4: Crypto -->
+      <circle cx="320" cy="130" r="18" fill="#FDF6E9" stroke="#D97706" stroke-width="3"/>
+      <text x="320" y="137" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#D97706">4</text>
+      <text x="320" y="90" text-anchor="middle" font-family="Kalam" font-size="13" fill="#1B1B1B">Crypto</text>
+      <text x="320" y="175" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">hashes · TLS</text>
+
+      <!-- Stop 5: Web -->
+      <circle cx="410" cy="130" r="22" fill="#FFE066" stroke="#6B21A8" stroke-width="3"/>
+      <text x="410" y="137" text-anchor="middle" font-family="Caveat" font-size="24" font-weight="700" fill="#6B21A8">5</text>
+      <text x="410" y="82" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1B1B1B">Web Security ★</text>
+      <text x="410" y="180" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">OWASP 10</text>
+      <!-- star sparkle -->
+      <text x="460" y="70" font-family="Caveat" font-size="18" fill="#D97706" transform="rotate(15, 460, 70)">★ high leverage</text>
+
+      <!-- Stop 6: Offense -->
+      <circle cx="500" cy="130" r="18" fill="#FDF6E9" stroke="#C92A2A" stroke-width="3"/>
+      <text x="500" y="137" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#C92A2A">6</text>
+      <text x="500" y="90" text-anchor="middle" font-family="Kalam" font-size="13" fill="#1B1B1B">Offense</text>
+      <text x="500" y="175" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">nmap · exploit</text>
+
+      <!-- Stop 7: Humans + Defense -->
+      <circle cx="590" cy="130" r="18" fill="#FDF6E9" stroke="#087F8C" stroke-width="3"/>
+      <text x="590" y="137" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#087F8C">7</text>
+      <text x="590" y="90" text-anchor="middle" font-family="Kalam" font-size="13" fill="#1B1B1B">Humans + Blue</text>
+      <text x="590" y="175" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">phishing · SIEM</text>
+
+      <!-- Stop 8: Capstone -->
+      <circle cx="680" cy="130" r="20" fill="#2B8A3E" stroke="#1B1B1B" stroke-width="3"/>
+      <text x="680" y="138" text-anchor="middle" font-family="Caveat" font-size="24" font-weight="700" fill="#FDF6E9">8</text>
+      <text x="680" y="88" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#1B1B1B">Capstone!</text>
+      <text x="680" y="178" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">IR + report</text>
+
+      <!-- Finish flag -->
+      <line x1="740" y1="130" x2="740" y2="80" stroke="#1B1B1B" stroke-width="2.5"/>
+      <path d="M 740 80 L 770 88 L 740 96 Z" fill="#C92A2A" stroke="#1B1B1B" stroke-width="2"/>
+      <text x="755" y="120" font-family="Caveat" font-size="18" fill="#2B8A3E" transform="rotate(-10, 755, 120)">you!</text>
+
+      <!-- Start arrow annotation -->
+      <text x="30" y="220" font-family="Caveat" font-size="18" fill="#3D3D3D">start here →</text>
+    </svg>
+    <p class="doodle-caption">the 8-Saturday road — one stop per week, plus take-home practice between them</p>
+  </div>
+
+  <h3>The weeks at a glance</h3>
+  <div class="week-grid">
+    <div class="week-card">
+      <div class="week-num">01</div>
+      <div class="week-topic">Foundations & Mindset</div>
+      <div class="week-desc">CIA triad, threats vs. risks, ethics, and get your lab running.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">02</div>
+      <div class="week-topic">Networks, Attacker View</div>
+      <div class="week-desc">TCP/IP, Wireshark, ports, and reading packet captures.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">03</div>
+      <div class="week-topic">OS & Command Line</div>
+      <div class="week-desc">Linux fluency, Windows internals, log hunting, first hash crack.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">04</div>
+      <div class="week-topic">Cryptography (no PhD)</div>
+      <div class="week-desc">Hashes, encryption, TLS, certificates — what really breaks.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">05</div>
+      <div class="week-topic">Web App Security ★</div>
+      <div class="week-desc">OWASP Top 10 in Burp Suite: SQLi, XSS, IDOR, file upload.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">06</div>
+      <div class="week-topic">Offensive Tooling</div>
+      <div class="week-desc">Nmap, recon, enumeration, first end-to-end exploit.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">07</div>
+      <div class="week-topic">Humans + Blue Team</div>
+      <div class="week-desc">Phishing, malware families, Windows event logs, SIEM basics.</div>
+    </div>
+    <div class="week-card">
+      <div class="week-num">08</div>
+      <div class="week-topic">Capstone + Response</div>
+      <div class="week-desc">Full incident, write a proper report, plan what's next.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================ SECTION 2: KEY CONCEPTS WITH DOODLES ================ -->
+<section class="section">
+  <h2><span class="section-number">2</span><span class="highlight-strip">Big ideas, doodled</span></h2>
+  <p class="lede">Six concepts that show up over and over. Get these into your bones and the rest gets easier.</p>
+
+  <!-- ─── CIA TRIAD ─── -->
+  <h3>① The CIA Triad — every decision comes back to this</h3>
+  <div class="concept-row">
+    <div>
+      <p>Every security control you'll ever build or break protects one of three things: keeping secrets secret, keeping data honest, or keeping systems reachable.</p>
+      <p><strong>Confidentiality</strong> = only the right eyes see it.<br>
+      <strong>Integrity</strong> = no one changed it behind your back.<br>
+      <strong>Availability</strong> = it works when you need it.</p>
+      <div class="sticky pink">
+        <span class="sticky-title">Rule of thumb</span>
+        Encryption protects C. Hashing/signing protects I. Backups + redundancy protect A. If a control doesn't map to one, ask why it exists.
+      </div>
+    </div>
+    <div class="doodle-frame">
+      <svg viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- rough triangle with double stroke -->
+        <path d="M 170 30 L 40 270 L 300 270 Z"
+              fill="#FFF8B8" stroke="#1B1B1B" stroke-width="3.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 170 32 L 42 268 L 298 272 Z"
+              fill="none" stroke="#1B1B1B" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+
+        <!-- C -->
+        <circle cx="170" cy="30" r="28" fill="#FDF6E9" stroke="#C92A2A" stroke-width="3"/>
+        <text x="170" y="40" text-anchor="middle" font-family="Caveat" font-size="34" font-weight="700" fill="#C92A2A">C</text>
+        <text x="170" y="0" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#C92A2A">Confidentiality</text>
+        <text x="170" y="15" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">"keep secrets"</text>
+
+        <!-- I -->
+        <circle cx="40" cy="270" r="28" fill="#FDF6E9" stroke="#1864AB" stroke-width="3"/>
+        <text x="40" y="280" text-anchor="middle" font-family="Caveat" font-size="34" font-weight="700" fill="#1864AB">I</text>
+        <text x="40" y="315" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1864AB">Integrity</text>
+
+        <!-- A -->
+        <circle cx="300" cy="270" r="28" fill="#FDF6E9" stroke="#2B8A3E" stroke-width="3"/>
+        <text x="300" y="280" text-anchor="middle" font-family="Caveat" font-size="34" font-weight="700" fill="#2B8A3E">A</text>
+        <text x="300" y="315" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#2B8A3E">Availability</text>
+
+        <!-- center label -->
+        <text x="170" y="180" text-anchor="middle" font-family="Caveat" font-size="24" font-weight="700" fill="#3D3D3D">security =</text>
+        <text x="170" y="205" text-anchor="middle" font-family="Caveat" font-size="24" font-weight="700" fill="#3D3D3D">all three</text>
+      </svg>
+      <p class="doodle-caption">drop any leg — the whole thing falls over</p>
+    </div>
+  </div>
+
+  <!-- ─── TCP HANDSHAKE ─── -->
+  <h3>② The TCP handshake — how every connection starts</h3>
+  <div class="concept-row">
+    <div class="doodle-frame">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Client computer -->
+        <rect x="20" y="40" width="90" height="70" rx="6" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="3"/>
+        <rect x="35" y="50" width="60" height="40" fill="#C7E0FF" stroke="#1864AB" stroke-width="1.5"/>
+        <rect x="45" y="110" width="40" height="8" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="2"/>
+        <text x="65" y="135" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1B1B1B">CLIENT</text>
+        <text x="65" y="150" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"hello?"</text>
+
+        <!-- Server -->
+        <rect x="290" y="40" width="90" height="70" rx="6" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="3"/>
+        <rect x="305" y="50" width="60" height="40" fill="#C7F0D5" stroke="#2B8A3E" stroke-width="1.5"/>
+        <circle cx="335" cy="70" r="4" fill="#2B8A3E"/>
+        <rect x="315" y="110" width="40" height="8" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="2"/>
+        <text x="335" y="135" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1B1B1B">SERVER</text>
+        <text x="335" y="150" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"go ahead"</text>
+
+        <!-- SYN arrow -->
+        <path d="M 115 175 Q 200 165, 285 178" fill="none" stroke="#C92A2A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 285 178 L 275 173 M 285 178 L 275 183" stroke="#C92A2A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <text x="200" y="160" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#C92A2A">1. SYN</text>
+        <text x="200" y="190" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"want to talk"</text>
+
+        <!-- SYN-ACK arrow -->
+        <path d="M 285 220 Q 200 210, 115 223" fill="none" stroke="#1864AB" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 115 223 L 125 218 M 115 223 L 125 228" stroke="#1864AB" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <text x="200" y="205" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1864AB">2. SYN-ACK</text>
+        <text x="200" y="235" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"sure, i hear you"</text>
+
+        <!-- ACK arrow -->
+        <path d="M 115 265 Q 200 258, 285 268" fill="none" stroke="#2B8A3E" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 285 268 L 275 263 M 285 268 L 275 273" stroke="#2B8A3E" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <text x="200" y="253" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#2B8A3E">3. ACK</text>
+        <text x="200" y="285" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"cool, let's go"</text>
+      </svg>
+      <p class="doodle-caption">three tiny packets. every internet connection ever, starts here.</p>
+    </div>
+    <div>
+      <p>Two computers can't just start yelling data at each other. They shake hands first: <em>SYN, SYN-ACK, ACK</em>. Once you can read this in Wireshark, packet captures stop being magic.</p>
+      <p>Half-open connections, SYN floods, port scans, most reconnaissance techniques — they all live in this handshake or its close cousins. It's why we learn it Week 2.</p>
+      <div class="sticky blue">
+        <span class="sticky-title">Try this</span>
+        Open Wireshark on your host. Load any website. Filter for <code style="font-family:'Courier New'; background:#FFF8B8; padding:0 4px;">tcp.flags.syn == 1</code>. Every handshake in your life, visible.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ENCRYPTION KEYS ─── -->
+  <h3>③ Symmetric vs Asymmetric — the two shapes of encryption</h3>
+  <div class="concept-row">
+    <div>
+      <p><strong>Symmetric</strong> = one shared secret. Fast, simple, and useless if you can't share the key safely.</p>
+      <p><strong>Asymmetric</strong> = a matched pair. Lock with the public one, unlock only with the private one. Slower, but solves the "how do we agree on a secret before we can talk securely" problem.</p>
+      <p>TLS uses both: asymmetric to agree on a session key, then symmetric to actually move data. Best of both worlds.</p>
+      <div class="sticky green">
+        <span class="sticky-title">Mnemonic</span>
+        Public key = padlock (anyone can snap it shut). Private key = the only key that opens it (stays with you, always).
+      </div>
+    </div>
+    <div class="doodle-frame">
+      <svg viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- SYMMETRIC -->
+        <text x="95" y="25" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#C92A2A">SYMMETRIC</text>
+        <text x="95" y="45" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#3D3D3D">(same key both sides)</text>
+
+        <!-- key 1 -->
+        <g transform="translate(30, 80)">
+          <circle cx="18" cy="18" r="12" fill="#FFE066" stroke="#1B1B1B" stroke-width="2.5"/>
+          <circle cx="18" cy="18" r="4" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="1.5"/>
+          <rect x="28" y="14" width="35" height="8" fill="#FFE066" stroke="#1B1B1B" stroke-width="2.5"/>
+          <rect x="52" y="22" width="4" height="6" fill="#FFE066" stroke="#1B1B1B" stroke-width="2"/>
+          <rect x="58" y="22" width="4" height="6" fill="#FFE066" stroke="#1B1B1B" stroke-width="2"/>
+        </g>
+        <!-- lock in middle -->
+        <g transform="translate(85, 130)">
+          <rect x="0" y="15" width="30" height="24" rx="3" fill="#C92A2A" stroke="#1B1B1B" stroke-width="2.5"/>
+          <path d="M 6 15 Q 6 3, 15 3 Q 24 3, 24 15" fill="none" stroke="#1B1B1B" stroke-width="2.5"/>
+          <circle cx="15" cy="27" r="3" fill="#FDF6E9"/>
+        </g>
+        <!-- key 2 -->
+        <g transform="translate(140, 80)">
+          <circle cx="18" cy="18" r="12" fill="#FFE066" stroke="#1B1B1B" stroke-width="2.5"/>
+          <circle cx="18" cy="18" r="4" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="1.5"/>
+          <rect x="28" y="14" width="35" height="8" fill="#FFE066" stroke="#1B1B1B" stroke-width="2.5"/>
+          <rect x="52" y="22" width="4" height="6" fill="#FFE066" stroke="#1B1B1B" stroke-width="2"/>
+          <rect x="58" y="22" width="4" height="6" fill="#FFE066" stroke="#1B1B1B" stroke-width="2"/>
+        </g>
+        <!-- equal sign -->
+        <text x="95" y="115" text-anchor="middle" font-family="Kalam" font-size="24" font-weight="700" fill="#1B1B1B">=</text>
+        <!-- callout -->
+        <text x="95" y="200" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#C92A2A">both keys identical</text>
+        <text x="95" y="215" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#C92A2A">→ share safely?? hard</text>
+
+        <!-- divider -->
+        <line x1="190" y1="60" x2="190" y2="240" stroke="#1B1B1B" stroke-width="2" stroke-dasharray="4 4" opacity="0.4"/>
+
+        <!-- ASYMMETRIC -->
+        <text x="290" y="25" text-anchor="middle" font-family="Caveat" font-size="22" font-weight="700" fill="#1864AB">ASYMMETRIC</text>
+        <text x="290" y="45" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#3D3D3D">(matched pair)</text>
+
+        <!-- public key -->
+        <g transform="translate(210, 80)">
+          <circle cx="18" cy="18" r="12" fill="#2B8A3E" stroke="#1B1B1B" stroke-width="2.5"/>
+          <text x="18" y="23" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#FDF6E9">P</text>
+          <rect x="28" y="14" width="35" height="8" fill="#2B8A3E" stroke="#1B1B1B" stroke-width="2.5"/>
+          <rect x="52" y="22" width="4" height="6" fill="#2B8A3E" stroke="#1B1B1B" stroke-width="2"/>
+        </g>
+        <text x="245" y="125" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#2B8A3E">public</text>
+        <text x="245" y="138" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">(share freely)</text>
+
+        <!-- private key -->
+        <g transform="translate(310, 80)">
+          <circle cx="18" cy="18" r="12" fill="#C92A2A" stroke="#1B1B1B" stroke-width="2.5"/>
+          <text x="18" y="23" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#FDF6E9">S</text>
+          <rect x="28" y="14" width="35" height="8" fill="#C92A2A" stroke="#1B1B1B" stroke-width="2.5"/>
+          <rect x="52" y="22" width="4" height="6" fill="#C92A2A" stroke="#1B1B1B" stroke-width="2"/>
+        </g>
+        <text x="345" y="125" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#C92A2A">secret</text>
+        <text x="345" y="138" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">(never share!)</text>
+
+        <!-- lock -->
+        <g transform="translate(275, 165)">
+          <rect x="0" y="15" width="30" height="24" rx="3" fill="#1864AB" stroke="#1B1B1B" stroke-width="2.5"/>
+          <path d="M 6 15 Q 6 3, 15 3 Q 24 3, 24 15" fill="none" stroke="#1B1B1B" stroke-width="2.5"/>
+          <circle cx="15" cy="27" r="3" fill="#FDF6E9"/>
+        </g>
+
+        <text x="290" y="220" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#1864AB">lock w/ green,</text>
+        <text x="290" y="235" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#1864AB">only red opens it</text>
+      </svg>
+      <p class="doodle-caption">two different problems, two different shapes of solution</p>
+    </div>
+  </div>
+
+  <!-- ─── ATTACK METHODOLOGY ─── -->
+  <h3>④ The attack methodology — how pros work</h3>
+  <div class="concept-row">
+    <div class="doodle-frame">
+      <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- Central circle -->
+        <circle cx="190" cy="170" r="140" fill="none" stroke="#1B1B1B" stroke-width="2.5" stroke-dasharray="4 6" opacity="0.4"/>
+
+        <!-- Stage 1: Recon (top) -->
+        <g>
+          <circle cx="190" cy="40" r="32" fill="#FFF8B8" stroke="#1B1B1B" stroke-width="2.5"/>
+          <text x="190" y="38" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1B1B1B">RECON</text>
+          <text x="190" y="55" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">who? what?</text>
+        </g>
+
+        <!-- Stage 2: Scan (top right) -->
+        <g>
+          <circle cx="315" cy="115" r="32" fill="#FDF6E9" stroke="#1864AB" stroke-width="2.5"/>
+          <text x="315" y="113" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#1864AB">SCAN</text>
+          <text x="315" y="130" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">nmap!</text>
+        </g>
+
+        <!-- Stage 3: Enum (right bottom) -->
+        <g>
+          <circle cx="315" cy="240" r="32" fill="#FDF6E9" stroke="#087F8C" stroke-width="2.5"/>
+          <text x="315" y="238" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#087F8C">ENUM</text>
+          <text x="315" y="253" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">poke deeper</text>
+        </g>
+
+        <!-- Stage 4: Exploit (bottom) -->
+        <g>
+          <circle cx="190" cy="300" r="34" fill="#FFB8B8" stroke="#C92A2A" stroke-width="3"/>
+          <text x="190" y="298" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#C92A2A">EXPLOIT</text>
+          <text x="190" y="313" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">get in!</text>
+        </g>
+
+        <!-- Stage 5: Post-exploit (bottom left) -->
+        <g>
+          <circle cx="65" cy="240" r="32" fill="#FDF6E9" stroke="#6B21A8" stroke-width="2.5"/>
+          <text x="65" y="235" text-anchor="middle" font-family="Kalam" font-size="12" font-weight="700" fill="#6B21A8">POST-EX</text>
+          <text x="65" y="250" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">now what?</text>
+        </g>
+
+        <!-- Stage 6: Report (top left) -->
+        <g>
+          <circle cx="65" cy="115" r="32" fill="#C7F0D5" stroke="#2B8A3E" stroke-width="2.5"/>
+          <text x="65" y="113" text-anchor="middle" font-family="Kalam" font-size="13" font-weight="700" fill="#2B8A3E">REPORT</text>
+          <text x="65" y="128" text-anchor="middle" font-family="Patrick Hand" font-size="11" fill="#3D3D3D">$$$ pays!</text>
+        </g>
+
+        <!-- Directional arrows around circle -->
+        <path d="M 235 55 Q 275 68, 290 90" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 290 90 L 292 82 M 290 90 L 282 89" stroke="#1B1B1B" stroke-width="2" fill="none"/>
+
+        <path d="M 320 155 Q 330 195, 320 215" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 320 215 L 313 208 M 320 215 L 326 210" stroke="#1B1B1B" stroke-width="2" fill="none"/>
+
+        <path d="M 285 265 Q 245 290, 225 290" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 225 290 L 234 285 M 225 290 L 234 295" stroke="#1B1B1B" stroke-width="2" fill="none"/>
+
+        <path d="M 155 290 Q 115 285, 90 267" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 90 267 L 99 268 M 90 267 L 95 260" stroke="#1B1B1B" stroke-width="2" fill="none"/>
+
+        <path d="M 60 215 Q 50 195, 60 155" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 60 155 L 65 162 M 60 155 L 54 162" stroke="#1B1B1B" stroke-width="2" fill="none"/>
+
+        <path d="M 90 90 Q 130 68, 145 55" fill="none" stroke="#1B1B1B" stroke-width="2" stroke-linecap="round"/>
+        <path d="M 145 55 L 140 63 M 145 55 L 137 55" stroke="#1B1B1B" stroke-width="2" fill="none"/>
+
+        <!-- center note -->
+        <text x="190" y="165" text-anchor="middle" font-family="Caveat" font-size="20" font-weight="700" fill="#3D3D3D">the</text>
+        <text x="190" y="185" text-anchor="middle" font-family="Caveat" font-size="20" font-weight="700" fill="#3D3D3D">pentest cycle</text>
+      </svg>
+      <p class="doodle-caption">skip a step in real work → you get caught, or you miss what matters</p>
+    </div>
+    <div>
+      <p>Amateurs jump straight to "run the exploit." Pros walk this loop, patiently. Week 6 is where we practice each stage on a target you're allowed to hit.</p>
+      <p>The two least glamorous steps — <em>recon</em> and <em>report</em> — are actually where most professional value lives. Anyone can copy-paste from Metasploit. Not everyone can hand a client a report they can act on.</p>
+      <div class="sticky">
+        <span class="sticky-title">Uncomfortable truth</span>
+        In real engagements, ~70% of your time is recon + reporting. ~30% is the "hacking" TV shows love. Get comfortable with that ratio early.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PHISHING ANATOMY ─── -->
+  <h3>⑤ Why phishing still works — the anatomy</h3>
+  <div class="doodle-frame">
+    <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- Email frame -->
+      <rect x="180" y="30" width="340" height="280" rx="4" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="3"/>
+
+      <!-- From line -->
+      <text x="200" y="60" font-family="Patrick Hand" font-size="14" fill="#3D3D3D">From:</text>
+      <text x="248" y="60" font-family="Patrick Hand" font-size="14" font-weight="700" fill="#1B1B1B">security@paypa1-alerts.com</text>
+      <line x1="200" y1="72" x2="500" y2="72" stroke="#1B1B1B" stroke-width="1" opacity="0.2"/>
+
+      <!-- Subject -->
+      <text x="200" y="95" font-family="Patrick Hand" font-size="14" fill="#3D3D3D">Subject:</text>
+      <text x="260" y="95" font-family="Kalam" font-size="15" font-weight="700" fill="#1B1B1B">⚠ URGENT: Account will be closed in 24 hours</text>
+      <line x1="200" y1="107" x2="500" y2="107" stroke="#1B1B1B" stroke-width="1" opacity="0.2"/>
+
+      <!-- Body -->
+      <text x="200" y="135" font-family="Patrick Hand" font-size="14" fill="#1B1B1B">Dear Valued Customer,</text>
+      <text x="200" y="160" font-family="Patrick Hand" font-size="13" fill="#1B1B1B">We detected suspicious activity on your</text>
+      <text x="200" y="178" font-family="Patrick Hand" font-size="13" fill="#1B1B1B">account. Verify your identity immediately</text>
+      <text x="200" y="196" font-family="Patrick Hand" font-size="13" fill="#1B1B1B">or your account will be permanently</text>
+      <text x="200" y="214" font-family="Patrick Hand" font-size="13" fill="#1B1B1B">closed within 24 hours.</text>
+
+      <!-- Button -->
+      <rect x="270" y="238" width="160" height="34" rx="3" fill="#1864AB" stroke="#1B1B1B" stroke-width="2"/>
+      <text x="350" y="260" text-anchor="middle" font-family="Kalam" font-size="14" font-weight="700" fill="#FDF6E9">Verify My Account →</text>
+
+      <text x="200" y="295" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">Sincerely, PayPal Security Team</text>
+
+      <!-- Callout 1: Spoofed sender -->
+      <text x="20" y="40" font-family="Caveat" font-size="16" font-weight="700" fill="#C92A2A">① fake sender</text>
+      <text x="20" y="58" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"paypa1" ≠ "paypal"</text>
+      <text x="20" y="72" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">(that's a ONE)</text>
+      <path d="M 130 60 Q 165 60, 195 62" fill="none" stroke="#C92A2A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 195 62 L 187 58 M 195 62 L 187 66" stroke="#C92A2A" stroke-width="2" fill="none"/>
+
+      <!-- Callout 2: Urgency -->
+      <text x="530" y="90" font-family="Caveat" font-size="16" font-weight="700" fill="#C92A2A">② manufactured</text>
+      <text x="530" y="108" font-family="Caveat" font-size="16" font-weight="700" fill="#C92A2A">urgency</text>
+      <text x="530" y="126" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">"24 hours!"</text>
+      <text x="530" y="140" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">panic → clicks</text>
+      <path d="M 525 100 Q 510 100, 500 100" fill="none" stroke="#C92A2A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 500 100 L 508 96 M 500 100 L 508 104" stroke="#C92A2A" stroke-width="2" fill="none"/>
+
+      <!-- Callout 3: Generic greeting -->
+      <text x="20" y="140" font-family="Caveat" font-size="16" font-weight="700" fill="#C92A2A">③ "Valued</text>
+      <text x="20" y="158" font-family="Caveat" font-size="16" font-weight="700" fill="#C92A2A">Customer"</text>
+      <text x="20" y="176" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">real banks know</text>
+      <text x="20" y="190" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">your name</text>
+      <path d="M 130 145 Q 165 138, 195 135" fill="none" stroke="#C92A2A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 195 135 L 187 133 M 195 135 L 190 140" stroke="#C92A2A" stroke-width="2" fill="none"/>
+
+      <!-- Callout 4: Suspicious button -->
+      <text x="530" y="245" font-family="Caveat" font-size="16" font-weight="700" fill="#C92A2A">④ hover the link!</text>
+      <text x="530" y="263" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">real URL will NOT be</text>
+      <text x="530" y="277" font-family="Patrick Hand" font-size="12" fill="#3D3D3D">paypal.com</text>
+      <path d="M 525 255 Q 480 255, 435 255" fill="none" stroke="#C92A2A" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 435 255 L 443 251 M 435 255 L 443 259" stroke="#C92A2A" stroke-width="2" fill="none"/>
+    </svg>
+    <p class="doodle-caption">most breaches start here. not with a 0-day. with an email.</p>
+  </div>
+</section>
+
+<!-- ================ SECTION 3: THE PIVOT ================ -->
+<section class="section">
+  <h2><span class="section-number">3</span><span class="highlight-strip">The big pivot: no local lab</span></h2>
+  <p class="lede">You told me system resources are tight. Good news: we don't need them. Here's what changed:</p>
+
+  <div class="doodle-frame">
+    <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- LEFT: LOCAL SETUP (crossed out) -->
+      <text x="170" y="30" text-anchor="middle" font-family="Caveat" font-size="26" font-weight="700" fill="#C92A2A">Local Kali Setup</text>
+      <text x="170" y="50" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#3D3D3D">(the old plan)</text>
+
+      <!-- Laptop -->
+      <rect x="60" y="80" width="220" height="140" rx="4" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="2.5"/>
+      <rect x="70" y="90" width="200" height="115" fill="#2A2A2A" stroke="#1B1B1B" stroke-width="1.5"/>
+      <rect x="45" y="220" width="250" height="10" rx="2" fill="#DDD" stroke="#1B1B1B" stroke-width="2.5"/>
+
+      <!-- VMs stacked chaotically on screen -->
+      <rect x="80" y="100" width="70" height="45" rx="2" fill="#C7E0FF" stroke="#1864AB" stroke-width="1.5"/>
+      <text x="115" y="126" text-anchor="middle" font-family="Kalam" font-size="10" font-weight="700" fill="#1864AB">Kali VM</text>
+      <text x="115" y="138" text-anchor="middle" font-family="Patrick Hand" font-size="8" fill="#1864AB">4GB RAM</text>
+
+      <rect x="160" y="100" width="70" height="45" rx="2" fill="#FFB8B8" stroke="#C92A2A" stroke-width="1.5"/>
+      <text x="195" y="122" text-anchor="middle" font-family="Kalam" font-size="9" font-weight="700" fill="#C92A2A">Metasploitable</text>
+      <text x="195" y="135" text-anchor="middle" font-family="Patrick Hand" font-size="8" fill="#C92A2A">2GB RAM</text>
+
+      <rect x="80" y="155" width="70" height="45" rx="2" fill="#C7F0D5" stroke="#2B8A3E" stroke-width="1.5"/>
+      <text x="115" y="180" text-anchor="middle" font-family="Kalam" font-size="10" font-weight="700" fill="#2B8A3E">Windows</text>
+      <text x="115" y="192" text-anchor="middle" font-family="Patrick Hand" font-size="8" fill="#2B8A3E">4GB RAM</text>
+
+      <rect x="160" y="155" width="70" height="45" rx="2" fill="#FFE066" stroke="#D97706" stroke-width="1.5"/>
+      <text x="195" y="176" text-anchor="middle" font-family="Kalam" font-size="10" font-weight="700" fill="#D97706">host OS</text>
+      <text x="195" y="188" text-anchor="middle" font-family="Patrick Hand" font-size="8" fill="#D97706">the rest</text>
+
+      <!-- Sad face on laptop -->
+      <text x="245" y="200" font-family="Kalam" font-size="20" fill="#C92A2A">☹</text>
+
+      <!-- BIG X over the whole thing -->
+      <line x1="60" y1="80" x2="280" y2="220" stroke="#C92A2A" stroke-width="4" opacity="0.6" stroke-linecap="round"/>
+      <line x1="280" y1="80" x2="60" y2="220" stroke="#C92A2A" stroke-width="4" opacity="0.6" stroke-linecap="round"/>
+
+      <!-- Downsides -->
+      <text x="170" y="260" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#C92A2A">✗ needs 16GB RAM</text>
+      <text x="170" y="280" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#C92A2A">✗ 50GB free disk</text>
+      <text x="170" y="300" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#C92A2A">✗ hours of setup</text>
+      <text x="170" y="320" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#C92A2A">✗ VM breaks = you cry</text>
+
+      <!-- Middle arrow -->
+      <path d="M 315 190 Q 360 190, 400 190" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 400 190 L 388 183 M 400 190 L 388 197" stroke="#1B1B1B" stroke-width="3" fill="none"/>
+      <text x="360" y="175" text-anchor="middle" font-family="Caveat" font-size="20" font-weight="700" fill="#1864AB">→ instead</text>
+
+      <!-- RIGHT: CLOUD ATTACKBOX -->
+      <text x="560" y="30" text-anchor="middle" font-family="Caveat" font-size="26" font-weight="700" fill="#2B8A3E">TryHackMe AttackBox</text>
+      <text x="560" y="50" text-anchor="middle" font-family="Patrick Hand" font-size="13" fill="#3D3D3D">(the new plan)</text>
+
+      <!-- Simple browser window -->
+      <rect x="440" y="80" width="240" height="150" rx="4" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="2.5"/>
+      <rect x="440" y="80" width="240" height="20" fill="#E8DFC7" stroke="#1B1B1B" stroke-width="2.5"/>
+      <circle cx="454" cy="90" r="4" fill="#C92A2A" stroke="#1B1B1B" stroke-width="1"/>
+      <circle cx="468" cy="90" r="4" fill="#FFE066" stroke="#1B1B1B" stroke-width="1"/>
+      <circle cx="482" cy="90" r="4" fill="#2B8A3E" stroke="#1B1B1B" stroke-width="1"/>
+
+      <!-- URL bar -->
+      <rect x="500" y="84" width="170" height="12" rx="2" fill="#FDF6E9" stroke="#1B1B1B" stroke-width="1"/>
+      <text x="585" y="93" text-anchor="middle" font-family="Patrick Hand" font-size="10" fill="#3D3D3D">tryhackme.com</text>
+
+      <!-- Kali desktop inside -->
+      <rect x="450" y="108" width="220" height="112" fill="#2A2A2A"/>
+      <text x="560" y="140" text-anchor="middle" font-family="Kalam" font-size="16" font-weight="700" fill="#87CEEB">Kali Linux</text>
+      <text x="560" y="160" text-anchor="middle" font-family="Patrick Hand" font-size="12" fill="#87CEEB">pre-loaded ✓</text>
+
+      <!-- Toolbar -->
+      <rect x="465" y="180" width="30" height="20" fill="#3A3A3A" stroke="#87CEEB" stroke-width="1"/>
+      <text x="480" y="193" text-anchor="middle" font-family="Kalam" font-size="8" fill="#87CEEB">Burp</text>
+      <rect x="500" y="180" width="30" height="20" fill="#3A3A3A" stroke="#87CEEB" stroke-width="1"/>
+      <text x="515" y="193" text-anchor="middle" font-family="Kalam" font-size="8" fill="#87CEEB">nmap</text>
+      <rect x="535" y="180" width="30" height="20" fill="#3A3A3A" stroke="#87CEEB" stroke-width="1"/>
+      <text x="550" y="193" text-anchor="middle" font-family="Kalam" font-size="8" fill="#87CEEB">Wshark</text>
+      <rect x="570" y="180" width="30" height="20" fill="#3A3A3A" stroke="#87CEEB" stroke-width="1"/>
+      <text x="585" y="193" text-anchor="middle" font-family="Kalam" font-size="8" fill="#87CEEB">MSF</text>
+      <rect x="605" y="180" width="30" height="20" fill="#3A3A3A" stroke="#87CEEB" stroke-width="1"/>
+      <text x="620" y="193" text-anchor="middle" font-family="Kalam" font-size="8" fill="#87CEEB">John</text>
+
+      <!-- Happy face -->
+      <text x="640" y="215" font-family="Kalam" font-size="20" fill="#2B8A3E">☺</text>
+
+      <!-- Upsides -->
+      <text x="560" y="260" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#2B8A3E">✓ runs anywhere w/ browser</text>
+      <text x="560" y="280" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#2B8A3E">✓ nothing to install</text>
+      <text x="560" y="300" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#2B8A3E">✓ tools pre-configured</text>
+      <text x="560" y="320" text-anchor="middle" font-family="Patrick Hand" font-size="14" fill="#2B8A3E">✓ break stuff → reset button</text>
+    </svg>
+    <p class="doodle-caption">same skills, same tools — someone else's servers doing the heavy lifting</p>
+  </div>
+
+  <h3>Your new setup, ranked</h3>
+
+  <div class="sticky green">
+    <span class="sticky-title">Primary: TryHackMe Premium (annual)</span>
+    ~$10.50/month if paid yearly. Browser-based Kali (the "AttackBox") with everything pre-installed. Covers ~80% of the curriculum out of the box.
+  </div>
+
+  <div class="sticky blue">
+    <span class="sticky-title">Free supplement #1: PortSwigger Web Security Academy</span>
+    Best-in-class for Week 5 (web security). Completely free, no install, browser-based. Used by working pentesters. Bookmark it.
+  </div>
+
+  <div class="sticky pink">
+    <span class="sticky-title">Free supplement #2: OverTheWire (Bandit)</span>
+    Just needs an SSH client — even a phone can do it. Perfect for Week 3 Linux practice.
+  </div>
+
+  <div class="sticky">
+    <span class="sticky-title">Skip for now: Hack The Box</span>
+    More expensive, steeper learning curve. Great for later. Not needed for this course.
+  </div>
+</section>
+
+<!-- ================ SECTION 4: CURRICULUM CHECKLIST ================ -->
+<section class="section">
+  <h2><span class="section-number">4</span><span class="highlight-strip">The revised checklist</span></h2>
+  <p class="lede">Adjusted for online-only. Same skills, minus the VirtualBox tears.</p>
+
+  <h3>Before Week 1</h3>
+  <div class="checklist">
+    <ul>
+      <li>Create a TryHackMe account &amp; complete the AttackBox tour</li>
+      <li>Bookmark PortSwigger Web Security Academy</li>
+      <li>Install a password manager (Bitwarden or KeePassXC)</li>
+      <li>Test SSH from your device (for OverTheWire)</li>
+    </ul>
+  </div>
+
+  <h3>Weekly tracker</h3>
+  <div class="checklist">
+    <ul>
+      <li><strong>Week 1:</strong> CIA triad, ethics, THM "Intro to Cyber Security" path</li>
+      <li><strong>Week 2:</strong> TCP/IP, Wireshark in AttackBox, THM "Network Fundamentals"</li>
+      <li><strong>Week 3:</strong> OverTheWire Bandit levels 0–15, THM "Windows Fundamentals 1"</li>
+      <li><strong>Week 4:</strong> Hashcat in AttackBox, TLS inspection, THM "Crypto 101"</li>
+      <li><strong>Week 5:</strong> ★ PortSwigger labs (SQLi, XSS, IDOR) + THM Juice Shop</li>
+      <li><strong>Week 6:</strong> THM "Nmap" room + one easy boot-to-root (Blue or Pickle Rick)</li>
+      <li><strong>Week 7:</strong> THM "Phishing Emails" path, MITRE ATT&amp;CK familiarization</li>
+      <li><strong>Week 8:</strong> Capstone room + 2–3 page written incident report</li>
+    </ul>
+  </div>
+
+  <h3>Endgame checkpoints</h3>
+  <div class="checklist">
+    <ul>
+      <li>Read a packet capture and explain what's happening</li>
+      <li>Confidently work in a Linux shell</li>
+      <li>Identify + exploit common web vulns in a lab</li>
+      <li>Run basic recon and port scanning</li>
+      <li>Spot a phishing email and explain the tells</li>
+      <li>Write an incident report a non-technical person can act on</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================ SECTION 5: WHAT'S NEXT ================ -->
+<section class="section">
+  <h2><span class="section-number">5</span><span class="highlight-strip">After the 8 weeks</span></h2>
+
+  <p class="lede">Depending on which week grabbed you most, here's where to head next:</p>
+
+  <div class="compare">
+    <div class="compare-col winner">
+      <h4>Loved breaking things?</h4>
+      <ul>
+        <li>Study for eJPT certification</li>
+        <li>Then TCM Security PNPT</li>
+        <li>Long game: OSCP</li>
+        <li>Keep grinding boxes on THM/HTB</li>
+      </ul>
+    </div>
+    <div class="compare-col winner">
+      <h4>Loved defending?</h4>
+      <ul>
+        <li>Blue Team Level 1 (BTL1)</li>
+        <li>Splunk Core Certified User</li>
+        <li>Microsoft SC-200</li>
+        <li>Practice on CyberDefenders labs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sticky pink">
+    <span class="sticky-title">Universal rule</span>
+    2 CTF boxes per month. Forever. This is how you don't lose the skill you built.
+  </div>
+</section>
+
+<!-- ================ ETHICS NOTE ================ -->
+<section class="section">
+  <h2><span class="section-number">!</span><span class="highlight-strip">One last thing</span></h2>
+  <div class="sticky">
+    <span class="sticky-title">Ethics reminder</span>
+    Every technique in this curriculum can be misused. Use them only on systems you own or have explicit written permission to test. The skill that separates a professional from a criminal is <em>restraint</em>, not capability.
+  </div>
+</section>
+
+<!-- ================ SIGNATURE ================ -->
+<div class="signature-line">
+  compiled from our conversation, ready for Week 1 ✎<br>
+  <strong>Good luck. Go break something (legally).</strong>
+</div>
+
+</div>
+
+</body>
+</html>
