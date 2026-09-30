@@ -1,1564 +1,405 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adedamola Adedapo</title>
-    <meta name="description" content="Platform & DevSecOps Engineer with 6+ years of experience designing, securing, and scaling cloud infrastructure and backend systems.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2IDJMMjguNDI2NCA4VjI0TDE2IDMwTDMuNTczNiAyNFY4TDE2IDJaIiBzdHJva2U9IiM2NGZmZGEiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0iIzBhMTkyZiIvPgo8dGV4dCB4PSIxNiIgeT0iMjAiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM2NGZmZGEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkE8L3RleHQ+Cjwvc3ZnPgo=">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --navy: #0a192f;
-            --light-navy: #112240;
-            --lightest-navy: #233554;
-            --navy-shadow: rgba(2,12,27,0.7);
-            --dark-slate: #495670;
-            --slate: #8892b0;
-            --light-slate: #a8b2d1;
-            --lightest-slate: #ccd6f6;
-            --white: #e6f1ff;
-            --green: #64ffda;
-            --green-tint: rgba(100, 255, 218, 0.1);
-            --pink: #f57dff;
-            --blue: #57cbff;
-            --font-sans: 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-            --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-            --fz-xxs: 12px;
-            --fz-xs: 13px;
-            --fz-sm: 14px;
-            --fz-md: 16px;
-            --fz-lg: 18px;
-            --fz-xl: 20px;
-            --fz-xxl: 22px;
-            --fz-heading: 32px;
-            --border-radius: 4px;
-            --nav-height: 100px;
-            --nav-scroll-height: 70px;
-            --tab-height: 42px;
-            --tab-width: 120px;
-            --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
-            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-            --hamburger-width: 30px;
-            --ham-before: top 0.1s ease-in 0.25s, opacity 0.1s ease-in;
-            --ham-before-active: top 0.1s ease-out, opacity 0.1s ease-out 0.12s;
-            --ham-after: bottom 0.1s ease-in 0.25s, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-            --ham-after-active: bottom 0.1s ease-out, transform 0.22s cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        ::selection {
-            background-color: var(--lightest-navy);
-            color: var(--lightest-slate);
-        }
-
-        :focus {
-            outline: 2px dashed var(--green);
-            outline-offset: 3px;
-        }
-
-        :focus:not(:focus-visible) {
-            outline: none;
-            outline-offset: 0px;
-        }
-
-        :focus-visible {
-            outline: 2px dashed var(--green);
-            outline-offset: 3px;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            width: 100%;
-            min-height: 100%;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            background-color: var(--navy);
-            color: var(--slate);
-            font-family: var(--font-sans);
-            font-size: var(--fz-xl);
-            line-height: 1.3;
-        }
-
-        .skip-to-content {
-            position: absolute;
-            top: auto;
-            left: -999px;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            z-index: -99;
-        }
-
-        .skip-to-content:focus {
-            background-color: var(--green);
-            color: var(--navy);
-            top: 0;
-            left: 0;
-            width: auto;
-            height: auto;
-            overflow: auto;
-            z-index: 99;
-            text-decoration: none;
-            padding: 18px 23px;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            z-index: 11;
-            padding: 0px 50px;
-            width: 100%;
-            height: var(--nav-height);
-            background-color: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            filter: none !important;
-            pointer-events: auto !important;
-            user-select: auto !important;
-        }
-
-        header.scrolled {
-            height: var(--nav-scroll-height);
-            transform: translateY(0px);
-            background-color: rgba(10, 25, 47, 0.85);
-            box-shadow: 0 10px 30px -10px var(--navy-shadow);
-        }
-
-        .logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo a {
-            color: var(--green);
-            width: 42px;
-            height: 42px;
-            border: 2px solid var(--green);
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: var(--font-mono);
-            font-size: var(--fz-lg);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .logo a:hover,
-        .logo a:focus {
-            transform: translate(-4px, -4px);
-            box-shadow: 4px 4px 0 0 var(--green);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-list {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .nav-list li {
-            margin: 0 5px;
-            position: relative;
-            counter-increment: item 1;
-        }
-
-        .nav-list a {
-            padding: 10px;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-            font-family: var(--font-mono);
-            font-size: var(--fz-xs);
-        }
-
-        .nav-list a:before {
-            content: '0' counter(item) '.';
-            margin-right: 5px;
-            color: var(--green);
-            font-size: var(--fz-xxs);
-            text-align: right;
-        }
-
-        .nav-list a:hover,
-        .nav-list a:focus {
-            color: var(--green);
-        }
-
-        .resume-button {
-            color: var(--green);
-            background-color: transparent;
-            border: 1px solid var(--green);
-            border-radius: var(--border-radius);
-            padding: 0.75rem 1rem;
-            font-size: var(--fz-xs);
-            font-family: var(--font-mono);
-            line-height: 1;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-left: 15px;
-        }
-
-        .resume-button:hover,
-        .resume-button:focus {
-            background-color: var(--green-tint);
-            outline: none;
-        }
-
-        /* Mobile menu */
-        .menu {
-            display: none;
-        }
-
-        /* Main content */
-        #content {
-            padding: 0 150px;
-            max-width: 1600px;
-            min-height: 100vh;
-            margin: 0 auto;
-        }
-
-        /* Hero section */
-        .hero {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            min-height: 100vh;
-            height: 100vh;
-            padding: 0;
-        }
-
-        .hero h1 {
-            margin: 0 0 30px 4px;
-            color: var(--green);
-            font-family: var(--font-mono);
-            font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
-            font-weight: 400;
-        }
-
-        .hero h2,
-        .hero h3 {
-            font-weight: 600;
-            line-height: 0.9;
-        }
-
-        .hero h2 {
-            margin: 0;
-            font-size: clamp(40px, 8vw, 80px);
-            color: var(--lightest-slate);
-        }
-
-        .hero h3 {
-            margin-top: 5px;
-            color: var(--slate);
-            font-size: clamp(40px, 8vw, 80px);
-        }
-
-        .hero p {
-            margin: 20px 0 0;
-            max-width: 540px;
-            color: var(--slate);
-            font-size: var(--fz-xl);
-        }
-
-        .hero .email-link {
-            color: var(--green);
-            background-color: transparent;
-            border: 1px solid var(--green);
-            border-radius: var(--border-radius);
-            padding: 1.25rem 1.75rem;
-            font-size: var(--fz-sm);
-            font-family: var(--font-mono);
-            line-height: 1;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 50px;
-            display: inline-block;
-        }
-
-        .hero .email-link:hover,
-        .hero .email-link:focus {
-            background-color: var(--green-tint);
-            outline: none;
-        }
-
-        /* Sections */
-        section {
-            margin: 0 auto;
-            padding: 100px 0;
-            max-width: 1000px;
-        }
-
-        .numbered-heading {
-            display: flex;
-            align-items: center;
-            position: relative;
-            margin: 10px 0 40px;
-            width: 100%;
-            font-size: clamp(26px, 5vw, var(--fz-heading));
-            white-space: nowrap;
-        }
-
-        .numbered-heading:before {
-            position: relative;
-            bottom: 4px;
-            counter-increment: section 1;
-            content: '0' counter(section) '.';
-            margin-right: 10px;
-            color: var(--green);
-            font-family: var(--font-mono);
-            font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
-            font-weight: 400;
-        }
-
-        .numbered-heading:after {
-            content: '';
-            display: block;
-            position: relative;
-            top: -5px;
-            width: 300px;
-            height: 1px;
-            margin-left: 20px;
-            background-color: var(--lightest-navy);
-        }
-
-        /* About section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 50px;
-        }
-
-        .about-text p {
-            margin: 0 0 15px;
-        }
-
-        .about-text a {
-            color: var(--green);
-            text-decoration: none;
-        }
-
-        .about-text a:hover,
-        .about-text a:focus {
-            text-decoration: underline;
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(140px, 200px));
-            gap: 0px 10px;
-            padding: 0;
-            margin: 20px 0 0 0;
-            overflow: hidden;
-            list-style: none;
-        }
-
-        .skills-list li {
-            position: relative;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            font-family: var(--font-mono);
-            font-size: var(--fz-xs);
-        }
-
-        .skills-list li:before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--green);
-            font-size: var(--fz-sm);
-            line-height: 12px;
-        }
-
-        .about-image {
-            position: relative;
-            max-width: 300px;
-        }
-
-        .about-image .wrapper {
-            position: relative;
-            width: 100%;
-            border-radius: var(--border-radius);
-            background-color: var(--green);
-            display: block;
-        }
-
-        .about-image .wrapper:hover,
-        .about-image .wrapper:focus {
-            outline: 0;
-        }
-
-        .about-image .wrapper:hover .face-sketch,
-        .about-image .wrapper:focus .face-sketch {
-            filter: none;
-        }
-
-        .about-image .wrapper:hover:before,
-        .about-image .wrapper:focus:before {
-            top: 15px;
-            left: 15px;
-        }
-
-        .about-image .wrapper:hover:after,
-        .about-image .wrapper:focus:after {
-            top: 15px;
-            left: 15px;
-        }
-
-        .about-image .wrapper:before,
-        .about-image .wrapper:after {
-            content: '';
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-
-        .about-image .wrapper:before {
-            top: 0;
-            left: 0;
-            background-color: var(--navy);
-            mix-blend-mode: screen;
-        }
-
-        .about-image .wrapper:after {
-            border: 2px solid var(--green);
-            top: 20px;
-            left: 20px;
-            z-index: -1;
-        }
-
-        .face-sketch {
-            position: relative;
-            border-radius: var(--border-radius);
-            mix-blend-mode: multiply;
-            filter: grayscale(100%) contrast(1);
-            transition: var(--transition);
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Animated Face Sketch SVG */
-        .face-sketch svg {
-            width: 100%;
-            height: auto;
-            border-radius: var(--border-radius);
-        }
-
-        .face-sketch path {
-            stroke: var(--navy);
-            stroke-width: 2;
-            fill: none;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: draw 3s ease-in-out forwards;
-        }
-
-        .face-sketch path:nth-child(1) { animation-delay: 0s; }
-        .face-sketch path:nth-child(2) { animation-delay: 0.2s; }
-        .face-sketch path:nth-child(3) { animation-delay: 0.4s; }
-        .face-sketch path:nth-child(4) { animation-delay: 0.6s; }
-        .face-sketch path:nth-child(5) { animation-delay: 0.8s; }
-        .face-sketch path:nth-child(6) { animation-delay: 1s; }
-        .face-sketch path:nth-child(7) { animation-delay: 1.2s; }
-        .face-sketch path:nth-child(8) { animation-delay: 1.4s; }
-
-        @keyframes draw {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        /* Experience section */
-        .jobs {
-            position: relative;
-        }
-
-        .jobs-list {
-            position: relative;
-            z-index: 3;
-            width: max-content;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
-
-        .jobs-list button {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: var(--tab-height);
-            padding: 0 20px 2px;
-            border: none;
-            border-left: 2px solid var(--lightest-navy);
-            background-color: transparent;
-            color: var(--slate);
-            font-family: var(--font-mono);
-            font-size: var(--fz-xs);
-            text-align: left;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .jobs-list button:hover,
-        .jobs-list button:focus {
-            background-color: var(--light-navy);
-            color: var(--green);
-            outline: 0;
-        }
-
-        .jobs-list button.active {
-            color: var(--green);
-            border-left-color: var(--green);
-        }
-
-        .job-content {
-            width: 100%;
-            height: auto;
-            padding-top: 10px;
-            padding-left: 30px;
-        }
-
-        .job-content h3 {
-            margin-bottom: 2px;
-            font-size: var(--fz-xxl);
-            font-weight: 500;
-            line-height: 1.3;
-            color: var(--lightest-slate);
-        }
-
-        .job-content .company {
-            color: var(--green);
-        }
-
-        .job-content .range {
-            margin-bottom: 25px;
-            color: var(--light-slate);
-            font-family: var(--font-mono);
-            font-size: var(--fz-xs);
-        }
-
-        .job-content ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            font-size: var(--fz-lg);
-        }
-
-        .job-content ul li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 10px;
-        }
-
-        .job-content ul li:before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--green);
-            font-size: var(--fz-sm);
-            line-height: 18px;
-        }
-
-        /* Projects section */
-        .projects-grid {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .project {
-            position: relative;
-            display: grid;
-            gap: 10px;
-            grid-template-columns: repeat(12, 1fr);
-            align-items: center;
-            margin-bottom: 100px;
-        }
-
-        .project:nth-of-type(odd) .project-content {
-            grid-column: 7 / -1;
-            text-align: right;
-        }
-
-        .project:nth-of-type(odd) .project-tech-list {
-            justify-content: flex-end;
-        }
-
-        .project:nth-of-type(odd) .project-tech-list li {
-            margin: 0 0 5px 20px;
-        }
-
-        .project:nth-of-type(odd) .project-links {
-            justify-content: flex-end;
-            margin-left: 0;
-            margin-right: -10px;
-        }
-
-        .project:nth-of-type(odd) .project-image {
-            grid-column: 1 / 8;
-        }
-
-        .project .project-content {
-            position: relative;
-            grid-column: 1 / 7;
-            grid-row: 1 / -1;
-        }
-
-        .project .project-overline {
-            margin: 10px 0;
-            color: var(--green);
-            font-family: var(--font-mono);
-            font-size: var(--fz-xs);
-            font-weight: 400;
-        }
-
-        .project .project-title {
-            color: var(--lightest-slate);
-            font-size: clamp(24px, 5vw, 28px);
-        }
-
-        .project .project-title a {
-            position: static;
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .project .project-title a:before {
-            content: '';
-            display: block;
-            position: absolute;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .project .project-description {
-            position: relative;
-            z-index: 2;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            background-color: var(--light-navy);
-            color: var(--light-slate);
-            font-size: var(--fz-lg);
-            margin: 20px 0;
-        }
-
-        .project .project-description a {
-            color: var(--green);
-            text-decoration: none;
-        }
-
-        .project .project-tech-list {
-            display: flex;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-            margin: 25px 0 10px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .project .project-tech-list li {
-            margin: 0 20px 5px 0;
-            color: var(--light-slate);
-            font-family: var(--font-mono);
-            font-size: var(--fz-xs);
-            white-space: nowrap;
-        }
-
-        .project .project-links {
-            display: flex;
-            align-items: center;
-            position: relative;
-            margin-top: 10px;
-            margin-left: -10px;
-            color: var(--lightest-slate);
-        }
-
-        .project .project-links a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .project .project-links a:hover,
-        .project .project-links a:focus {
-            color: var(--green);
-        }
-
-        .project .project-image {
-            grid-column: 6 / -1;
-            grid-row: 1 / -1;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project .project-image a {
-            width: 100%;
-            height: 100%;
-            background-color: var(--green);
-            border-radius: var(--border-radius);
-            vertical-align: middle;
-            text-decoration: none;
-        }
-
-        .project .project-image a:hover,
-        .project .project-image a:focus {
-            background: transparent;
-            outline: 0;
-        }
-
-        .project .project-image a:hover .img,
-        .project .project-image a:focus .img {
-            filter: none;
-            mix-blend-mode: normal;
-        }
-
-        .project .project-image a:hover:before,
-        .project .project-image a:focus:before {
-            background: transparent;
-        }
-
-        .project .project-image a:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 3;
-            transition: var(--transition);
-            background-color: var(--navy);
-            mix-blend-mode: screen;
-        }
-
-        .project .project-image .img {
-            border-radius: var(--border-radius);
-            mix-blend-mode: multiply;
-            filter: grayscale(100%) contrast(1) brightness(90%);
-            transition: var(--transition);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Contact section */
-        .contact {
-            max-width: 600px;
-            margin: 0 auto 100px;
-            text-align: center;
-        }
-
-        .contact .overline {
-            display: block;
-            margin-bottom: 20px;
-            color: var(--green);
-            font-family: var(--font-mono);
-            font-size: var(--fz-md);
-            font-weight: 400;
-        }
-
-        .contact .title {
-            font-size: clamp(40px, 5vw, 60px);
-            color: var(--lightest-slate);
-        }
-
-        .contact .email-link {
-            color: var(--green);
-            background-color: transparent;
-            border: 1px solid var(--green);
-            border-radius: var(--border-radius);
-            padding: 1.25rem 1.75rem;
-            font-size: var(--fz-sm);
-            font-family: var(--font-mono);
-            line-height: 1;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 50px;
-            display: inline-block;
-        }
-
-        .contact .email-link:hover,
-        .contact .email-link:focus {
-            background-color: var(--green-tint);
-            outline: none;
-        }
-
-        /* Footer */
-        footer {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: auto;
-            min-height: 70px;
-            padding: 15px;
-            text-align: center;
-        }
-
-        footer .social-links {
-            display: none;
-        }
-
-        footer .credit {
-            color: var(--light-slate);
-            font-family: var(--font-mono);
-            font-size: var(--fz-xxs);
-            line-height: 1;
-        }
-
-        footer .credit a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        footer .credit a:hover,
-        footer .credit a:focus {
-            color: var(--green);
-        }
-
-        /* Side elements */
-        .side-element {
-            width: 40px;
-            position: fixed;
-            bottom: 0;
-            left: 40px;
-            right: auto;
-            z-index: 10;
-            color: var(--light-slate);
-        }
-
-        .side-element.right {
-            left: auto;
-            right: 40px;
-        }
-
-        .side-element ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .side-element ul:after {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 90px;
-            background-color: var(--light-slate);
-            margin: 0 auto;
-        }
-
-        .side-element ul li {
-            margin: 0 auto 20px;
-        }
-
-        .side-element ul li:last-of-type {
-            margin-bottom: 20px;
-        }
-
-        .side-element ul li a {
-            padding: 10px;
-            color: inherit;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .side-element ul li a:hover,
-        .side-element ul li a:focus {
-            transform: translateY(-3px);
-            color: var(--green);
-        }
-
-        .side-element ul li a svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        .side-element.right a {
-            margin: 20px auto;
-            padding: 10px;
-            font-family: var(--font-mono);
-            font-size: var(--fz-xxs);
-            line-height: var(--fz-lg);
-            letter-spacing: 0.1em;
-            writing-mode: vertical-rl;
-            color: inherit;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .side-element.right a:hover,
-        .side-element.right a:focus {
-            transform: translateY(-3px);
-            color: var(--green);
-        }
-
-        /* Responsive */
-        @media (max-width: 1080px) {
-            #content {
-                padding: 0 100px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 0 40px;
-            }
-
-            #content {
-                padding: 0 50px;
-            }
-
-            .hero h2 {
-                margin: 0 0 20px;
-                font-size: clamp(40px, 8vw, 60px);
-            }
-
-            .hero h3 {
-                font-size: clamp(40px, 8vw, 60px);
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .numbered-heading:after {
-                width: 100%;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image {
-                margin: 50px auto 0;
-                width: 70%;
-            }
-
-            .project {
-                grid-template-columns: 1fr;
-                margin-bottom: 70px;
-            }
-
-            .project .project-content {
-                padding: 40px 40px 30px;
-                grid-column: 1 / -1;
-                grid-row: 1;
-                background-color: var(--light-navy);
-                border-radius: var(--border-radius);
-                z-index: 5;
-            }
-
-            .project .project-content .project-overline {
-                margin-top: 0;
-            }
-
-            .project .project-description {
-                padding: 0;
-                background-color: transparent;
-                box-shadow: none;
-            }
-
-            .project .project-tech-list {
-                justify-content: flex-start;
-            }
-
-            .project .project-tech-list li {
-                margin: 0 10px 5px 0;
-            }
-
-            .project .project-links {
-                justify-content: flex-start;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .project .project-image {
-                grid-column: 1 / -1;
-                grid-row: 1;
-                opacity: 0.25;
-                z-index: 1;
-            }
-
-            .project:nth-of-type(odd) .project-content {
-                grid-column: 1 / -1;
-                text-align: left;
-            }
-
-            .project:nth-of-type(odd) .project-tech-list {
-                justify-content: flex-start;
-            }
-
-            .project:nth-of-type(odd) .project-tech-list li {
-                margin: 0 10px 5px 0;
-            }
-
-            .project:nth-of-type(odd) .project-links {
-                justify-content: flex-start;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .project:nth-of-type(odd) .project-image {
-                grid-column: 1 / -1;
-            }
-
-            .side-element {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 0 25px;
-            }
-
-            #content {
-                padding: 0 25px;
-            }
-
-            .hero h2 {
-                font-size: clamp(30px, 8vw, 50px);
-            }
-
-            .hero h3 {
-                font-size: clamp(30px, 8vw, 50px);
-            }
-
-            .numbered-heading {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .numbered-heading:after {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-
-            .project {
-                margin-bottom: 50px;
-            }
-
-            .project .project-content {
-                padding: 30px 25px 20px;
-            }
-        }
-
-        /* Loading animation */
-        .loader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dark-slate);
-            z-index: 99;
-        }
-
-        .loader .logo {
-            width: 100px;
-            height: 100px;
-        }
-
-        body.loading {
-            overflow: hidden;
-        }
-
-        body.loading #content,
-        body.loading header,
-        body.loading .side-element {
-            visibility: hidden;
-        }
-
-        /* Fade up animation */
-        .fadeup-enter {
-            opacity: 0.01;
-            transform: translateY(20px);
-            transition: opacity 300ms var(--easing), transform 300ms var(--easing);
-        }
-
-        .fadeup-enter-active {
-            opacity: 1;
-            transform: translateY(0px);
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adedamola Adedapo · Backend &amp; ML Systems Engineer</title>
+  <meta name="description" content="Backend and ML systems engineer with 7 years of experience. I build the production infrastructure behind machine learning: data pipelines, MLOps, and the backends that serve models.">
+  <meta name="author" content="Adedamola Adedapo">
+  <link rel="canonical" href="https://ichdamola.github.io/">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Adedamola Adedapo">
+  <meta property="og:title" content="Adedamola Adedapo · Backend &amp; ML Systems Engineer">
+  <meta property="og:description" content="I build the production infrastructure that makes machine learning work: data pipelines, MLOps, and the backends that serve it.">
+  <meta property="og:url" content="https://ichdamola.github.io/">
+  <meta property="og:image" content="https://ichdamola.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Illustrated portrait of Adedamola Adedapo beside the title Backend and ML Systems Engineer">
+  <meta property="profile:first_name" content="Adedamola">
+  <meta property="profile:last_name" content="Adedapo">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Adedamola Adedapo · Backend &amp; ML Systems Engineer">
+  <meta name="twitter:description" content="I build the production infrastructure that makes machine learning work: data pipelines, MLOps, and the backends that serve it.">
+  <meta name="twitter:image" content="https://ichdamola.github.io/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Illustrated portrait of Adedamola Adedapo beside the title Backend and ML Systems Engineer">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Bump ?v= whenever styles.css changes so browsers fetch the new file instead of a cached one. -->
+  <link rel="stylesheet" href="styles.css?v=2026-10-01i">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adedamola Adedapo",
+    "url": "https://ichdamola.github.io/",
+    "image": "https://ichdamola.github.io/assets/portrait-480.png",
+    "jobTitle": "Backend & ML Systems Engineer",
+    "email": "mailto:adedamola.adedapo1@gmail.com",
+    "address": { "@type": "PostalAddress", "addressCountry": "NG" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Obafemi Awolowo University" },
+    "sameAs": [
+      "https://github.com/ichdamola",
+      "https://www.linkedin.com/in/adedamolaadedapo"
+    ],
+    "knowsAbout": [
+      "Python", "Go", "FastAPI", "Django", "PostgreSQL", "Redis Streams", "Kafka", "RabbitMQ",
+      "Airflow", "Prefect", "MLOps", "scikit-learn", "Optuna", "Kubernetes", "Helm", "ArgoCD",
+      "AWS", "GCP", "OpenTelemetry", "FHIR"
+    ]
+  }
+  </script>
 </head>
-
 <body>
-    <a class="skip-to-content" href="#content">Skip to Content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="loader" id="loader">
-        <div class="logo">
-            <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                <title>Logo</title>
-                <g>
-                    <g id="A" transform="translate(11.000000, 5.000000)">
-                        <path d="M45.691667,45.15 C48.591667,46.1 50.691667,48.95 50.691667,52.2 C50.691667,57.95 46.691667,61 40.291667,61 L28.541667,61 L28.541667,30.3 L39.291667,30.3 C45.691667,30.3 49.691667,33.15 49.691667,38.65 C49.691667,41.95 48.041667,44.35 45.691667,45.15 Z M33.591667,43.2 L39.241667,43.2 C42.791667,43.2 44.691667,41.85 44.691667,38.95 C44.691667,36.05 42.791667,34.8 39.241667,34.8 L33.591667,34.8 L33.591667,43.2 Z M33.591667,47.5 L33.591667,56.5 L40.191667,56.5 C44.591667,56.5 45.691667,54.75 45.691667,52 C45.691667,49.2 44.591667,47.5 40.191667,47.5 L33.591667,47.5 Z" fill="currentColor"/>
-                    </g>
-                    <path stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M 50, 5 L 11, 27 L 11, 72 L 50, 95 L 89, 73 L 89, 28 z"/>
-                </g>
-            </svg>
-        </div>
-    </div>
-
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="/" aria-label="home">A</a>
-            </div>
-        </nav>
-
-        <div class="menu">
-            <ol class="nav-list">
-                <li><a href="#about">About</a></li>
-                <li><a href="#jobs">Experience</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ol>
-            <a href="/assets/adedamola-cv.pdf" class="resume-button" target="_blank" rel="noopener noreferrer">Resume</a>
-        </div>
-    </header>
-
-    <div id="content">
-        <!-- Hero -->
-        <section class="hero">
-            <h1>Hi, my name is</h1>
-            <h2>Adedamola Adedapo.</h2>
-            <h3>I design and secure cloud infrastructure.</h3>
-            <p>
-                I'm a Platform & DevSecOps Engineer with 6+ years of experience designing, securing, and scaling cloud infrastructure and backend systems. I specialize in Terraform, AWS, Kubernetes, and automation, with a passion for building robust, secure, and efficient platforms.
-            </p>
-            <a class="email-link" href="mailto:adedamola.adedapo1@gmail.com" target="_blank" rel="noopener noreferrer">Get In Touch</a>
-        </section>
-
-        <!-- About -->
-        <section id="about">
-            <h2 class="numbered-heading">About Me</h2>
-            <div class="about-content">
-                <div>
-                    <div class="about-text">
-                        <p>
-                            I'm a Platform & DevSecOps Engineer with <strong>6+ years' experience</strong> specializing in designing, securing, and scaling cloud infrastructure. I have expertise in Terraform, AWS, Kubernetes, Docker, and CI/CD pipelines, with a proven track record of improving system reliability and automation.
-                        </p>
-                        <p>
-                            My recent work includes enforcing security policies, implementing infrastructure as code, and building fault-tolerant systems. I'm passionate about <a href="https://www.terraform.io/" target="_blank" rel="noopener noreferrer">Infrastructure as Code</a> and creating secure, scalable platforms that enable teams to deploy with confidence.
-                        </p>
-                        <p>
-                            Here are a few technologies I've been working with recently:
-                        </p>
-                    </div>
-                    <ul class="skills-list">
-                        <li>Terraform</li>
-                        <li>AWS (EC2, RDS, S3)</li>
-                        <li>Kubernetes</li>
-                        <li>Docker</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Python</li>
-                        <li>Prometheus & Grafana</li>
-                        <li>GitLab/GitHub Actions</li>
-                        <li>PostgreSQL</li>
-                        <li>Bash</li>
-                    </ul>
-                </div>
-                <div class="about-image">
-                    <div class="wrapper">
-                        <div class="face-sketch">
-                            <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Face outline -->
-                                <path d="M80 100 Q80 50 150 50 Q220 50 220 100 L220 250 Q220 320 150 320 Q80 320 80 250 Z"/>
-                                <!-- Left eye -->
-                                <path d="M110 130 Q125 120 140 130 Q125 140 110 130"/>
-                                <!-- Right eye -->
-                                <path d="M160 130 Q175 120 190 130 Q175 140 160 130"/>
-                                <!-- Nose -->
-                                <path d="M150 150 L145 170 L150 180 L155 170 Z"/>
-                                <!-- Mouth -->
-                                <path d="M130 210 Q150 220 170 210"/>
-                                <!-- Beard outline -->
-                                <path d="M100 240 Q150 280 200 240 Q200 290 150 300 Q100 290 100 240"/>
-                                <!-- Hair -->
-                                <path d="M85 100 Q80 80 90 70 Q110 50 150 50 Q190 50 210 70 Q220 80 215 100"/>
-                                <!-- Neck -->
-                                <path d="M140 320 L140 380 L160 380 L160 320"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Jobs -->
-        <section id="jobs">
-            <h2 class="numbered-heading">Where I've Worked</h2>
-            <div class="jobs">
-                <div class="job-content">
-                    <div>
-                        <h3>
-                            <span>DevSecOps Engineer</span>
-                            <span class="company">
-                                &nbsp;@&nbsp;
-                                <a href="#" target="_blank" rel="noopener noreferrer">Nomad Internet</a>
-                            </span>
-                        </h3>
-                        <p class="range">December 2024 - September 2025</p>
-                        <div>
-                            <ul>
-                                <li>Developed and enforced internal security policies, reducing access risks and improving compliance</li>
-                                <li>Hardened server infrastructure and successfully mitigated a live brute-force SSH attack, preserving uptime</li>
-                                <li>Spearheaded centralized access controls with SSO, MFA, and RBAC, enforcing least-privilege access</li>
-                                <li>Integrated SAST/DAST into GitLab CI/CD pipelines, enabling early vulnerability detection</li>
-                                <li>Deployed real-time security monitoring with Prometheus and Grafana for faster threat detection</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 50px;">
-                        <h3>
-                            <span>Platform Engineering Lead</span>
-                            <span class="company">
-                                &nbsp;@&nbsp;
-                                <a href="#" target="_blank" rel="noopener noreferrer">Uburu Technology Platforms</a>
-                            </span>
-                        </h3>
-                        <p class="range">December 2024 - November 2025</p>
-                        <div>
-                            <ul>
-                                <li>Migrated workloads to AWS using Terraform and IaC, cutting costs by 20% and improving resilience</li>
-                                <li>Built fault-tolerant OCR + ETL pipelines for 50k+ records with monitoring and error handling</li>
-                                <li>Designed observability solutions with Prometheus + Grafana, reducing troubleshooting time by 35%</li>
-                                <li>Implemented CI/CD pipelines (GitLab/GitHub Actions), streamlining deployments and reducing risks</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 50px;">
-                        <h3>
-                            <span>Backend Engineer</span>
-                            <span class="company">
-                                &nbsp;@&nbsp;
-                                <a href="#" target="_blank" rel="noopener noreferrer">Umba</a>
-                            </span>
-                        </h3>
-                        <p class="range">March 2023 - January 2024</p>
-                        <div>
-                            <ul>
-                                <li>Automated loan repayment workflows on AWS, improving system reliability by 30%</li>
-                                <li>Built data quality monitoring and alerting pipelines, cutting production issues by 40%</li>
-                                <li>Optimized backend and cloud infrastructure for large-scale data processing, lowering costs</li>
-                                <li>Applied DevOps practices (CI/CD, observability) to strengthen backend operations</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 50px;">
-                        <h3>
-                            <span>Head of Engineering</span>
-                            <span class="company">
-                                &nbsp;@&nbsp;
-                                <a href="#" target="_blank" rel="noopener noreferrer">Sendme.ng</a>
-                            </span>
-                        </h3>
-                        <p class="range">March 2022 - January 2023</p>
-                        <div>
-                            <ul>
-                                <li>Scaled backend and infrastructure to support 200k+ monthly users with <100ms API latency</li>
-                                <li>Introduced CI/CD pipelines and SRE practices, halving MTTR and improving release quality</li>
-                                <li>Managed high-availability AWS deployments (EC2, S3, SNS) with Docker containerization</li>
-                                <li>Directed engineering team operations, authored runbooks, and conducted post-incident reviews</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects">
-            <h2 class="numbered-heading">Some Things I've Built</h2>
-            <ul class="projects-grid">
-                <li class="project">
-                    <div class="project-content">
-                        <div>
-                            <p class="project-overline">Featured Project</p>
-                            <h3 class="project-title">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Cloud Security Infrastructure</a>
-                            </h3>
-                            <div class="project-description">
-                                <p>
-                                    Built comprehensive security infrastructure with centralized access controls, SSO, MFA, and RBAC implementation. Integrated automated security scanning into CI/CD pipelines and deployed real-time monitoring systems for threat detection.
-                                </p>
-                            </div>
-                            <ul class="project-tech-list">
-                                <li>Terraform</li>
-                                <li>AWS</li>
-                                <li>Kubernetes</li>
-                                <li>GitLab CI/CD</li>
-                                <li>Prometheus</li>
-                                <li>Grafana</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="#" aria-label="GitHub Link" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-image">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--green), var(--blue)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-lg); font-weight: 600;">
-                                Security Platform
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="project">
-                    <div class="project-content">
-                        <div>
-                            <p class="project-overline">Featured Project</p>
-                            <h3 class="project-title">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Healthcare Data Pipeline</a>
-                            </h3>
-                            <div class="project-description">
-                                <p>
-                                    Developed fault-tolerant OCR and ETL pipelines processing 50k+ medical records with comprehensive monitoring and error handling. Implemented Infrastructure as Code patterns for scalable, maintainable deployments.
-                                </p>
-                            </div>
-                            <ul class="project-tech-list">
-                                <li>Python</li>
-                                <li>AWS</li>
-                                <li>Terraform</li>
-                                <li>Docker</li>
-                                <li>PostgreSQL</li>
-                                <li>Kubernetes</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="#" aria-label="GitHub Link" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-image">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--blue), var(--green)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-lg); font-weight: 600;">
-                                Data Pipeline
-                            </div>
-                        </a>
-                    </div>
-                </li>
-
-                <li class="project">
-                    <div class="project-content">
-                        <div>
-                            <p class="project-overline">Featured Project</p>
-                            <h3 class="project-title">
-                                <a href="#" target="_blank" rel="noopener noreferrer">E-commerce Infrastructure</a>
-                            </h3>
-                            <div class="project-description">
-                                <p>
-                                    Architected and optimized cloud infrastructure to support 200k+ concurrent users with sub-100ms latency. Implemented comprehensive CI/CD pipelines and SRE practices, halving MTTR and improving release quality.
-                                </p>
-                            </div>
-                            <ul class="project-tech-list">
-                                <li>AWS EC2</li>
-                                <li>Docker</li>
-                                <li>CI/CD</li>
-                                <li>PostgreSQL</li>
-                                <li>Monitoring</li>
-                                <li>Load Balancing</li>
-                            </ul>
-                            <div class="project-links">
-                                <a href="#" aria-label="GitHub Link" target="_blank" rel="noopener noreferrer">
-                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-image">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--pink), var(--green)); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--navy); font-family: var(--font-mono); font-size: var(--fz-lg); font-weight: 600;">
-                                Cloud Infrastructure
-                            </div>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="contact">
-            <h2 class="numbered-heading overline">What's Next?</h2>
-            <h2 class="title">Get In Touch</h2>
-            <p>
-                I'm always open to discussing new opportunities, whether that's a full-time position, consulting work, or just a chat about technology. My inbox is always open, so feel free to reach out if you have any questions or just want to say hi!
-            </p>
-            <a class="email-link" href="mailto:adedamola.adedapo1@gmail.com">Say Hello</a>
-        </section>
-    </div>
-
-    <!-- Social -->
-    <div class="side-element">
-        <ul>
-            <li>
-                <a href="https://github.com/ichdamola" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <title>GitHub</title>
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="https://linkedin.com/in/adedamola-adedapo" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <title>LinkedIn</title>
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-            </li>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="#top">Adedamola Adedapo</a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="notes/">Notes</a></li>
+          <li><a href="#contact">Say hello</a></li>
         </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Email -->
-    <div class="side-element right">
-        <a href="mailto:adedamola.adedapo1@gmail.com">adedamola.adedapo1@gmail.com</a>
-    </div>
-
-    <footer>
-        <div class="credit">
-            <p>Designed & Built by Adedamola Adedapo</p>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero wrap" id="top" aria-labelledby="hero-title">
+      <div class="hero-photo">
+        <div class="frame">
+          <svg class="sparkles" aria-hidden="true" focusable="false" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><path d="M22 6 L25 18 L37 21 L25 24 L22 36 L19 24 L7 21 L19 18 Z"/><path d="M46 36 L48 43 L55 45 L48 47 L46 54 L44 47 L37 45 L44 43 Z"/><circle cx="50" cy="14" r="2.5" fill="currentColor" stroke="none"/></svg>
+          <div class="portrait">
+            <picture>
+              <source type="image/webp" srcset="assets/portrait-320.webp 320w, assets/portrait-480.webp 480w" sizes="(min-width: 40rem) 17rem, 9.5rem">
+              <img src="assets/portrait-480.png" width="480" height="480" alt="Illustrated portrait of Adedamola Adedapo" fetchpriority="high">
+            </picture>
+            <svg class="scribble" aria-hidden="true" focusable="false" viewBox="0 0 480 480" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g class="lines" opacity="0.9"><path id="sc0" d="M0.0 440.4 L0.8 439.9 L2.5 438.8 L5.1 437.2 L8.5 435.0 L13.4 432.0 L20.0 428.3 L28.3 423.8 L38.1 418.6 L46.2 414.1 L52.5 410.3 L57.1 407.4 L60.0 405.2 L63.0 402.6 L66.0 399.5 L69.0 396.0 L72.0 392.1 L75.4 388.5 L79.0 385.4 L82.9 382.6 L87.0 380.2 L90.6 377.2 L93.7 373.7 L96.2 369.5 L98.2 364.9 L100.5 359.6 L103.3 353.7 L106.5 347.2 L110.1 340.1 L113.0 334.7 L115.1 331.1 L116.4 329.3 L117.0 329.2 L117.7 329.3 L118.6 329.7 L119.6 330.4 L120.8 331.3 L121.9 331.9 L122.7 332.3 L123.4 332.4 L124.0 332.3 L124.4 332.1 L124.8 331.9 L125.1 331.6 L125.4 331.3 L125.5 329.8 L125.5 327.1 L125.3 323.2 L125.0 318.2 L124.8 313.1 L124.7 307.9 L124.6 302.5 L124.6 297.1 L124.7 292.1 L124.8 287.7 L125.0 283.8 L125.3 280.4 L125.2 277.4 L124.8 274.8 L124.1 272.6 L123.0 270.7 L121.7 268.8 L119.9 266.8 L117.9 264.7 L115.5 262.5 L113.5 260.4 L111.9 258.5 L110.6 256.7 L109.7 255.1 L108.8 252.9 L107.7 250.2 L106.7 246.9 L105.5 243.1 L104.5 239.1 L103.6 234.8 L102.8 230.3 L102.1 225.7 L101.7 220.7 L101.6 215.5 L101.8 210.1 L102.3 204.4 L102.8 200.1 L103.3 197.0 L103.8 195.3 L104.4 194.9 L105.0 194.6 L105.8 194.2 L106.8 194.0 L107.9 193.7 L109.2 193.6 L110.7 193.7 L112.5 194.0 L114.4 194.4 L116.0 194.6 L117.2 194.6 L118.1 194.3 L118.6 193.7 L118.8 190.7 L118.8 185.2 L118.5 177.3 L117.9 167.0 L117.4 158.6 L116.9 152.3 L116.5 148.0 L116.1 145.7 L115.7 143.4 L115.5 141.2 L115.4 139.0 L115.3 136.8 L115.4 134.5 L115.5 132.2 L115.8 129.8 L116.2 127.3 L116.4 125.0 L116.5 123.1 L116.4 121.4 L116.2 119.9 L116.2 117.9 L116.5 115.3 L117.0 112.1 L117.8 108.3 L118.9 104.5 L120.2 100.6 L121.9 96.8 L123.9 93.0 L126.0 89.4 L128.2 86.1 L130.4 83.0 L132.7 80.1 L135.3 77.0 L138.3 73.8 L141.5 70.4 L145.1 66.8 L149.9 62.8 L155.9 58.5 L163.0 53.8 L171.3 48.8 L177.8 44.9 L182.6 42.3 L185.7 40.9 L187.0 40.7 L188.8 40.3 L191.2 39.6 L194.2 38.7 L197.7 37.5 L200.7 36.5 L203.3 35.8 L205.5 35.4 L207.3 35.1 L209.2 34.8 L211.4 34.2 L213.8 33.5 L216.4 32.6 L219.0 31.9 L221.6 31.4 L224.1 31.1 L226.6 31.0 L229.5 31.1 L232.6 31.4 L236.1 31.9 L239.9 32.6 L244.3 33.3 L249.1 33.9 L254.3 34.4 L260.1 34.9 L265.7 35.7 L271.2 36.8 L276.5 38.2 L281.6 39.9 L285.9 41.2 L289.4 42.2 L292.1 42.8 L293.9 43.0 L295.6 43.5 L297.2 44.1 L298.5 45.0 L299.7 46.0 L301.4 47.2 L303.5 48.5 L306.1 49.9 L309.2 51.4 L312.6 53.6 L316.4 56.4 L320.6 60.0 L325.2 64.2 L329.0 68.0 L332.0 71.3 L334.1 74.2 L335.5 76.6 L336.7 79.0 L337.6 81.2 L338.3 83.4 L338.8 85.5 L339.4 87.5 L340.2 89.6 L341.2 91.7 L342.4 93.8 L343.7 96.8 L345.2 100.7 L346.9 105.5 L348.7 111.3 L350.3 116.0 L351.6 119.5 L352.6 122.0 L353.3 123.3 L354.2 125.8 L355.3 129.4 L356.7 134.2 L358.2 140.2 L359.6 147.4 L360.8 155.6 L361.9 164.9 L362.8 175.4 L363.3 184.9 L363.4 193.5 L363.2 201.1 L362.5 207.8 L362.4 214.3 L362.7 220.7 L363.5 226.9 L364.8 233.0 L365.8 238.3 L366.5 242.7 L367.0 246.3 L367.2 249.0 L367.3 252.2 L367.1 256.0 L366.9 260.3 L366.4 265.1 L365.9 269.8 L365.2 274.4 L364.5 279.0 L363.6 283.5 L362.7 287.2 L362.0 290.3 L361.4 292.6 L360.8 294.3 L360.5 295.8 L360.3 297.3 L360.4 298.7 L360.6 300.0 L360.6 301.3 L360.3 302.6 L359.8 303.9 L359.0 305.2 L358.3 306.7 L357.8 308.3 L357.4 310.0 L357.0 311.8 L356.7 313.5 L356.2 315.0 L355.7 316.3 L355.2 317.4 L354.6 319.2 L354.0 321.9 L353.4 325.4 L352.9 329.6 L352.6 333.8 L352.7 337.9 L353.2 341.9 L354.0 345.8 L354.6 349.6 L354.8 353.1 L354.7 356.5 L354.4 359.6 L354.2 362.6 L354.3 365.5 L354.6 368.3 L355.1 370.9 L355.4 373.2 L355.6 375.2 L355.7 377.0 L355.6 378.4 L355.3 379.7 L355.0 380.8 L354.6 381.8 L354.0 382.7 L353.1 383.7 L351.9 384.7 L350.3 385.9 L348.4 387.1 L346.9 388.3 L345.8 389.5 L345.0 390.6 L344.7 391.6 L344.1 392.6 L343.4 393.6 L342.4 394.6 L341.2 395.5 L340.0 396.2 L338.6 396.5 L337.2 396.5 L335.7 396.2 L334.2 396.0 L332.9 396.0 L331.6 396.1 L330.4 396.3 L328.7 396.8 L326.5 397.7 L323.8 398.9 L320.7 400.4 L317.9 401.5 L315.7 402.2 L313.8 402.6 L312.4 402.6 L311.1 402.8 L310.0 403.2 L308.9 403.8 L308.1 404.6 L307.2 405.2 L306.2 405.8 L305.3 406.2 L304.3 406.4 L302.9 406.5 L301.0 406.3 L298.6 406.0 L295.7 405.5 L293.5 405.1 L292.0 404.9 L291.1 404.9 L290.8 405.1 L290.5 405.4 L290.2 405.9 L290.0 406.5 L289.7 407.3 L289.3 407.9 L288.7 408.2 L288.0 408.4 L287.1 408.3 L286.3 408.4 L285.6 408.5 L285.0 408.8 L284.5 409.2 L284.0 409.9 L283.5 410.9 L283.1 412.2 L282.8 413.8 L282.8 416.0 L283.2 418.7 L283.9 421.9 L285.0 425.6 L286.1 429.8 L287.1 434.5 L288.1 439.8 L289.0 445.6 L289.7 450.4 L290.1 454.3 L290.4 457.2 L290.3 459.2 L290.2 460.9 L290.0 462.5 L289.6 463.9 L289.1 465.1 L288.7 466.5 L288.5 468.0 L288.4 469.7 L288.4 471.5 L288.3 473.3 L288.2 474.8 L288.0 476.3 L287.8 477.6 L287.6 478.6 L287.4 479.2 L287.4 479.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="0.80s" dur="2.24s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc1" d="M223.8 32.7 L227.3 32.6 L230.7 32.7 L233.9 32.9 L237.0 33.3 L239.9 33.8 L243.8 34.4 L248.5 35.0 L254.2 35.7 L260.7 36.4 L266.5 37.2 L271.4 38.1 L275.6 39.2 L279.0 40.3 L282.1 41.2 L285.0 42.0 L287.7 42.6 L290.1 43.1 L293.0 44.1 L296.5 45.6 L300.5 47.6 L305.1 50.2 L309.1 52.6 L312.5 54.8 L315.3 56.9 L317.5 58.7 L319.8 60.9 L322.4 63.4 L325.1 66.3 L328.0 69.4 L330.4 72.3 L332.3 74.8 L333.7 77.0 L334.5 78.8 L335.3 80.9 L336.0 83.1 L336.7 85.5 L337.4 88.1 L338.1 90.5 L339.0 92.6 L340.1 94.4 L341.3 95.9 L342.2 97.4 L342.9 98.8 L343.3 100.1 L343.5 101.5 L343.9 102.9 L344.4 104.5 L345.2 106.2 L346.0 108.1 L346.7 109.7 L347.3 111.2 L347.6 112.5 L347.7 113.6 L347.7 114.5 L347.7 115.2 L347.5 115.6 L347.3 115.9 L346.9 116.0 L346.2 115.8 L345.4 115.3 L344.5 114.7 L343.3 113.6 L342.0 112.0 L340.6 110.1 L339.0 107.8 L337.5 105.8 L336.0 104.2 L334.6 103.0 L333.2 102.2 L332.0 101.3 L330.8 100.4 L329.7 99.4 L328.7 98.4 L327.8 97.5 L326.8 96.8 L325.8 96.3 L324.8 95.9 L323.8 95.7 L322.9 95.5 L321.9 95.3 L320.9 95.3 L319.9 95.0 L318.8 94.7 L317.6 94.2 L316.4 93.6 L315.2 93.1 L314.1 92.8 L313.0 92.7 L311.9 92.8 L310.6 92.7 L309.1 92.4 L307.5 91.8 L305.6 91.1 L303.8 90.4 L302.0 89.9 L300.2 89.4 L298.5 89.0 L296.7 88.9 L295.0 89.0 L293.2 89.3 L291.5 89.9 L289.2 90.1 L286.3 89.9 L282.8 89.4 L278.8 88.4 L275.4 87.8 L272.6 87.4 L270.4 87.4 L268.9 87.6 L267.3 87.7 L265.6 87.8 L263.8 87.7 L262.0 87.7 L260.0 87.7 L257.9 88.0 L255.6 88.5 L253.2 89.1 L251.2 89.5 L249.5 89.8 L248.1 89.9 L247.1 89.9 L245.1 90.4 L242.1 91.5 L238.0 93.1 L232.9 95.3 L228.7 96.9 L225.6 97.9 L223.5 98.3 L222.4 98.2 L220.6 98.4 L218.0 99.0 L214.6 99.8 L210.4 101.0 L207.0 101.8 L204.3 102.3 L202.3 102.4 L200.9 102.2 L199.7 102.2 L198.5 102.2 L197.3 102.5 L196.3 102.8 L195.2 103.3 L194.2 103.8 L193.3 104.5 L192.4 105.2 L191.6 105.9 L190.9 106.7 L190.3 107.5 L189.7 108.3 L189.3 109.6 L189.0 111.3 L188.8 113.5 L188.7 116.1 L188.5 118.3 L188.2 120.1 L187.7 121.5 L187.0 122.5 L186.4 123.5 L185.9 124.6 L185.5 125.8 L185.1 127.1 L184.7 128.3 L184.1 129.2 L183.4 130.1 L182.7 130.7 L182.0 131.3 L181.5 131.6 L181.0 131.8 L180.7 131.8 L180.3 131.8 L179.7 131.6 L179.1 131.4 L178.3 131.0 L177.5 131.0 L176.5 131.1 L175.5 131.6 L174.4 132.3 L173.4 132.9 L172.5 133.3 L171.7 133.6 L170.9 133.7 L170.3 133.9 L169.8 134.0 L169.4 134.3 L169.2 134.5 L168.9 135.0 L168.6 135.7 L168.3 136.6 L167.9 137.8 L167.7 138.8 L167.7 139.6 L167.9 140.1 L168.3 140.4 L168.7 140.5 L169.2 140.4 L169.7 140.2 L170.2 139.8 L170.7 139.6 L171.0 139.7 L171.3 140.0 L171.4 140.5 L171.5 141.1 L171.4 141.6 L171.3 142.1 L171.0 142.5 L170.7 142.9 L170.2 143.2 L169.7 143.4 L169.1 143.4 L168.6 143.6 L168.3 144.0 L168.1 144.4 L168.1 144.9 L168.2 145.4 L168.4 145.9 L168.6 146.3 L168.9 146.6 L169.2 146.9 L169.5 147.2 L169.8 147.3 L170.1 147.4 L170.6 147.3 L171.4 147.1 L172.3 146.7 L173.3 146.1 L174.2 145.8 L174.9 145.6 L175.3 145.6 L175.6 145.9 L175.7 146.1 L175.8 146.4 L175.8 146.7 L175.7 147.0 L175.3 147.5 L174.5 148.1 L173.5 148.9 L172.2 149.8 L171.1 150.5 L170.2 151.0 L169.5 151.3 L169.1 151.3 L168.4 151.0 L167.6 150.3 L166.5 149.3 L165.2 147.8 L164.2 146.6 L163.5 145.4 L163.2 144.4 L163.1 143.5 L163.0 142.9 L162.8 142.4 L162.5 142.0 L162.1 141.9 L161.7 142.0 L161.4 142.2 L161.1 142.7 L160.8 143.4 L160.7 144.3 L160.8 145.5 L161.1 146.9 L161.6 148.5 L161.9 150.0 L161.8 151.4 L161.4 152.6 L160.8 153.7 L160.0 154.7 L159.1 155.7 L158.0 156.6 L156.8 157.5 L155.7 158.1 L154.9 158.6 L154.3 158.8 L153.8 158.8 L153.4 158.7 L153.0 158.4 L152.6 158.1 L152.2 157.7 L152.1 157.2 L152.2 156.7 L152.7 156.1 L153.5 155.5 L154.0 154.9 L154.5 154.4 L154.7 154.0 L154.8 153.7 L154.8 153.3 L154.8 153.1 L154.6 152.8 L154.4 152.6 L154.1 152.4 L153.7 152.4 L153.2 152.4 L152.7 152.5 L152.1 152.7 L151.5 153.0 L150.8 153.3 L150.1 153.8 L149.5 154.3 L148.9 154.8 L148.4 155.3 L148.0 155.8 L147.7 156.3 L147.6 156.8 L147.5 157.1 L147.6 157.5 L147.9 157.9 L148.2 158.3 L148.6 158.8 L149.2 159.3 L149.6 159.8 L149.9 160.3 L150.0 160.6 L150.0 161.0 L149.9 161.2 L149.8 161.5 L149.6 161.7 L149.3 161.8 L148.8 161.9 L148.2 161.8 L147.5 161.7 L146.6 161.5 L145.9 161.4 L145.3 161.4 L144.8 161.5 L144.5 161.6 L144.3 161.9 L144.2 162.3 L144.3 162.7 L144.5 163.3 L144.6 163.9 L144.6 164.6 L144.6 165.4 L144.5 166.3 L144.5 167.1 L144.8 168.0 L145.2 168.9 L145.8 169.7 L146.0 170.7 L145.8 171.8 L145.2 173.0 L144.3 174.3 L143.6 175.4 L143.2 176.1 L143.1 176.6 L143.3 176.8 L143.7 176.9 L144.2 176.9 L144.9 176.8 L145.7 176.6 L146.5 176.4 L147.0 176.4 L147.4 176.4 L147.6 176.6 L147.7 176.8 L147.8 177.1 L147.8 177.4 L147.7 177.8 L147.4 178.3 L147.0 178.9 L146.5 179.5 L145.9 180.1 L145.6 180.8 L145.7 181.4 L146.0 182.1 L146.8 182.7 L147.4 183.4 L147.8 184.1 L148.0 184.9 L148.1 185.6 L148.3 186.4 L148.5 187.1 L148.8 187.9 L149.2 188.7 L149.3 189.8 L149.2 191.3 L148.7 193.1 L148.0 195.3 L147.7 197.2 L147.8 198.9 L148.2 200.3 L149.1 201.5 L149.6 202.7 L150.0 203.7 L150.0 204.7 L149.8 205.5 L149.7 206.4 L149.7 207.3 L149.7 208.1 L149.9 209.0 L149.9 209.7 L149.8 210.3 L149.6 210.6 L149.3 210.9 L148.9 210.9 L148.4 210.9 L147.7 210.7 L147.0 210.4 L146.3 209.7 L145.6 208.7 L144.8 207.3 L144.0 205.5 L143.2 204.1 L142.5 202.9 L141.9 202.1 L141.4 201.5 L140.9 201.1 L140.5 200.9 L140.2 200.9 L139.9 201.0 L139.8 201.3 L139.6 201.7 L139.5 202.3 L139.4 203.1 L139.2 203.7 L139.1 204.3 L138.9 204.7 L138.7 205.0 L138.3 205.3 L137.7 205.6 L136.9 205.9 L135.9 206.2 L135.0 206.5 L134.1 206.9 L133.4 207.5 L132.7 208.1 L132.1 208.7 L131.7 209.2 L131.5 209.7 L131.4 210.1 L131.4 210.7 L131.5 211.3 L131.8 212.1 L132.1 212.9 L132.5 214.2 L133.0 215.8 L133.4 217.7 L133.9 220.0 L134.2 222.1 L134.4 224.1 L134.4 225.9 L134.3 227.5 L134.1 229.2 L133.7 231.0 L133.3 232.9 L132.7 234.9 L132.4 236.5 L132.2 237.7 L132.2 238.6 L132.4 239.2 L132.8 239.8 L133.4 240.6 L134.3 241.5 L135.4 242.5 L136.5 243.8 L137.6 245.6 L138.6 247.7 L139.7 250.2 L140.6 252.3 L141.5 254.0 L142.3 255.3 L142.9 256.1 L143.5 257.1 L144.2 258.2 L144.8 259.4 L145.4 260.7 L145.9 262.0 L146.4 263.3 L146.7 264.7 L146.9 266.0 L147.0 267.3 L147.0 268.7 L146.8 270.1 L146.5 271.5 L146.3 273.1 L146.2 274.9 L146.3 276.9 L146.5 279.1 L146.6 281.6 L146.6 284.4 L146.5 287.6 L146.3 291.1 L146.2 294.7 L146.2 298.5 L146.3 302.5 L146.6 306.7 L146.9 310.3 L147.4 313.3 L147.9 315.9 L148.6 317.9 L149.5 319.9 L150.5 321.9 L151.7 324.0 L153.1 326.0 L154.2 327.5 L155.1 328.6 L155.7 329.2 L156.1 329.4 L156.5 329.4 L156.8 329.4 L157.2 329.4 L157.5 329.2 L157.9 328.9 L158.4 328.3 L159.0 327.5 L159.7 326.6 L160.2 325.6 L160.6 324.5 L160.9 323.5 L161.0 322.4 L160.9 321.3 L160.7 320.2 L160.3 319.1 L159.7 318.0 L159.2 317.0 L158.8 316.1 L158.6 315.4 L158.4 314.7 L158.4 314.0 L158.4 313.2 L158.5 312.3 L158.7 311.3 L158.9 310.3 L158.9 309.3 L159.0 308.3 L158.9 307.4 L159.0 306.4 L159.3 305.4 L159.7 304.4 L160.2 303.4 L160.3 302.1 L160.0 300.5 L159.3 298.5 L158.2 296.2 L157.4 294.2 L157.0 292.3 L157.0 290.7 L157.3 289.3 L157.7 288.0 L158.2 286.9 L158.7 286.0 L159.3 285.2 L159.7 284.5 L159.8 283.8 L159.7 283.2 L159.4 282.7 L159.1 282.1 L158.8 281.4 L158.7 280.7 L158.5 280.0 L158.2 279.0 L157.8 278.0 L157.1 276.7 L156.3 275.3 L155.6 274.0 L155.1 272.8 L154.8 271.7 L154.7 270.7 L154.4 269.7 L154.0 268.7 L153.4 267.8 L152.7 266.8 L152.3 265.6 L152.0 264.3 L152.0 262.9 L152.2 261.2 L152.2 259.7 L152.1 258.3 L151.8 257.0 L151.3 255.8 L151.0 254.6 L151.0 253.4 L151.2 252.2 L151.6 251.0 L151.8 249.6 L151.7 248.2 L151.4 246.5 L150.8 244.8 L150.4 243.2 L150.0 241.6 L149.8 240.2 L149.6 238.9 L149.6 237.6 L149.7 236.3 L149.8 235.0 L150.0 233.7 L150.3 232.6 L150.7 231.8 L151.1 231.2 L151.6 230.8 L152.1 230.7 L152.7 230.8 L153.4 231.1 L154.2 231.7 L154.9 232.6 L155.6 233.7 L156.2 235.2 L156.8 236.9 L157.4 238.5 L158.1 239.8 L158.9 240.9 L159.7 241.7 L160.3 242.6 L160.8 243.5 L161.1 244.4 L161.3 245.2 L161.6 246.0 L162.0 246.7 L162.6 247.3 L163.4 247.9 L164.2 248.7 L165.2 249.9 L166.2 251.5 L167.4 253.3 L168.5 254.9 L169.7 256.2 L170.8 257.2 L172.0 257.9 L172.9 258.6 L173.5 259.4 L174.0 260.3 L174.2 261.3 L174.5 262.0 L174.9 262.6 L175.5 263.1 L176.1 263.3 L176.7 263.6 L177.2 264.0 L177.7 264.5 L178.0 265.1 L178.3 265.5 L178.7 265.8 L179.1 265.9 L179.5 265.8 L179.9 265.6 L180.2 265.2 L180.5 264.7 L180.7 264.0 L181.0 263.5 L181.3 263.0 L181.6 262.7 L181.9 262.4 L182.4 262.4 L183.1 262.4 L184.0 262.7 L185.1 263.0 L186.3 263.3 L187.5 263.4 L188.7 263.4 L190.0 263.2 L191.5 263.3 L193.0 263.7 L194.6 264.2 L196.4 265.1 L197.9 265.7 L199.4 266.1 L200.6 266.2 L201.7 266.1 L202.7 266.2 L203.6 266.3 L204.5 266.6 L205.3 267.0 L206.0 267.3 L206.7 267.4 L207.4 267.5 L208.0 267.4 L208.6 267.5 L209.0 267.6 L209.3 267.7 L209.5 268.0 L209.6 268.4 L209.6 268.9 L209.6 269.5 L209.5 270.3 L209.4 270.9 L209.5 271.4 L209.5 271.8 L209.7 272.1 L210.0 272.3 L210.5 272.4 L211.2 272.4 L212.1 272.3 L212.8 272.2 L213.4 272.3 L213.8 272.4 L214.1 272.5 L214.4 272.8 L214.7 273.2 L214.9 273.7 L215.0 274.4 L215.5 275.1 L216.3 276.0 L217.4 277.0 L218.8 278.1 L220.0 279.6 L221.2 281.6 L222.2 284.1 L223.1 287.1 L224.0 289.5 L224.9 291.3 L225.8 292.6 L226.6 293.4 L227.3 294.2 L227.9 295.0 L228.3 295.9 L228.5 296.7 L228.8 297.6 L229.2 298.4 L229.8 299.2 L230.5 299.9 L231.0 301.1 L231.6 302.5 L232.0 304.4 L232.3 306.5 L232.7 308.3 L233.0 309.8 L233.3 310.8 L233.6 311.5 L233.8 312.2 L233.9 313.0 L233.9 313.9 L233.9 314.9 L234.0 315.8 L234.1 316.7 L234.3 317.5 L234.7 318.3 L235.1 319.0 L235.5 319.6 L236.0 320.1 L236.6 320.6 L237.0 320.9 L237.4 321.2 L237.7 321.3 L237.9 321.3 L238.2 321.2 L238.5 321.0 L238.9 320.6 L239.3 320.1 L239.8 319.7 L240.1 319.4 L240.5 319.1 L240.8 319.0 L241.1 319.0 L241.4 319.0 L241.6 319.1 L241.9 319.2 L242.0 319.5 L242.1 319.9 L242.2 320.4 L242.2 321.1 L242.4 321.6 L242.6 322.0 L242.9 322.2 L243.3 322.4 L243.7 322.3 L244.2 321.9 L244.7 321.2 L245.2 320.3 L245.5 319.5 L245.7 318.9 L245.7 318.3 L245.6 317.9 L245.3 317.5 L244.8 317.1 L244.2 316.8 L243.4 316.4 L242.7 316.1 L242.1 315.7 L241.7 315.3 L241.4 314.9 L241.2 314.2 L241.1 313.2 L241.2 312.1 L241.5 310.6 L241.5 309.4 L241.4 308.5 L241.0 307.7 L240.4 307.1 L240.0 306.7 L239.7 306.2 L239.5 305.8 L239.5 305.5 L239.7 304.9 L240.0 304.1 L240.6 303.0 L241.4 301.7 L242.2 300.5 L242.9 299.5 L243.6 298.7 L244.3 298.0 L245.1 297.3 L246.1 296.5 L247.2 295.7 L248.5 294.8 L249.6 294.1 L250.6 293.7 L251.3 293.4 L251.8 293.4 L252.4 293.5 L253.0 293.7 L253.6 294.0 L254.3 294.5 L254.9 294.7 L255.4 294.7 L255.8 294.5 L256.1 294.1 L256.4 293.7 L256.7 293.5 L257.1 293.3 L257.4 293.3 L257.8 293.3 L258.1 293.4 L258.5 293.6 L259.0 293.9 L259.3 294.2 L259.5 294.6 L259.5 295.0 L259.5 295.5 L259.3 296.1 L258.9 296.9 L258.3 297.7 L257.6 298.6 L256.8 299.6 L255.8 300.6 L254.6 301.7 L253.3 302.9 L252.3 303.8 L251.5 304.7 L251.0 305.4 L250.7 305.9 L250.5 306.5 L250.4 307.2 L250.4 307.9 L250.4 308.7 L250.5 309.4 L250.8 310.0 L251.1 310.6 L251.5 311.2 L251.9 311.8 L252.2 312.4 L252.4 313.1 L252.5 313.9 L252.7 314.6 L252.9 315.1 L253.2 315.5 L253.5 315.9 L254.1 316.2 L255.0 316.5 L256.3 316.9 L257.8 317.3 L259.2 317.7 L260.5 318.2 L261.7 318.7 L262.8 319.3 L263.8 320.0 L264.8 320.8 L265.7 321.6 L266.6 322.4 L267.5 323.2 L268.4 323.8 L269.2 324.3 L270.1 324.8 L271.8 325.5 L274.2 326.4 L277.5 327.6 L281.5 329.1 L284.9 330.3 L287.8 331.1 L290.0 331.7 L291.7 331.9 L294.7 332.1 L299.3 332.2 L305.2 332.4 L312.7 332.5 L318.3 332.7 L322.2 332.8 L324.4 333.0 L324.7 333.1 L325.0 333.3 L325.2 333.6 L325.4 333.9 L325.4 334.2 L325.4 334.5 L325.3 334.8 L325.2 335.0 L324.9 335.2 L324.0 335.6 L322.5 336.3 L320.2 337.1 L317.3 338.0 L314.9 338.9 L313.2 339.7 L312.1 340.4 L311.5 341.0 L310.8 341.6 L309.8 342.1 L308.7 342.5 L307.4 343.0 L305.8 342.9 L303.7 342.4 L301.4 341.5 L298.6 340.1 L295.9 339.0 L293.1 338.3 L290.3 337.9 L287.5 337.7 L284.9 337.7 L282.7 337.7 L280.7 337.8 L279.1 338.0 L277.5 338.0 L275.9 337.9 L274.4 337.6 L272.8 337.1 L271.6 336.7 L270.5 336.5 L269.7 336.4 L269.2 336.5 L268.6 336.4 L267.8 336.3 L267.1 336.1 L266.2 335.8 L265.3 335.7 L264.5 335.7 L263.7 335.8 L263.0 336.0 L262.2 336.1 L261.4 336.1 L260.5 335.9 L259.6 335.5 L258.7 335.4 L257.8 335.3 L256.9 335.5 L255.9 335.8 L255.1 336.3 L254.5 337.1 L254.1 338.1 L253.9 339.3 L253.8 340.4 L253.9 341.1 L254.0 341.6 L254.4 341.9 L254.8 342.1 L255.4 342.2 L256.2 342.3 L257.1 342.4 L258.0 342.8 L259.0 343.5 L260.1 344.5 L261.2 345.8 L262.2 347.0 L263.0 348.1 L263.7 349.1 L264.3 350.0 L264.8 350.9 L265.1 351.9 L265.3 352.9 L265.4 354.0 L265.6 354.9 L265.8 355.7 L266.0 356.2 L266.2 356.6 L266.8 356.9 L267.7 357.0 L268.9 357.1 L270.4 357.0 L272.0 357.2 L273.5 357.8 L275.0 358.7 L276.5 359.8 L278.0 360.8 L279.4 361.7 L280.6 362.3 L281.8 362.8 L282.9 363.2 L283.9 363.4 L284.8 363.6 L285.5 363.6 L286.4 363.9 L287.4 364.3 L288.5 365.0 L289.7 365.8 L291.0 366.5 L292.3 366.9 L293.8 367.1 L295.3 367.1 L296.6 366.9 L297.5 366.6 L298.3 366.1 L298.7 365.4 L299.1 364.9 L299.5 364.6 L299.8 364.3 L300.2 364.2 L300.6 364.1 L301.2 364.2 L301.9 364.4 L302.8 364.8 L303.6 365.2 L304.3 365.9 L305.0 366.7 L305.7 367.6 L306.5 368.2 L307.3 368.5 L308.2 368.4 L309.2 368.0 L310.2 367.6 L311.3 367.5 L312.3 367.5 L313.4 367.6 L314.5 367.8 L315.4 368.2 L316.3 368.6 L317.2 369.2 L318.0 369.6 L318.8 369.9 L319.5 370.1 L320.2 370.2 L321.0 370.0 L322.0 369.8 L323.2 369.3 L324.5 368.7 L325.6 368.1 L326.6 367.4 L327.4 366.7 L327.9 365.9 L328.7 365.2 L329.5 364.3 L330.4 363.5 L331.5 362.6 L332.4 361.8 L333.0 361.0 L333.5 360.2 L333.8 359.4 L334.4 358.4 L335.3 357.1 L336.6 355.5 L338.1 353.6 L339.4 352.0 L340.4 350.6 L341.1 349.5 L341.5 348.7 L341.9 347.6 L342.2 346.3 L342.6 344.7 L342.8 343.0 L343.1 341.6 L343.4 340.5 L343.7 339.7 L343.9 339.3 L344.2 339.0 L344.6 338.8 L344.9 338.7 L345.4 338.7 L345.8 338.7 L346.2 338.9 L346.5 339.2 L346.9 339.5 L347.2 339.9 L347.5 340.4 L347.8 341.0 L348.2 341.6 L348.5 342.3 L348.7 343.0 L348.9 343.9 L349.0 344.7 L349.3 345.6 L349.6 346.4 L350.0 347.2 L350.5 347.9 L350.9 348.8 L351.0 349.6 L351.1 350.6 L350.9 351.5 L350.8 352.5 L350.8 353.4 L350.9 354.4 L351.0 355.3 L351.0 356.0 L350.7 356.6 L350.1 357.1 L349.4 357.5 L348.7 357.8 L348.3 358.2 L347.9 358.6 L347.7 359.0 L347.6 359.6 L347.6 360.4 L347.6 361.5 L347.8 362.8 L348.1 364.0 L348.4 365.0 L348.8 365.9 L349.3 366.7 L349.7 367.6 L350.0 368.6 L350.3 369.8 L350.6 371.1 L350.5 372.6 L350.2 374.3 L349.6 376.2 L348.7 378.3 L347.6 380.5 L346.1 382.8 L344.4 385.2 L342.5 387.8 L340.8 389.7 L339.6 391.0 L338.7 391.7 L338.1 391.7 L337.3 391.5 L336.3 391.1 L335.0 390.5 L333.5 389.7 L331.9 389.4 L330.1 389.7 L328.3 390.4 L326.3 391.7 L324.6 392.6 L323.2 393.2 L322.0 393.4 L321.2 393.4 L320.3 393.5 L319.6 394.0 L318.9 394.6 L318.2 395.5 L317.4 396.4 L316.3 397.1 L315.1 397.7 L313.7 398.2 L312.1 398.6 L310.4 398.8 L308.6 398.8 L306.7 398.6 L305.0 398.2 L303.5 397.7 L302.4 396.9 L301.5 395.9 L300.6 395.2 L299.5 394.7 L298.4 394.6 L297.2 394.8 L296.1 394.9 L295.1 394.9 L294.1 394.7 L293.2 394.5 L292.4 394.7 L291.7 395.3 L290.9 396.5 L290.3 398.0 L289.6 399.4 L289.0 400.7 L288.3 401.8 L287.7 402.8 L286.7 403.8 L285.5 405.0 L284.1 406.2 L282.3 407.5 L280.8 408.6 L279.4 409.4 L278.2 410.0 L277.2 410.5 L276.3 411.0 L275.4 411.6 L274.6 412.3 L273.8 413.1 L273.2 413.8 L272.5 414.3 L271.9 414.6 L271.4 414.8 L270.7 414.9 L269.9 414.9 L268.9 414.8 L267.8 414.6 L266.5 414.5 L265.1 414.5 L263.4 414.6 L261.5 414.8 L259.8 414.9 L258.1 414.8 L256.5 414.7 L254.9 414.5 L253.6 414.5 L252.5 414.7 L251.7 415.2 L251.0 416.0 L250.3 416.6 L249.4 417.0 L248.4 417.3 L247.3 417.5 L246.2 417.9 L245.2 418.4 L244.2 419.1 L243.2 420.0 L242.3 420.7 L241.5 421.2 L240.8 421.6 L240.1 421.7 L239.5 422.0 L239.0 422.5 L238.7 423.1 L238.4 423.9 L238.0 424.5 L237.5 425.0 L236.9 425.5 L236.2 425.7 L235.7 426.1 L235.2 426.4 L234.9 426.8 L234.7 427.3 L234.4 427.6 L234.2 427.9 L234.0 428.0 L233.8 428.1 L233.1 427.9 L232.0 427.4 L230.3 426.6 L228.3 425.5 L226.5 424.4 L225.1 423.3 L224.0 422.2 L223.3 421.1 L222.3 420.1 L221.1 419.2 L219.7 418.4 L218.0 417.6 L216.4 417.0 L214.9 416.5 L213.4 416.1 L212.0 415.7 L210.7 415.3 L209.4 414.8 L208.3 414.2 L207.2 413.6 L203.4 410.6 L197.0 405.5 L188.0 398.1 L176.3 388.5 L166.1 380.0 L157.3 372.6 L149.8 366.3 L143.8 361.1 L138.4 356.3 L133.7 351.9 L129.5 347.9 L125.9 344.4 L123.2 341.5 L121.3 339.4 L120.4 337.9 L120.3 337.1 L120.3 336.5 L120.4 335.9 L120.6 335.5 L120.9 335.2 L121.2 334.9 L121.6 334.6 L122.0 334.4 L122.4 334.3 L122.8 334.2 L123.3 334.1 L123.7 334.1 L124.2 334.2 L124.8 334.4 L125.5 334.7 L126.3 335.2 L127.3 335.8 L128.3 336.4 L129.5 336.9 L130.7 337.3 L132.0 337.7 L133.1 338.0 L133.9 338.1 L134.5 338.1 L134.8 338.0 L135.2 337.7 L135.5 337.3 L135.8 336.8 L136.1 336.1 L136.4 335.6 L136.7 335.2 L136.9 335.0 L137.1 334.9 L137.8 335.1 L138.8 335.8 L140.2 336.7 L142.1 338.1 L143.6 339.0 L144.9 339.5 L145.8 339.7 L146.3 339.4 L146.8 339.1 L147.2 338.7 L147.6 338.2 L147.8 337.7 L147.9 337.0 L147.8 336.0 L147.6 334.9 L147.2 333.6 L146.7 332.4 L146.2 331.2 L145.6 330.0 L145.0 328.9 L144.5 327.8 L144.1 326.7 L143.9 325.6 L143.8 324.5 L143.6 323.3 L143.2 322.0 L142.7 320.6 L142.1 319.1 L141.6 317.4 L141.3 315.6 L141.3 313.7 L141.5 311.6 L141.4 309.7 L141.1 308.0 L140.6 306.5 L139.9 305.2 L139.4 303.9 L139.3 302.5 L139.5 301.1 L140.0 299.7 L140.3 298.2 L140.3 296.6 L140.1 295.0 L139.7 293.2 L139.4 291.7 L139.3 290.2 L139.3 289.0 L139.5 287.9 L139.5 286.6 L139.4 285.2 L139.2 283.6 L138.8 281.9 L138.5 280.4 L138.3 279.1 L138.2 278.1 L138.3 277.4 L138.2 276.7 L138.1 276.1 L137.8 275.6 L137.5 275.2 L136.8 274.9 L135.8 274.5 L134.4 274.2 L132.7 273.9 L131.2 273.6 L130.1 273.3 L129.3 272.9 L128.9 272.5 L128.6 272.1 L128.5 271.7 L128.6 271.3 L128.8 270.9 L129.2 270.5 L129.8 270.2 L130.6 270.0 L131.6 269.8 L132.5 269.6 L133.4 269.4 L134.2 269.0 L135.0 268.7 L135.7 268.2 L136.3 267.7 L136.8 267.2 L137.2 266.6 L137.5 266.0 L137.7 265.5 L137.9 264.9 L138.0 264.4 L138.0 263.9 L137.8 263.6 L137.6 263.4 L137.2 263.3 L136.6 263.4 L135.8 263.9 L134.8 264.6 L133.6 265.6 L132.5 266.3 L131.5 266.7 L130.6 266.8 L129.9 266.6 L129.2 266.3 L128.7 265.9 L128.3 265.3 L128.1 264.6 L128.1 263.6 L128.5 262.3 L129.1 260.8 L130.0 258.9 L130.6 257.3 L131.0 256.0 L131.0 255.0 L130.8 254.2 L130.5 253.5 L129.9 252.8 L129.2 252.0 L128.3 251.3 L127.3 250.8 L126.1 250.5 L124.9 250.4 L123.4 250.5 L122.0 250.4 L120.6 250.1 L119.2 249.6 L117.8 248.9 L116.6 248.3 L115.6 247.7 L114.9 247.1 L114.3 246.5 L113.8 245.8 L113.3 244.8 L112.8 243.7 L112.3 242.4 L112.0 240.9 L111.7 239.3 L111.6 237.5 L111.5 235.5 L111.6 233.7 L111.7 232.1 L111.8 230.6 L112.0 229.3 L112.4 227.8 L112.9 226.2 L113.7 224.4 L114.6 222.4 L115.7 220.7 L116.8 219.3 L118.0 218.1 L119.2 217.3 L119.9 216.3 L119.9 215.1 L119.3 213.9 L118.1 212.5 L117.1 211.0 L116.3 209.5 L115.8 207.9 L115.5 206.2 L115.4 204.9 L115.4 204.0 L115.6 203.4 L116.0 203.2 L116.6 203.1 L117.4 203.3 L118.5 203.7 L119.8 204.3 L121.0 204.7 L122.0 204.9 L122.9 204.9 L123.7 204.8 L124.3 204.6 L124.7 204.4 L125.0 204.1 L125.1 203.8 L125.2 203.5 L125.2 203.2 L125.1 202.8 L125.0 202.5 L124.6 202.0 L123.9 201.4 L123.0 200.7 L121.8 199.9 L120.9 199.2 L120.2 198.6 L119.8 198.1 L119.7 197.8 L119.8 197.5 L119.9 197.2 L120.2 197.0 L120.7 196.8 L121.3 196.8 L122.1 196.9 L123.1 197.1 L124.3 197.3 L125.5 197.4 L126.5 197.4 L127.6 197.1 L128.6 196.6 L129.5 196.2 L130.4 195.9 L131.2 195.7 L131.9 195.6 L132.5 195.3 L132.9 195.0 L133.2 194.6 L133.2 194.1 L133.1 193.5 L132.8 192.8 L132.4 192.0 L131.8 191.1 L131.2 190.5 L130.6 190.0 L130.1 189.7 L129.5 189.6 L128.9 189.6 L128.2 189.7 L127.4 189.9 L126.5 190.1 L125.8 190.3 L125.3 190.3 L125.0 190.3 L124.8 190.1 L125.0 189.6 L125.6 188.8 L126.5 187.8 L127.7 186.4 L128.8 185.4 L129.6 184.7 L130.3 184.4 L130.7 184.4 L131.2 184.5 L131.8 184.7 L132.5 185.1 L133.3 185.5 L133.9 185.8 L134.4 185.9 L134.7 185.8 L135.0 185.5 L134.9 185.0 L134.6 184.2 L134.0 183.3 L133.1 182.1 L132.2 181.1 L131.2 180.1 L130.1 179.2 L129.0 178.4 L128.3 177.6 L128.1 177.0 L128.3 176.3 L129.0 175.8 L129.5 175.1 L129.9 174.3 L130.2 173.3 L130.3 172.3 L130.6 171.3 L131.0 170.5 L131.6 169.8 L132.3 169.3 L132.8 168.7 L133.2 168.0 L133.5 167.3 L133.6 166.5 L133.7 165.8 L133.7 165.2 L133.6 164.7 L133.4 164.3 L133.1 163.9 L132.6 163.4 L131.9 163.0 L131.0 162.5 L130.2 162.2 L129.6 162.1 L129.1 162.0 L128.8 162.1 L128.5 162.3 L128.3 162.5 L128.1 162.8 L127.9 163.1 L127.8 163.6 L127.8 164.3 L127.9 165.2 L128.1 166.2 L128.0 167.1 L127.8 167.8 L127.3 168.3 L126.7 168.6 L126.0 168.8 L125.3 168.9 L124.5 168.8 L123.8 168.7 L123.0 168.6 L122.2 168.6 L121.3 168.6 L120.5 168.7 L119.8 168.6 L119.2 168.1 L118.8 167.4 L118.5 166.4 L118.2 164.2 L117.8 160.6 L117.4 155.8 L117.0 149.7 L116.7 143.4 L116.6 137.0 L116.6 130.5 L116.9 123.9 L117.2 118.2 L117.6 113.5 L118.2 109.8 L118.9 107.1 L119.8 104.2 L120.9 101.3 L122.3 98.2 L123.8 95.1 L125.3 92.2 L126.8 89.6 L128.2 87.3 L129.6 85.3 L131.9 82.5 L135.1 79.0 L139.1 74.7 L144.0 69.6 L148.5 65.3 L152.5 61.8 L156.0 59.0 L159.0 57.0 L161.6 55.4 L163.5 54.3 L164.9 53.5 L165.8 53.2 L166.7 52.7 L167.6 52.2 L168.6 51.5 L169.6 50.8 L171.1 49.8 L173.2 48.6 L175.8 47.1 L179.0 45.3 L182.6 43.7 L186.6 42.1 L191.1 40.5 L196.0 39.1 L200.3 37.9 L204.0 36.9 L207.1 36.2 L209.6 35.7 L211.8 35.2 L213.7 34.6 L215.3 34.1 L216.6 33.6 L218.4 33.1 L220.8 32.8 L223.8 32.7" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="3.16s" dur="4.17s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc2" d="M231.9 169.7 L232.1 169.7 L232.4 169.9 L232.8 170.2 L233.1 170.6 L233.4 171.2 L234.0 171.8 L234.8 172.6 L235.9 173.3 L237.2 174.2 L238.3 175.0 L239.1 175.7 L239.8 176.3 L240.3 176.8 L240.6 177.3 L240.8 177.7 L240.9 178.1 L240.9 178.5 L240.7 178.8 L240.3 179.0 L239.7 179.2 L239.0 179.3 L238.2 179.4 L237.4 179.3 L236.6 179.1 L235.7 178.9 L234.9 178.4 L234.0 177.6 L233.1 176.7 L232.2 175.5 L231.5 174.3 L231.2 173.2 L231.0 172.2 L231.2 171.2 L231.4 170.5 L231.6 170.0 L231.9 169.7" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="7.45s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc3" d="M248.5 172.4 L249.3 172.3 L250.1 172.5 L250.9 172.7 L251.8 173.1 L252.7 173.5 L253.5 173.8 L254.4 173.9 L255.3 173.7 L256.1 173.3 L257.0 173.0 L257.8 172.9 L258.6 172.9 L259.4 173.1 L260.5 173.6 L262.0 174.3 L263.9 175.3 L266.2 176.6 L268.3 177.7 L270.1 178.6 L271.6 179.3 L272.9 179.7 L274.0 180.3 L274.9 181.1 L275.5 182.1 L275.9 183.3 L276.4 184.3 L276.9 185.1 L277.6 185.8 L278.2 186.3 L279.1 186.8 L280.1 187.4 L281.2 188.0 L282.5 188.5 L283.9 189.0 L285.2 189.4 L286.6 189.7 L288.1 189.9 L289.3 190.4 L290.3 191.3 L291.2 192.5 L291.8 194.0 L292.0 195.6 L291.8 197.3 L291.1 199.0 L290.0 200.7 L289.1 202.4 L288.3 204.0 L287.8 205.5 L287.4 206.9 L287.0 208.0 L286.6 208.8 L286.3 209.2 L285.9 209.4 L285.3 209.3 L284.5 209.1 L283.4 208.7 L282.1 208.1 L280.8 207.7 L279.4 207.4 L278.0 207.3 L276.6 207.4 L275.4 207.4 L274.4 207.3 L273.6 207.1 L273.0 206.8 L272.2 205.9 L271.3 204.5 L270.2 202.5 L268.9 199.9 L267.9 197.8 L267.3 196.3 L266.9 195.3 L266.9 194.8 L267.0 194.4 L267.1 194.0 L267.3 193.7 L267.5 193.3 L267.9 193.0 L268.3 192.8 L268.7 192.5 L269.3 192.3 L270.0 192.2 L270.9 192.1 L271.9 192.1 L273.1 192.2 L274.1 192.2 L275.0 192.1 L275.6 191.8 L276.1 191.3 L276.4 190.9 L276.7 190.6 L276.9 190.2 L276.9 189.9 L276.4 189.5 L275.3 189.2 L273.6 188.8 L271.3 188.4 L269.3 188.2 L267.6 188.0 L266.1 188.0 L264.9 188.0 L263.0 187.6 L260.5 186.7 L257.2 185.3 L253.3 183.4 L250.3 181.9 L248.2 180.8 L247.1 180.1 L246.8 179.8 L246.7 179.4 L246.8 178.9 L247.0 178.4 L247.4 177.7 L247.6 177.0 L247.7 176.3 L247.6 175.6 L247.3 174.8 L247.1 174.2 L247.0 173.6 L247.1 173.2 L247.2 172.9 L247.5 172.6 L247.9 172.4 L248.5 172.4" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="7.87s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc4" d="M223.8 174.9 L224.3 174.9 L224.8 174.9 L225.3 175.0 L225.8 175.2 L226.3 175.4 L226.6 175.7 L227.0 176.1 L227.3 176.6 L227.5 177.2 L227.8 177.7 L228.2 178.2 L228.6 178.7 L229.0 179.1 L229.4 179.5 L229.6 179.8 L229.6 180.1 L229.6 180.3 L229.2 180.6 L228.4 181.0 L227.4 181.4 L226.0 181.8 L224.1 182.3 L221.7 182.8 L218.8 183.3 L215.5 183.8 L213.2 184.0 L212.0 183.9 L211.8 183.4 L212.7 182.7 L213.5 181.9 L214.3 181.0 L215.1 180.1 L215.8 179.2 L216.7 178.3 L217.8 177.4 L219.1 176.7 L220.6 176.0 L221.9 175.5 L223.0 175.1 L223.8 174.9" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="8.29s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc5" d="M341.7 178.1 L342.2 178.1 L342.6 178.2 L343.0 178.5 L343.3 178.9 L343.6 179.4 L343.5 180.2 L343.1 181.3 L342.3 182.7 L341.3 184.3 L340.0 185.7 L338.7 186.8 L337.1 187.6 L335.5 188.2 L334.0 188.6 L332.8 188.8 L331.8 188.9 L331.0 188.7 L330.4 188.5 L330.0 188.1 L329.7 187.7 L329.6 187.1 L329.7 186.5 L330.1 185.7 L330.6 184.8 L331.4 183.8 L332.2 182.8 L333.1 181.9 L334.1 181.1 L335.2 180.3 L336.3 179.6 L337.3 179.1 L338.4 178.7 L339.4 178.4 L340.2 178.2 L341.0 178.1 L341.7 178.1" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="8.71s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc6" d="M225.2 194.3 L225.9 194.5 L226.2 194.8 L226.2 195.2 L225.7 195.9 L224.8 196.8 L224.1 197.5 L223.7 198.0 L223.6 198.5 L223.7 198.7 L224.5 198.8 L226.0 198.7 L228.3 198.3 L231.2 197.9 L233.8 197.5 L236.0 197.3 L237.8 197.3 L239.2 197.4 L241.0 197.7 L243.2 198.1 L245.9 198.8 L248.9 199.6 L251.9 200.7 L254.6 202.1 L257.3 203.8 L259.8 205.8 L261.9 207.4 L263.7 208.5 L265.0 209.2 L266.0 209.4 L267.0 209.8 L267.9 210.2 L268.8 210.6 L269.7 211.1 L270.4 211.6 L271.0 212.1 L271.4 212.5 L271.6 212.8 L271.8 213.2 L271.9 213.6 L271.9 214.0 L271.9 214.5 L271.7 214.9 L271.5 215.3 L271.2 215.7 L270.8 216.1 L270.3 216.4 L270.0 216.6 L269.6 216.6 L269.3 216.6 L268.9 216.4 L268.6 216.2 L268.1 215.8 L267.7 215.3 L266.9 214.7 L265.6 213.9 L263.9 212.9 L261.9 211.8 L259.9 210.5 L258.1 209.2 L256.3 207.8 L254.7 206.3 L253.0 204.9 L251.3 203.8 L249.6 202.9 L247.9 202.1 L246.2 201.7 L244.6 201.4 L243.1 201.4 L241.8 201.7 L240.7 202.0 L240.0 202.3 L239.6 202.7 L239.6 203.1 L239.7 203.5 L240.0 204.0 L240.4 204.5 L240.9 205.1 L241.3 205.6 L241.6 206.1 L241.7 206.6 L241.7 207.1 L241.5 207.6 L241.1 208.3 L240.4 209.1 L239.6 210.0 L238.7 210.7 L238.0 211.3 L237.3 211.7 L236.6 211.9 L235.8 212.0 L234.7 211.9 L233.5 211.7 L232.1 211.3 L230.9 211.0 L230.0 210.6 L229.3 210.1 L228.8 209.7 L228.4 209.2 L228.0 208.6 L227.7 208.0 L227.4 207.3 L227.0 206.7 L226.5 206.2 L225.9 205.8 L225.3 205.5 L224.7 205.2 L224.1 205.1 L223.6 205.1 L223.2 205.1 L222.8 205.3 L222.4 205.4 L222.1 205.7 L221.8 206.0 L221.6 206.4 L221.6 207.1 L221.8 207.9 L222.2 208.9 L222.4 209.7 L222.5 210.3 L222.5 210.8 L222.4 211.1 L222.3 211.4 L222.1 211.6 L221.9 211.8 L221.6 211.9 L220.9 212.0 L219.7 212.0 L218.1 212.1 L216.1 212.1 L213.8 211.9 L211.3 211.4 L208.5 210.6 L205.6 209.6 L203.2 208.7 L201.4 208.0 L200.1 207.4 L199.4 207.0 L198.9 206.6 L198.5 206.1 L198.2 205.6 L198.1 205.0 L198.4 204.2 L199.1 203.1 L200.2 201.6 L201.8 199.9 L203.6 198.6 L205.5 197.7 L207.5 197.2 L209.7 197.1 L212.0 196.8 L214.5 196.4 L217.1 195.9 L219.9 195.2 L222.2 194.7 L223.9 194.4 L225.2 194.3" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="9.13s" dur="0.37s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc7" d="M104.4 196.8 L104.9 196.8 L105.4 196.9 L105.9 197.0 L106.4 197.2 L107.0 197.5 L107.5 197.9 L108.1 198.3 L108.6 198.8 L109.1 199.4 L109.6 200.0 L109.9 200.6 L110.2 201.1 L110.4 201.7 L110.3 203.7 L110.1 207.2 L109.6 212.3 L109.0 218.8 L108.5 224.4 L108.1 229.0 L107.9 232.6 L107.9 235.2 L107.7 237.3 L107.5 238.8 L107.3 239.8 L107.0 240.2 L106.6 240.5 L106.3 240.6 L106.0 240.5 L105.7 240.3 L105.4 240.0 L105.2 239.5 L104.9 238.9 L104.6 238.1 L104.2 236.4 L103.8 233.7 L103.3 230.1 L102.7 225.5 L102.4 220.8 L102.2 216.1 L102.2 211.3 L102.3 206.3 L102.5 202.5 L102.8 199.8 L103.0 198.2 L103.3 197.6 L103.6 197.2 L104.0 196.9 L104.4 196.8" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="9.62s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc8" d="M325.8 198.7 L326.3 198.8 L326.7 199.0 L326.9 199.4 L326.8 199.8 L326.6 200.3 L326.5 200.8 L326.5 201.2 L326.5 201.5 L326.6 201.8 L327.3 201.9 L328.6 201.9 L330.4 201.7 L332.8 201.4 L335.5 201.3 L338.4 201.3 L341.5 201.4 L344.9 201.8 L347.7 202.2 L349.8 202.6 L351.3 203.2 L352.2 203.8 L353.0 204.5 L353.7 205.3 L354.3 206.3 L354.7 207.4 L354.9 208.3 L354.9 209.0 L354.8 209.5 L354.4 209.9 L354.0 210.1 L353.5 210.2 L352.9 210.3 L352.3 210.2 L351.6 209.9 L350.9 209.4 L350.3 208.6 L349.6 207.5 L348.9 206.6 L348.1 205.9 L347.3 205.3 L346.4 204.8 L345.2 204.5 L343.7 204.4 L341.7 204.3 L339.4 204.5 L337.6 204.6 L336.3 204.8 L335.5 205.0 L335.2 205.2 L335.0 205.4 L334.8 205.7 L334.7 206.0 L334.6 206.3 L334.7 206.7 L334.8 207.0 L334.9 207.3 L335.2 207.7 L335.6 208.0 L336.1 208.3 L336.7 208.7 L337.4 209.0 L338.0 209.3 L338.4 209.7 L338.6 210.1 L338.7 210.5 L338.7 211.0 L338.6 211.3 L338.4 211.7 L338.2 212.0 L337.9 212.4 L337.6 212.9 L337.1 213.4 L336.5 214.0 L335.8 214.4 L335.2 214.8 L334.6 215.2 L333.9 215.4 L333.1 215.5 L332.0 215.5 L330.7 215.4 L329.1 215.2 L327.9 215.0 L326.9 214.8 L326.1 214.5 L325.7 214.2 L325.0 213.7 L324.3 212.9 L323.4 211.9 L322.3 210.5 L321.5 209.5 L321.0 208.7 L320.7 208.1 L320.7 207.8 L320.7 207.3 L320.9 206.8 L321.1 206.1 L321.4 205.4 L321.5 204.8 L321.4 204.3 L321.0 204.0 L320.4 203.9 L319.8 203.7 L319.4 203.5 L319.1 203.3 L318.9 202.9 L318.9 202.6 L318.9 202.2 L319.1 201.9 L319.4 201.5 L319.9 201.0 L320.7 200.5 L321.8 200.0 L323.0 199.4 L324.1 199.0 L325.0 198.8 L325.8 198.7" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="10.04s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc9" d="M118.5 252.6 L119.1 252.6 L119.6 252.6 L120.0 252.8 L120.4 253.0 L120.6 253.4 L120.9 254.0 L121.2 254.7 L121.5 255.6 L121.8 256.7 L122.0 257.6 L122.1 258.5 L122.1 259.1 L121.9 259.7 L121.7 260.2 L121.5 260.6 L121.2 260.9 L120.9 261.1 L120.4 261.2 L119.7 261.1 L118.8 260.8 L117.7 260.4 L116.6 259.8 L115.5 259.2 L114.4 258.5 L113.3 257.7 L112.4 257.1 L111.7 256.4 L111.2 255.9 L110.9 255.5 L110.7 255.0 L110.7 254.6 L110.7 254.1 L111.0 253.7 L111.5 253.3 L112.4 253.0 L113.6 252.9 L115.2 252.8 L116.6 252.7 L117.6 252.6 L118.5 252.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="10.46s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc10" d="M272.6 254.0 L272.8 254.0 L273.0 254.1 L273.2 254.2 L273.4 254.5 L273.6 254.8 L273.6 255.4 L273.6 256.2 L273.4 257.2 L273.1 258.5 L273.0 259.7 L273.0 260.6 L273.1 261.3 L273.4 261.9 L273.8 262.4 L274.2 262.8 L274.6 263.3 L275.1 263.6 L276.1 264.1 L277.6 264.5 L279.7 265.0 L282.3 265.6 L285.2 265.9 L288.2 266.2 L291.5 266.2 L295.0 266.2 L298.4 266.4 L301.6 266.9 L304.8 267.7 L307.9 268.8 L310.2 269.8 L311.8 270.6 L312.7 271.2 L312.9 271.6 L312.5 272.2 L311.5 272.8 L309.8 273.6 L307.5 274.4 L305.7 275.3 L304.3 276.1 L303.4 276.9 L302.9 277.7 L302.3 278.3 L301.8 278.9 L301.2 279.3 L300.6 279.6 L300.0 280.0 L299.4 280.5 L298.8 281.2 L298.1 281.9 L297.4 282.6 L296.5 283.1 L295.5 283.5 L294.4 283.8 L293.5 284.0 L292.6 284.1 L291.8 284.1 L291.2 284.1 L290.5 283.9 L289.9 283.5 L289.4 282.9 L288.8 282.2 L288.1 281.5 L287.1 280.9 L285.9 280.3 L284.5 279.7 L283.1 279.0 L281.9 278.2 L280.7 277.3 L279.6 276.3 L278.3 275.3 L276.9 274.3 L275.3 273.5 L273.6 272.6 L272.1 271.8 L270.8 271.1 L269.9 270.3 L269.2 269.5 L268.6 268.7 L268.1 267.9 L267.7 267.1 L267.4 266.2 L267.2 265.3 L267.0 264.4 L266.9 263.6 L267.0 262.7 L267.1 261.7 L267.4 260.7 L267.8 259.6 L268.4 258.4 L269.0 257.3 L269.6 256.4 L270.3 255.6 L271.1 254.9 L271.7 254.5 L272.2 254.1 L272.6 254.0" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="10.88s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc11" d="M321.4 270.5 L322.0 270.4 L322.4 270.7 L322.7 271.2 L322.8 271.9 L322.7 272.9 L322.7 273.9 L322.9 274.9 L323.2 275.8 L323.6 276.7 L324.2 277.7 L325.1 278.8 L326.2 280.2 L327.5 281.6 L328.9 282.9 L330.4 284.1 L331.9 285.2 L333.5 286.1 L334.8 287.0 L335.7 287.7 L336.2 288.2 L336.4 288.7 L336.4 289.1 L336.4 289.4 L336.4 289.8 L336.2 290.1 L336.0 290.3 L335.7 290.4 L335.3 290.5 L334.9 290.5 L333.8 290.1 L332.2 289.2 L329.8 287.9 L326.9 286.2 L324.3 284.4 L322.1 282.4 L320.3 280.4 L318.8 278.2 L317.8 276.4 L317.1 275.0 L316.8 273.9 L317.0 273.3 L317.3 272.7 L317.7 272.1 L318.4 271.6 L319.3 271.2 L320.1 270.9 L320.8 270.6 L321.4 270.5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="11.30s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc12" d="M274.8 300.0 L275.4 300.1 L276.1 300.4 L276.9 300.9 L277.9 301.5 L278.9 302.3 L280.4 302.8 L282.2 303.3 L284.3 303.5 L286.8 303.6 L288.9 303.8 L290.5 304.3 L291.7 304.9 L292.5 305.6 L293.2 306.0 L294.0 306.1 L294.7 305.8 L295.3 305.1 L295.9 304.5 L296.5 304.2 L296.9 303.9 L297.4 303.9 L298.0 304.1 L298.7 304.7 L299.6 305.7 L300.6 307.0 L301.3 308.1 L301.9 308.9 L302.2 309.4 L302.2 309.8 L302.2 310.0 L302.0 310.3 L301.8 310.5 L301.5 310.6 L300.8 310.6 L299.6 310.5 L298.0 310.4 L295.9 310.1 L293.8 309.9 L291.5 309.9 L289.2 310.0 L286.8 310.2 L284.3 310.5 L281.6 311.0 L278.8 311.5 L275.8 312.1 L273.1 312.5 L270.7 312.6 L268.5 312.4 L266.5 312.0 L264.9 311.5 L263.7 311.0 L262.9 310.4 L262.4 309.8 L262.1 309.2 L261.9 308.6 L261.9 308.0 L262.0 307.3 L262.5 306.7 L263.3 306.2 L264.4 305.7 L265.8 305.2 L267.2 304.6 L268.7 303.8 L270.2 302.8 L271.7 301.6 L273.0 300.7 L274.1 300.2 L274.8 300.0" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="11.72s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc13" d="M0.0 441.7 L1.4 440.9 L4.1 439.1 L8.2 436.5 L13.6 433.0 L18.5 430.0 L22.9 427.5 L26.7 425.5 L30.0 424.0 L33.1 422.5 L36.1 421.0 L39.0 419.4 L41.7 417.7 L44.2 416.4 L46.3 415.3 L48.1 414.4 L49.6 413.8 L51.7 412.5 L54.3 410.7 L57.5 408.2 L61.2 405.0 L64.5 402.0 L67.3 399.0 L69.7 396.2 L71.7 393.4 L73.3 391.1 L74.7 389.3 L75.8 388.0 L76.5 387.2 L78.1 386.1 L80.5 384.6 L83.7 382.8 L87.8 380.6 L90.9 379.1 L93.1 378.3 L94.4 378.1 L94.8 378.5 L94.9 379.3 L94.8 380.4 L94.4 381.8 L93.8 383.6 L93.4 385.1 L93.1 386.3 L92.9 387.3 L93.0 388.1 L93.1 388.8 L93.2 389.5 L93.4 390.1 L93.7 390.6 L94.3 391.4 L95.2 392.5 L96.4 393.9 L97.9 395.5 L99.8 397.1 L102.1 398.7 L104.8 400.3 L107.9 401.8 L110.9 403.1 L113.6 404.1 L116.2 404.9 L118.6 405.4 L120.8 406.0 L123.0 406.6 L125.0 407.3 L126.8 408.1 L129.2 409.3 L132.2 410.9 L135.8 413.0 L139.9 415.5 L143.6 417.9 L146.9 420.2 L149.9 422.2 L152.4 424.2 L155.1 426.2 L157.9 428.5 L160.8 430.9 L163.9 433.6 L167.1 436.4 L170.5 439.5 L174.0 442.9 L177.7 446.5 L181.5 450.3 L185.5 454.4 L189.6 458.8 L193.7 463.4 L197.2 467.4 L200.1 470.6 L202.2 473.2 L203.7 475.0 L204.9 476.5 L205.7 477.6 L206.2 478.4 L206.4 478.9 L206.5 479.2 L206.6 479.5 L206.6 479.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="12.14s" dur="0.54s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc14" d="M277.2 438.2 L277.5 438.2 L277.8 438.4 L278.0 438.5 L278.2 438.7 L278.3 439.0 L278.5 440.1 L278.6 442.0 L278.7 444.7 L278.8 448.1 L278.7 452.0 L278.4 456.3 L277.8 460.9 L277.1 465.9 L276.4 469.8 L275.8 472.5 L275.2 474.1 L274.7 474.5 L274.0 474.3 L273.0 473.7 L271.7 472.5 L270.2 470.8 L268.9 469.3 L267.7 467.9 L266.7 466.6 L265.9 465.5 L265.2 464.6 L264.8 463.8 L264.5 463.2 L264.3 462.8 L264.7 461.4 L265.6 459.2 L267.0 456.0 L269.0 451.9 L270.7 448.3 L272.3 445.3 L273.7 442.9 L275.0 441.0 L276.0 439.6 L276.7 438.6 L277.2 438.2" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="12.79s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc15" d="M294.6 479.6 L294.7 479.1 L295.1 478.2 L295.6 476.8 L296.3 474.9 L296.8 473.2 L297.2 471.7 L297.3 470.3 L297.3 469.1 L297.2 467.6 L296.9 465.8 L296.5 463.6 L296.0 461.1 L295.6 458.6 L295.2 456.1 L294.9 453.7 L294.7 451.3 L294.5 449.4 L294.5 448.0 L294.5 447.1 L294.5 446.6 L294.6 446.2 L294.8 445.9 L295.1 445.7 L295.4 445.5 L295.8 445.4 L296.4 445.6 L297.2 445.9 L298.0 446.4 L299.3 447.2 L300.8 448.5 L302.8 450.1 L305.1 452.2 L308.4 454.5 L312.8 457.2 L318.2 460.2 L324.6 463.6 L330.3 466.6 L335.3 469.4 L339.5 471.9 L343.0 474.1 L345.7 475.9 L347.5 477.3 L348.6 478.3 L348.9 478.8 L349.1 479.2 L349.2 479.4 L349.3 479.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="13.21s" dur="0.30s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><path id="sc16" d="M207.4 479.6 L206.7 478.8 L205.5 477.2 L203.6 474.7 L201.0 471.5 L197.9 467.7 L194.0 463.4 L189.5 458.4 L184.4 452.8 L179.1 447.4 L173.7 442.1 L168.1 437.0 L162.3 431.9 L157.6 427.9 L154.1 424.9 L151.6 422.9 L150.3 421.9 L148.1 420.5 L145.0 418.5 L141.0 416.1 L136.1 413.1 L132.0 410.8 L128.6 408.9 L126.1 407.6 L124.4 406.9 L122.5 406.2 L120.6 405.7 L118.6 405.2 L116.6 404.8 L114.5 404.2 L112.6 403.6 L110.7 402.8 L108.8 402.0 L107.2 401.2 L105.9 400.5 L104.9 399.9 L104.1 399.4 L103.0 398.4 L101.4 397.0 L99.5 395.1 L97.2 392.8 L95.4 390.8 L94.2 389.2 L93.5 388.1 L93.2 387.3 L93.3 386.2 L93.5 384.8 L94.1 383.1 L94.8 381.0 L95.3 379.3 L95.4 378.1 L95.1 377.2 L94.6 376.8 L94.2 376.3 L94.0 375.8 L93.9 375.2 L94.0 374.5 L95.4 371.4 L98.0 365.8 L101.8 357.7 L106.8 347.1 L110.8 339.0 L113.6 333.4 L115.4 330.2 L116.0 329.6 L116.8 329.4 L117.7 329.5 L118.7 330.1 L119.8 331.1 L120.7 331.9 L121.2 332.5 L121.5 333.0 L121.5 333.3 L121.3 333.7 L120.9 334.1 L120.4 334.6 L119.7 335.1 L119.2 335.6 L118.9 336.1 L118.8 336.4 L118.8 336.8 L119.3 337.5 L120.2 338.7 L121.5 340.2 L123.1 342.1 L127.1 345.8 L133.2 351.4 L141.6 358.8 L152.2 368.0 L162.1 376.8 L171.1 385.3 L179.2 393.3 L186.6 401.0 L192.5 406.9 L196.9 410.9 L199.8 413.1 L201.2 413.5 L202.6 414.0 L204.1 414.5 L205.5 415.2 L206.9 416.0 L211.3 419.3 L218.5 425.2 L228.6 433.5 L241.6 444.4 L252.1 453.5 L260.2 460.7 L265.7 466.0 L268.7 469.5 L271.1 472.4 L272.9 474.8 L274.0 476.6 L274.4 477.8 L274.7 478.7 L274.9 479.3 L275.0 479.6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"><animate attributeName="stroke-dashoffset" values="1;0" begin="13.63s" dur="0.85s" fill="freeze" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"/></path><animate attributeName="opacity" values="0.9;0.45" begin="14.61s" dur="1.8s" fill="freeze"/></g><g class="pen" stroke="none" fill="currentColor" opacity="0"><circle class="pen-glow" r="13"/><circle r="4.2"/><animateMotion begin="0.80s" dur="2.24s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc0"/></animateMotion><animateMotion begin="3.16s" dur="4.17s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc1"/></animateMotion><animateMotion begin="7.45s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc2"/></animateMotion><animateMotion begin="7.87s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc3"/></animateMotion><animateMotion begin="8.29s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc4"/></animateMotion><animateMotion begin="8.71s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc5"/></animateMotion><animateMotion begin="9.13s" dur="0.37s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc6"/></animateMotion><animateMotion begin="9.62s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc7"/></animateMotion><animateMotion begin="10.04s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc8"/></animateMotion><animateMotion begin="10.46s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc9"/></animateMotion><animateMotion begin="10.88s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc10"/></animateMotion><animateMotion begin="11.30s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc11"/></animateMotion><animateMotion begin="11.72s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc12"/></animateMotion><animateMotion begin="12.14s" dur="0.54s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc13"/></animateMotion><animateMotion begin="12.79s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc14"/></animateMotion><animateMotion begin="13.21s" dur="0.30s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc15"/></animateMotion><animateMotion begin="13.63s" dur="0.85s" fill="freeze" keyPoints="0;1" calcMode="spline" keyTimes="0;1" keySplines="0.45 0.05 0.55 0.95"><mpath href="#sc16"/></animateMotion><animate attributeName="opacity" values="0;1" begin="0.6s" dur="0.3s" fill="freeze"/><animate attributeName="opacity" values="1;0" begin="14.61s" dur="0.8s" fill="freeze"/></g><g class="packets" stroke="none" fill="currentColor"><g><circle class="pen-glow" r="9"/><circle r="3.6"/><animateMotion begin="0s" dur="12s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sc0"/></animateMotion></g><g><circle class="pen-glow" r="9"/><circle r="3.6"/><animateMotion begin="-4s" dur="12s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sc0"/></animateMotion></g><g><circle class="pen-glow" r="9"/><circle r="3.6"/><animateMotion begin="-8s" dur="12s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#sc0"/></animateMotion></g></g></svg>
+          </div>
         </div>
-    </footer>
+        <p class="plot-caption"><span>Traced by a Python script.</span> <button class="redraw" type="button">↻ Redraw</button></p>
+      </div>
+      <div class="hero-text">
+        <h1 id="hero-title" class="hero-name">Adedamola Adedapo</h1>
+        <p class="hero-role"><span>Backend &amp; ML Systems Engineer</span></p>
+        <p class="headline">I build the production infrastructure that makes machine learning work: data pipelines, model training and deployment, and the backends that serve it.</p>
+        <p class="lede">Seven years across payments, messaging, and healthcare data, including fraud detection that cut fraud by 18% and WhatsApp infrastructure for 30+ enterprise brands.</p>
+        <ul class="actions" aria-label="Links">
+          <li><a class="btn btn-primary" href="assets/Adedamola_Adedapo_CV.pdf" download="Adedamola_Adedapo_CV.pdf">Download CV <span class="btn-meta">PDF</span></a></li>
+          <li><a class="btn" href="https://github.com/ichdamola" rel="me noopener">GitHub</a></li>
+          <li><a class="btn" href="https://www.linkedin.com/in/adedamolaadedapo" rel="me noopener">LinkedIn</a></li>
+          <li><a class="btn" href="mailto:adedamola.adedapo1@gmail.com">Email</a></li>
+        </ul>
+        <p class="hire-note"><svg class="hire-arrow" aria-hidden="true" focusable="false" viewBox="0 0 48 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M40 40 C22 38 10 28 12 6"/><path d="M5 13 L12 4 L19 12"/></svg><span>Open to backend, ML platform, and MLOps roles, remote or with relocation. Based in Nigeria (GMT+1).</span></p>
+      </div>
+    </section>
 
-    <script>
-        // Remove loader and show content
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            const body = document.body;
-            
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    body.classList.remove('loading');
-                }, 300);
-            }, 1000);
-        });
+    <!-- What I build -->
+    <section class="section wrap" id="build" aria-labelledby="build-title">
+      <header class="section-head">
+        <span class="section-num" aria-hidden="true"></span>
+        <h2 id="build-title">What I work on</h2>
+      </header>
 
-        // Header scroll effect
-        const header = document.querySelector('header');
-        let scrollTimer = null;
+      <ul class="cards">
+        <li class="card">
+          <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 L24 9 M9 14 L24 24 M9 34 L24 24 M9 34 L24 39 M24 9 L39 24 M24 24 L39 24 M24 39 L39 24"/><g fill="currentColor" stroke="none"><circle cx="9" cy="14" r="3.5"/><circle cx="9" cy="34" r="3.5"/><circle cx="24" cy="9" r="3.5"/><circle cx="24" cy="24" r="3.5"/><circle cx="24" cy="39" r="3.5"/><circle cx="39" cy="24" r="4.5"/></g></svg>
+          <h3>ML systems in production</h3>
+          <p>Fraud detection and credit-scoring models for a digital lender. I owned MLOps for them: Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</p>
+          <ul class="tags" aria-label="Tools">
+            <li>scikit-learn</li><li>Prefect</li><li>Optuna</li><li>Helm</li><li>Airflow</li><li>Pandas</li>
+          </ul>
+        </li>
+        <li class="card">
+          <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="28" height="9" rx="2.5"/><rect x="5.5" y="19.5" width="27.5" height="9" rx="2.5"/><rect x="5" y="33" width="28" height="9" rx="2.5"/><path d="M10 10.5 h.01 M10 24 h.01 M10 37.5 h.01"/><path d="M39 11 C45 18 45 31 39 38 M35 36 L39 38.5 L40.5 33.5"/></svg>
+          <h3>Distributed backends</h3>
+          <p>Python microservices with FastAPI and Django, event-driven processing on Redis Streams, RabbitMQ, and Celery, and PostgreSQL tuned for high-volume transactions.</p>
+          <ul class="tags" aria-label="Tools">
+            <li>FastAPI</li><li>Django/DRF</li><li>Redis Streams</li><li>RabbitMQ</li><li>Celery</li><li>PostgreSQL</li>
+          </ul>
+        </li>
+        <li class="card">
+          <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M37 15 A15 15 0 1 0 39 30"/><path d="M33.5 31 L39 30 L40 24.5"/><path d="M17 24.5 L22 29.5 L31 19"/></svg>
+          <h3>Platform and delivery</h3>
+          <p>GitOps cutovers with ArgoCD, rolling deploys on AWS EKS, CI/CD pipelines with end-to-end test stages, and OpenTelemetry tracing for stream processing.</p>
+          <ul class="tags" aria-label="Tools">
+            <li>ArgoCD</li><li>Kubernetes</li><li>AWS EKS</li><li>GCP Cloud Run</li><li>GitHub Actions</li><li>OpenTelemetry</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
 
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            
-            if (scrollTimer !== null) {
-                clearTimeout(scrollTimer);
-            }
-            
-            if (scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+    <!-- Selected work -->
+    <section class="section wrap" id="work" aria-labelledby="work-title">
+      <header class="section-head">
+        <span class="section-num" aria-hidden="true"></span>
+        <h2 id="work-title">Things I've built</h2>
+      </header>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+      <ol class="cases">
+        <li class="case">
+          <article aria-labelledby="case-fraud">
+          <span class="case-num" aria-hidden="true">01</span>
+          <div class="chart" role="img" aria-label="Fraud fell from an index of 100 to 82, an 18% reduction">
+            <p class="chart-title">Fraud (before = 100)</p>
+            <div class="chart-row" title="Before: 100"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">100</span></span></div>
+            <div class="chart-row" title="After: 82"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 82%"></span><span class="chart-val">82</span></span></div>
+          </div>
+          <div class="case-body">
+            <p class="case-meta">Umba · Digital lending · 2023–24</p>
+            <h3 id="case-fraud">Fraud detection for a digital lender</h3>
+            <p class="case-summary">Scored every loan application with a scikit-learn model, rule-based identity checks, and scheduled fraud-ring detection.</p>
+            <p class="case-stat"><span class="stat-value">18%</span> less fraud</p>
+            <details class="case-details">
+              <summary>How it worked</summary>
+              <dl class="spec">
+              <div><dt>Problem</dt><dd>The lender needed to catch fraudulent loan applications, from individual bad actors to coordinated fraud rings.</dd></div>
+              <div><dt>What I built</dt><dd>A fraud detection system that scores every loan application, combining a machine learning model, rule-based checks, and scheduled ring detection.</dd></div>
+              <div><dt>How</dt><dd>RQ workers on Redis score each application with a scikit-learn classifier. Rule-based identity checks run alongside the model. A scheduled fraud-ring clustering job runs with Airflow and AWS Batch. I also owned MLOps for the fraud and credit models: Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</dd></div>
+              </dl>
+            </details>
+          </div>
+          </article>
+        <!-- TODO(Adedamola): optional detail that would strengthen this case study if you can share it:
+             application volume, model evaluation metrics, or scoring latency. Not in the CV, so not included. -->
+        </li>
+        <li class="case">
+          <article aria-labelledby="case-billing">
+          <span class="case-num" aria-hidden="true">02</span>
+          <div class="chart" role="img" aria-label="Billing API response time fell from 1.2 seconds to 85 milliseconds">
+            <p class="chart-title">Billing API response time</p>
+            <div class="chart-row" title="Before: 1.2s"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">1.2s</span></span></div>
+            <div class="chart-row" title="After: 85ms"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 7.1%"></span><span class="chart-val">85ms</span></span></div>
+          </div>
+          <div class="case-body">
+            <p class="case-meta">Umba · Payments · 2023–24</p>
+            <h3 id="case-billing">Billing API from 1.2s to 85ms</h3>
+            <p class="case-summary">Reworked the billing data model and moved slow third-party calls off the request path.</p>
+            <p class="case-stat"><span class="stat-value">$42K</span> saved per month</p>
+            <details class="case-details">
+              <summary>How it worked</summary>
+              <dl class="spec">
+              <div><dt>Problem</dt><dd>The billing API took 1.2 seconds to respond.</dd></div>
+              <div><dt>What I built</dt><dd>A reworked data model and request path for billing: faster reads on the hot paths and slow external work moved off the request.</dd></div>
+              <div><dt>How</dt><dd>Moved status history into an append-only log, added composite indexes on hot lookup paths, and offloaded third-party calls to RQ workers with per-user Redis locks.</dd></div>
+              </dl>
+            </details>
+          </div>
+          </article>
+        </li>
+        <li class="case">
+          <article aria-labelledby="case-media">
+          <span class="case-num" aria-hidden="true">03</span>
+          <div class="chart" role="img" aria-label="Uploads for a 10,000-recipient media send fell from 10,000 to 1">
+            <p class="chart-title">Uploads per 10K-recipient media send</p>
+            <div class="chart-row" title="Before: 10,000"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">10,000</span></span></div>
+            <div class="chart-row" title="After: 1"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 0.01%"></span><span class="chart-val">1</span></span></div>
+          </div>
+          <div class="case-body">
+            <p class="case-meta">360Dialog · WhatsApp messaging · 2026</p>
+            <h3 id="case-media">Media-ID cache for the WhatsApp/Meta API</h3>
+            <p class="case-summary">A Redis cache of media IDs, so one upload serves a whole send instead of one upload per recipient.</p>
+            <p class="case-stat"><span class="stat-value">30+</span> enterprise brands and <span class="stat-value">1.5M+</span> end customers on the platform</p>
+            <details class="case-details">
+              <summary>How it worked</summary>
+              <dl class="spec">
+              <div><dt>Problem</dt><dd>On a WhatsApp messaging platform serving 30+ enterprise brands and 1.5M+ end customers, sending one piece of media to 10,000 recipients meant 10,000 uploads to the Meta media API.</dd></div>
+              <div><dt>What I built</dt><dd>A Redis-backed cache of media IDs, so a file is uploaded once and its ID is reused across the whole send.</dd></div>
+              <div><dt>How</dt><dd>Cached media IDs in Redis, used ETag revalidation to detect when the source file changes, and added distributed locks so concurrent workers do not upload the same file twice.</dd></div>
+              </dl>
+            </details>
+          </div>
+          </article>
+        <!-- TODO(Adedamola): the brief mentions TTL expiry and a fallback path. These are not in the CV,
+             so they are left out. Add them to "How" if you want them on the site. -->
+        </li>
+        <li class="case">
+          <article aria-labelledby="case-uburu">
+          <span class="case-num" aria-hidden="true">04</span>
+          <div class="chart" role="img" aria-label="Deployment cycle time fell from an index of 100 to 40, 60% shorter">
+            <p class="chart-title">Deployment cycle (before = 100)</p>
+            <div class="chart-row" title="Before: 100"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">100</span></span></div>
+            <div class="chart-row" title="After: 40"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 40%"></span><span class="chart-val">40</span></span></div>
+          </div>
+          <div class="case-body">
+            <p class="case-meta">Uburu.ai · Healthcare data · 2023–24</p>
+            <h3 id="case-uburu">Healthcare data platform</h3>
+            <p class="case-summary">Main backend engineer for patient search and federated cohort queries across partner hospitals' databases and FHIR APIs.</p>
+            <p class="case-stat"><span class="stat-value">56%</span> of the codebase written by me</p>
+            <details class="case-details">
+              <summary>How it worked</summary>
+              <dl class="spec">
+              <div><dt>Problem</dt><dd>The platform had to search patients and run cohort queries across partner hospitals whose data lived in their own databases and FHIR APIs. Releases were manual EC2/CodeDeploy deploys.</dd></div>
+              <div><dt>What I built</dt><dd>As the main backend engineer, I architected most of the backend (Django/DRF, PostgreSQL, Redis on AWS EKS) and handled on-call.</dd></div>
+              <div><dt>How</dt><dd>Secure hospital integrations with encrypted credentials, FHIR API connections, federated queries across external PostgreSQL databases, and bulk import/export pipelines. CI/CD with GitHub Actions, Docker Buildx, ECR, and EKS rolling deploys.</dd></div>
+              </dl>
+            </details>
+          </div>
+          </article>
+        </li>
+      </ol>
+    </section>
 
-        // Add initial loading state
-        document.body.classList.add('loading');
+    <!-- Experience -->
+    <section class="section wrap" id="experience" aria-labelledby="experience-title">
+      <header class="section-head">
+        <span class="section-num" aria-hidden="true"></span>
+        <h2 id="experience-title">Experience</h2>
+      </header>
 
-        // Restart animation when section comes into view
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+      <ol class="timeline">
+        <li>
+          <p class="tl-dates">Feb 2026 – Aug 2026</p>
+          <div class="tl-body">
+            <h3><span class="tl-company">360Dialog</span> <span class="tl-role">Backend Engineer</span></h3>
+            <p class="tl-place">Berlin, Germany (Remote)</p>
+            <p>Python/FastAPI microservices on GCP Cloud Run with Redis Streams for a WhatsApp platform serving 30+ enterprise brands.</p>
+          </div>
+        </li>
+        <li>
+          <p class="tl-dates">Dec 2024 – Jan 2026</p>
+          <div class="tl-body">
+            <h3><span class="tl-company">Nomad Internet</span> <span class="tl-role">Automation &amp; Backend Engineer</span></h3>
+            <p class="tl-place">USA (Remote)</p>
+            <p>Automation and ETL pipelines with FastAPI and Airflow; PostgreSQL query latency down 40%+.</p>
+          </div>
+        </li>
+        <li>
+          <p class="tl-dates">Mar 2023 – Dec 2024</p>
+          <div class="tl-body">
+            <h3><span class="tl-company">Uburu.ai</span> <span class="tl-role">Backend Engineer</span></h3>
+            <p class="tl-place">Nigeria (Remote)</p>
+            <p>Main backend engineer for a healthcare data platform on AWS EKS; wrote 56% of the codebase.</p>
+          </div>
+        </li>
+        <li>
+          <p class="tl-dates">Mar 2023 – Jan 2024</p>
+          <div class="tl-body">
+            <h3><span class="tl-company">Umba</span> <span class="tl-role">Software Engineer (Part-time)</span></h3>
+            <p class="tl-place">California, USA (Remote)</p>
+            <p>Fraud detection and MLOps for credit and fraud models; billing API from 1.2s to 85ms.</p>
+          </div>
+        </li>
+        <li>
+          <p class="tl-dates">Feb 2022 – Mar 2023</p>
+          <div class="tl-body">
+            <h3><span class="tl-company">Sendme.ng</span> <span class="tl-role">Senior Backend Engineer</span></h3>
+            <p class="tl-place">Lagos, Nigeria</p>
+            <p>Led 10 engineers; cut backend latency from 47.8s to 97ms with Celery and RabbitMQ.</p>
+          </div>
+        </li>
+        <li>
+          <p class="tl-dates">May 2019 – Oct 2021</p>
+          <div class="tl-body">
+            <h3><span class="tl-company">DataTotem</span> <span class="tl-role">Software Engineer</span></h3>
+            <p class="tl-place">Nigeria</p>
+            <p>Migrated monoliths to microservices on AWS and GCP; test cycles down 70%.</p>
+          </div>
+        </li>
+      </ol>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const svg = entry.target.querySelector('.face-sketch svg');
-                    if (svg) {
-                        // Reset animation by cloning and replacing the SVG
-                        const newSvg = svg.cloneNode(true);
-                        svg.parentNode.replaceChild(newSvg, svg);
-                    }
-                }
-            });
-        }, observerOptions);
+      <div class="edu">
+        <h3>Education &amp; recognition</h3>
+        <dl class="edu-grid">
+          <div><dt>Degree</dt><dd>B.Sc. Electronic &amp; Electrical Engineering, Obafemi Awolowo University, 2021</dd></div>
+          <div><dt>In progress</dt><dd>Postgraduate Diploma in Cybersecurity, Lead City University</dd></div>
+          <div><dt>Recognition</dt><dd><ul><li>PyCon Nigeria speaker (2019, 2024)</li><li>2nd nationally, IEEE Xtreme 15.0</li><li>Udacity Cloud &amp; AWS ML Nanodegrees</li></ul></dd></div>
+        </dl>
+      </div>
+    </section>
 
-        // Observe the about section
-        const aboutSection = document.querySelector('#about');
-        if (aboutSection) {
-            observer.observe(aboutSection);
-        }
-    </script>
+    <!-- Learning & notes -->
+    <section class="section wrap" id="learning" aria-labelledby="learning-title">
+      <header class="section-head">
+        <span class="section-num" aria-hidden="true"></span>
+        <h2 id="learning-title">Learning &amp; notes</h2>
+      </header>
+
+      <div class="learn-grid">
+        <div class="learning">
+          <p class="learn-label">Currently learning</p>
+          <h3><svg class="doodle-inline" aria-hidden="true" focusable="false" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8 C9 6 13 7 16 10 C19 7 23 6 29 8 L29 25 C23 23 19 24 16 27 C13 24 9 23 3 25 Z M16 10 L16 27"/></svg>Inference engineering</h3>
+          <p>Reading <cite>Inference Engineering</cite> by Philip Kiely and building small experiments on model serving, latency, and throughput.</p>
+        </div>
+
+        <div class="notes-card">
+          <p class="learn-label">Latest notes</p>
+          <ol class="notes">
+            <!--
+              Latest 3 notes, newest first. Copy the same entry you add to notes/index.html, with the link prefixed by "notes/".
+              The "in progress" line below hides itself once this list has an entry.
+
+            <li class="note">
+              <time datetime="2026-10-15">15 Oct 2026</time>
+              <div>
+                <h3 class="note-title"><a href="notes/2026-10-15-post-slug.html">Title of the note</a></h3>
+                <p>One or two sentences: what I built or measured, and what I learned.</p>
+              </div>
+            </li>
+            -->
+          </ol>
+          <p class="notes-empty">The first write-ups are in progress: deep dives on systems I've built, and inference experiments with real numbers.</p>
+          <p class="notes-more"><a href="notes/">Browse notes →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section wrap" id="contact" aria-labelledby="contact-title">
+      <header class="section-head">
+        <span class="section-num" aria-hidden="true"></span>
+        <h2 id="contact-title">Say hello</h2>
+      </header>
+
+      <div class="contact">
+        <div class="contact-body">
+          <p class="contact-lede">Want to talk about ML platforms, backends, or model serving? Email is the fastest way to reach me.</p>
+          <dl class="contact-list">
+            <div><dt>Email</dt><dd><a href="mailto:adedamola.adedapo1@gmail.com">adedamola.adedapo1@gmail.com</a></dd></div>
+            <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/adedamolaadedapo" rel="me noopener">linkedin.com/in/adedamolaadedapo</a></dd></div>
+            <div><dt>GitHub</dt><dd><a href="https://github.com/ichdamola" rel="me noopener">github.com/ichdamola</a></dd></div>
+            <div><dt>Location</dt><dd>Nigeria (GMT+1), open to remote and relocation</dd></div>
+          </dl>
+        </div>
+        <svg class="plane" aria-hidden="true" focusable="false" viewBox="0 0 220 170" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 160 C48 166 78 140 66 118 C56 100 30 112 40 130 C50 148 92 146 118 120" stroke-dasharray="2 9"/>
+          <path class="plane-wing" d="M204 14 L128 104 L150 158 Z"/>
+          <path class="plane-body" d="M204 14 L60 72 L128 104 Z"/>
+          <path d="M204 14 L128 104 L124 134"/>
+        </svg>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 Adedamola Adedapo · Hand-written HTML and CSS, no frameworks or trackers.</p>
+      <p><a href="assets/Adedamola_Adedapo_CV.pdf" download="Adedamola_Adedapo_CV.pdf">Download CV (PDF)</a></p>
+    </div>
+  </footer>
+  <script>
+    // Replays the SVG line drawing on the portrait. The page works without this.
+    (() => {
+      const svg = document.querySelector('.scribble');
+      const btn = document.querySelector('.redraw');
+      if (!svg || !btn || !svg.setCurrentTime) { if (btn) btn.hidden = true; return; }
+      btn.addEventListener('click', () => { svg.setCurrentTime(0); svg.unpauseAnimations(); });
+    })();
+  </script>
 </body>
 </html>

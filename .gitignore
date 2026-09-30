@@ -1,0 +1,5 @@
+.DS_Store
+
+# Original photos: publish only the processed portrait-* files
+assets/pic.jpg
+assets/choice-pic.jpg

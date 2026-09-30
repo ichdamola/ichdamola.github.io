@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes · Adedamola Adedapo</title>
+  <meta name="description" content="Write-ups by Adedamola Adedapo on ML infrastructure, backends, and model serving: systems I've built and experiments I'm running.">
+  <meta name="author" content="Adedamola Adedapo">
+  <link rel="canonical" href="https://ichdamola.github.io/notes/">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Adedamola Adedapo">
+  <meta property="og:title" content="Notes · Adedamola Adedapo">
+  <meta property="og:description" content="Write-ups on ML infrastructure, backends, and model serving.">
+  <meta property="og:url" content="https://ichdamola.github.io/notes/">
+  <meta property="og:image" content="https://ichdamola.github.io/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preload" href="../assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css?v=2026-10-01i">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="../">Adedamola Adedapo</a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="../#work">Work</a></li>
+          <li><a href="../#experience">Experience</a></li>
+          <li><a href="./" aria-current="page">Notes</a></li>
+          <li><a href="../#contact">Say hello</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap page">
+    <header class="page-head">
+      <div>
+        <h1>Notes</h1>
+        <p class="section-lede">Write-ups of systems I've built and experiments I'm running on ML infrastructure, backends, and model serving.</p>
+      </div>
+      <svg class="page-doodle" aria-hidden="true" focusable="false" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M64 12 L82 30 L38 74 L16 80 L22 58 Z"/><path d="M56 20 L74 38 M22 58 L38 74"/><path d="M12 88 C26 84 36 90 50 86 C62 83 72 88 86 85" stroke-dasharray="2 7"/></svg>
+    </header>
+
+    <!--
+      How to add a note:
+        1. Copy notes/_post-template.html to notes/YYYY-MM-DD-post-slug.html and write the post.
+        2. Paste this entry at the TOP of the matching category list below (newest first):
+
+        <li class="note">
+          <time datetime="2026-10-15">15 Oct 2026</time>
+          <div>
+            <h3 class="note-title"><a href="2026-10-15-post-slug.html">Title of the note</a></h3>
+            <p>One or two sentences: what I built or measured, and what I learned.</p>
+            <ul class="tags" aria-label="Topics"><li>serving</li><li>latency</li></ul>
+          </div>
+        </li>
+
+        3. Add the same entry to the "Latest notes" card in the homepage's Learning & notes section
+           (link prefixed with "notes/"), keeping only the latest 3 there.
+        4. Add the post URL to sitemap.xml.
+      Each "Nothing published yet." line hides itself once its list has an entry.
+    -->
+    <nav class="note-jump" aria-label="Note categories">
+      <a href="#deep-dives">Deep dives</a>
+      <a href="#experiments">Experiments</a>
+      <a href="#reading">Reading notes</a>
+    </nav>
+
+    <div class="note-cats">
+      <section class="note-cat" id="deep-dives" aria-labelledby="deep-dives-title">
+        <header class="note-cat-head">
+          <svg class="cat-icon" aria-hidden="true" focusable="false" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="22" height="7" rx="2"/><rect x="5" y="15" width="22" height="7" rx="2"/><path d="M9 8.5h.01M9 18.5h.01M16 25v3M11 28h10"/></svg>
+          <div>
+            <h2 id="deep-dives-title">Deep dives</h2>
+            <p>How I built production systems: caching, latency work, event-driven pipelines, and MLOps, with the numbers.</p>
+          </div>
+        </header>
+        <ol class="notes">
+          <!-- entries go here, newest first -->
+        </ol>
+        <p class="notes-empty">Nothing published yet.</p>
+      </section>
+
+      <section class="note-cat" id="experiments" aria-labelledby="experiments-title">
+        <header class="note-cat-head">
+          <svg class="cat-icon" aria-hidden="true" focusable="false" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4h8M13 4v8L6 25a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3l-7-13V4"/><path d="M9 20h14"/></svg>
+          <div>
+            <h2 id="experiments-title">Experiments</h2>
+            <p>Small inference experiments on model serving, latency, and throughput, with what I measured.</p>
+          </div>
+        </header>
+        <ol class="notes">
+          <!-- entries go here, newest first -->
+        </ol>
+        <p class="notes-empty">Nothing published yet.</p>
+      </section>
+
+      <section class="note-cat" id="reading" aria-labelledby="reading-title">
+        <header class="note-cat-head">
+          <svg class="cat-icon" aria-hidden="true" focusable="false" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7c5-2 9-1 13 2 4-3 8-4 13-2v19c-5-2-9-1-13 2-4-3-8-4-13-2Z"/><path d="M16 9v19"/></svg>
+          <div>
+            <h2 id="reading-title">Reading notes</h2>
+            <p>Notes from books and papers. Currently reading <cite>Inference Engineering</cite> by Philip Kiely.</p>
+          </div>
+        </header>
+        <ol class="notes">
+          <!-- entries go here, newest first -->
+        </ol>
+        <p class="notes-empty">Nothing published yet.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>© 2026 Adedamola Adedapo · Hand-written HTML and CSS, no frameworks or trackers.</p>
+      <p><a href="../">← Back to home</a></p>
+    </div>
+  </footer>
+</body>
+</html>
