@@ -125,6 +125,9 @@ a:hover { text-decoration-thickness: 2px; }
   padding-block: 0.75rem;
 }
 
+.home .wordmark { display: none; }
+.home .header-inner { justify-content: center; }
+
 .wordmark {
   color: var(--text);
   font-family: var(--serif);
@@ -157,7 +160,10 @@ a:hover { text-decoration-thickness: 2px; }
 
 .hero-photo {
   position: relative;
-  width: 9.5rem;
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  align-items: center;
+  gap: 1.75rem;
   margin-left: 1.75rem;
 }
 .frame { position: relative; }
@@ -222,16 +228,16 @@ a:hover { text-decoration-thickness: 2px; }
 .hero-photo:hover .packets { opacity: 1; }
 
 .plot-caption {
-  display: none;
-  margin-top: 1.4rem;
   font-family: var(--mono);
   font-size: 0.72rem;
   line-height: 1.5;
-  text-align: center;
   color: var(--muted);
 }
+.plot-caption span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
 .redraw {
-  margin-left: 0.25rem;
   padding: 0.3rem 0.7rem;
   border: 1px solid var(--rule);
   border-radius: 999px;
@@ -398,10 +404,29 @@ main { counter-reset: section; }
 }
 
 /* What I build */
+.swipe-hint {
+  margin: -1rem 0 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-align: right;
+  color: var(--muted);
+}
+.cards-scroll {
+  margin-inline: calc(-1 * var(--gutter));
+  padding: 0.25rem var(--gutter) 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.cards-scroll::-webkit-scrollbar { display: none; }
 .cards {
   display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(84%, 22rem);
   gap: 1rem;
 }
+.card { scroll-snap-align: start; }
 
 .card {
   display: flex;
@@ -443,11 +468,19 @@ main { counter-reset: section; }
 }
 .case:first-child > article { border-top: 0; padding-top: 0.5rem; }
 
+.case > article { position: relative; }
 .case-num {
+  position: absolute;
+  top: 1.6rem;
+  right: 0;
   font-family: var(--mono);
-  font-size: 0.875rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
   color: var(--accent);
+  opacity: 0.75;
 }
+.case:first-child .case-num { top: 0; }
 
 .case-meta {
   font-family: var(--mono);
@@ -557,7 +590,23 @@ main { counter-reset: section; }
 /* Experience */
 .timeline {
   display: grid;
+  margin-left: 0.4rem;
+  padding-left: 1.4rem;
+  border-left: 2px solid var(--rule);
 }
+.timeline > li { position: relative; }
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  top: 1.45rem;
+  left: calc(-1.4rem - 7px);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+.timeline > li:first-child::before { top: 0.2rem; }
 .timeline > li {
   display: grid;
   gap: 0.25rem;
@@ -1005,6 +1054,12 @@ main { counter-reset: section; }
   .contact { grid-template-columns: 1fr auto; }
   .plane { display: block; margin-right: 2rem; }
   .site-header { position: sticky; }
+  .home .wordmark { display: inline; }
+  .home .header-inner { justify-content: space-between; }
+  .hero-photo { display: block; }
+  .plot-caption { margin-top: 1.4rem; text-align: center; }
+  .timeline { margin-left: 0; padding-left: 0; border-left: 0; }
+  .timeline > li::before { display: none; }
   .hire-arrow { display: block; }
   .edu-grid { grid-template-columns: 1fr 1fr 1.2fr; gap: 2rem; }
   .page-doodle { display: block; }
@@ -1019,13 +1074,21 @@ main { counter-reset: section; }
 }
 
 @media (min-width: 60rem) {
-  .cards { grid-template-columns: repeat(3, 1fr); }
+  .cards { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); }
+  .cards-scroll { margin-inline: 0; padding: 0; overflow: visible; }
+  .swipe-hint { display: none; }
   .case > article {
     grid-template-columns: 2.5rem minmax(0, 19rem) minmax(0, 1fr);
     gap: 2.5rem;
     align-items: start;
   }
-  .case-num { padding-top: 0.2rem; }
+  .case-num {
+    position: static;
+    padding-top: 0.2rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    opacity: 1;
+  }
   .learn-grid { grid-template-columns: 1.2fr 1fr; }
   .section { padding-block: 4rem; }
 }

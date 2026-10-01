@@ -36,7 +36,7 @@
 
   <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Bump ?v= whenever styles.css changes so browsers fetch the new file instead of a cached one. -->
-  <link rel="stylesheet" href="styles.css?v=2026-10-01i">
+  <link rel="stylesheet" href="styles.css?v=2026-10-01k">
 
   <script type="application/ld+json">
   {
@@ -61,7 +61,7 @@
   }
   </script>
 </head>
-<body>
+<body class="home">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -116,32 +116,35 @@
         <h2 id="build-title">What I work on</h2>
       </header>
 
-      <ul class="cards">
-        <li class="card">
-          <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 L24 9 M9 14 L24 24 M9 34 L24 24 M9 34 L24 39 M24 9 L39 24 M24 24 L39 24 M24 39 L39 24"/><g fill="currentColor" stroke="none"><circle cx="9" cy="14" r="3.5"/><circle cx="9" cy="34" r="3.5"/><circle cx="24" cy="9" r="3.5"/><circle cx="24" cy="24" r="3.5"/><circle cx="24" cy="39" r="3.5"/><circle cx="39" cy="24" r="4.5"/></g></svg>
-          <h3>ML systems in production</h3>
-          <p>Fraud detection and credit-scoring models for a digital lender. I owned MLOps for them: Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</p>
-          <ul class="tags" aria-label="Tools">
-            <li>scikit-learn</li><li>Prefect</li><li>Optuna</li><li>Helm</li><li>Airflow</li><li>Pandas</li>
-          </ul>
-        </li>
-        <li class="card">
-          <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="28" height="9" rx="2.5"/><rect x="5.5" y="19.5" width="27.5" height="9" rx="2.5"/><rect x="5" y="33" width="28" height="9" rx="2.5"/><path d="M10 10.5 h.01 M10 24 h.01 M10 37.5 h.01"/><path d="M39 11 C45 18 45 31 39 38 M35 36 L39 38.5 L40.5 33.5"/></svg>
-          <h3>Distributed backends</h3>
-          <p>Python microservices with FastAPI and Django, event-driven processing on Redis Streams, RabbitMQ, and Celery, and PostgreSQL tuned for high-volume transactions.</p>
-          <ul class="tags" aria-label="Tools">
-            <li>FastAPI</li><li>Django/DRF</li><li>Redis Streams</li><li>RabbitMQ</li><li>Celery</li><li>PostgreSQL</li>
-          </ul>
-        </li>
-        <li class="card">
-          <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M37 15 A15 15 0 1 0 39 30"/><path d="M33.5 31 L39 30 L40 24.5"/><path d="M17 24.5 L22 29.5 L31 19"/></svg>
-          <h3>Platform and delivery</h3>
-          <p>GitOps cutovers with ArgoCD, rolling deploys on AWS EKS, CI/CD pipelines with end-to-end test stages, and OpenTelemetry tracing for stream processing.</p>
-          <ul class="tags" aria-label="Tools">
-            <li>ArgoCD</li><li>Kubernetes</li><li>AWS EKS</li><li>GCP Cloud Run</li><li>GitHub Actions</li><li>OpenTelemetry</li>
-          </ul>
-        </li>
-      </ul>
+      <p class="swipe-hint" aria-hidden="true">Swipe for more →</p>
+      <div class="cards-scroll" role="region" aria-label="What I work on" tabindex="0">
+        <ul class="cards">
+          <li class="card">
+            <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 L24 9 M9 14 L24 24 M9 34 L24 24 M9 34 L24 39 M24 9 L39 24 M24 24 L39 24 M24 39 L39 24"/><g fill="currentColor" stroke="none"><circle cx="9" cy="14" r="3.5"/><circle cx="9" cy="34" r="3.5"/><circle cx="24" cy="9" r="3.5"/><circle cx="24" cy="24" r="3.5"/><circle cx="24" cy="39" r="3.5"/><circle cx="39" cy="24" r="4.5"/></g></svg>
+            <h3>ML systems in production</h3>
+            <p>Fraud detection and credit-scoring models for a digital lender. I owned MLOps for them: Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</p>
+            <ul class="tags" aria-label="Tools">
+              <li>scikit-learn</li><li>Prefect</li><li>Optuna</li><li>Helm</li><li>Airflow</li><li>Pandas</li>
+            </ul>
+          </li>
+          <li class="card">
+            <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="28" height="9" rx="2.5"/><rect x="5.5" y="19.5" width="27.5" height="9" rx="2.5"/><rect x="5" y="33" width="28" height="9" rx="2.5"/><path d="M10 10.5 h.01 M10 24 h.01 M10 37.5 h.01"/><path d="M39 11 C45 18 45 31 39 38 M35 36 L39 38.5 L40.5 33.5"/></svg>
+            <h3>Distributed backends</h3>
+            <p>Python microservices with FastAPI and Django, event-driven processing on Redis Streams, RabbitMQ, and Celery, and PostgreSQL tuned for high-volume transactions.</p>
+            <ul class="tags" aria-label="Tools">
+              <li>FastAPI</li><li>Django/DRF</li><li>Redis Streams</li><li>RabbitMQ</li><li>Celery</li><li>PostgreSQL</li>
+            </ul>
+          </li>
+          <li class="card">
+            <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M37 15 A15 15 0 1 0 39 30"/><path d="M33.5 31 L39 30 L40 24.5"/><path d="M17 24.5 L22 29.5 L31 19"/></svg>
+            <h3>Platform and delivery</h3>
+            <p>GitOps cutovers with ArgoCD, rolling deploys on AWS EKS, CI/CD pipelines with end-to-end test stages, and OpenTelemetry tracing for stream processing.</p>
+            <ul class="tags" aria-label="Tools">
+              <li>ArgoCD</li><li>Kubernetes</li><li>AWS EKS</li><li>GCP Cloud Run</li><li>GitHub Actions</li><li>OpenTelemetry</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <!-- Selected work -->
