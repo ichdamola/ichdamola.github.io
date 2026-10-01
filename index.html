@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Adedamola Adedapo · Backend &amp; ML Systems Engineer</title>
-  <meta name="description" content="Backend and ML systems engineer with 7 years of experience. I build the production infrastructure behind machine learning: data pipelines, MLOps, and the backends that serve models.">
+  <meta name="description" content="Backend and ML systems engineer with 7 years of experience building data pipelines, MLOps, and the backends that serve machine learning. Now extending into LLM infrastructure, from model serving to retrieval and agents.">
   <meta name="author" content="Adedamola Adedapo">
   <link rel="canonical" href="https://ichdamola.github.io/">
   <meta name="color-scheme" content="light dark">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Adedamola Adedapo">
   <meta property="og:title" content="Adedamola Adedapo · Backend &amp; ML Systems Engineer">
-  <meta property="og:description" content="I build the production infrastructure that makes machine learning work: data pipelines, MLOps, and the backends that serve it.">
+  <meta property="og:description" content="I build the production infrastructure that makes machine learning work, from data pipelines and MLOps to the backends that serve it.">
   <meta property="og:url" content="https://ichdamola.github.io/">
   <meta property="og:image" content="https://ichdamola.github.io/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Adedamola Adedapo · Backend &amp; ML Systems Engineer">
-  <meta name="twitter:description" content="I build the production infrastructure that makes machine learning work: data pipelines, MLOps, and the backends that serve it.">
+  <meta name="twitter:description" content="I build the production infrastructure that makes machine learning work, from data pipelines and MLOps to the backends that serve it.">
   <meta name="twitter:image" content="https://ichdamola.github.io/assets/og-image.png">
   <meta name="twitter:image:alt" content="Illustrated portrait of Adedamola Adedapo beside the title Backend and ML Systems Engineer">
 
@@ -36,7 +36,7 @@
 
   <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Bump ?v= whenever styles.css changes so browsers fetch the new file instead of a cached one. -->
-  <link rel="stylesheet" href="styles.css?v=2026-10-01q">
+  <link rel="stylesheet" href="styles.css?v=2026-10-01w">
 
   <script type="application/ld+json">
   {
@@ -97,8 +97,9 @@
       <div class="hero-text">
         <h1 id="hero-title" class="hero-name">Adedamola Adedapo</h1>
         <p class="hero-role"><span>Backend &amp; ML Systems Engineer</span></p>
-        <p class="headline">I build the production infrastructure that makes machine learning work: data pipelines, model training and deployment, and the backends that serve it.</p>
+        <p class="headline">I build the production infrastructure that makes machine learning work, from data pipelines and model training to deployment and the backends that serve it.</p>
         <p class="lede">Seven years across payments, messaging, and healthcare data, including fraud detection that cut fraud by 18% and WhatsApp infrastructure for 30+ enterprise brands.</p>
+        <p class="now"><mark>Now extending into LLM infrastructure, from model serving to retrieval and agents.</mark></p>
         <ul class="actions" aria-label="Links">
           <li><a class="btn btn-primary" href="assets/Adedamola_Adedapo_CV.pdf" download="Adedamola_Adedapo_CV.pdf">Download CV <span class="btn-meta">PDF</span></a></li>
           <li><a class="btn" href="https://github.com/ichdamola" rel="me noopener">GitHub</a></li>
@@ -122,7 +123,7 @@
           <li class="card">
             <svg class="doodle" aria-hidden="true" focusable="false" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 L24 9 M9 14 L24 24 M9 34 L24 24 M9 34 L24 39 M24 9 L39 24 M24 24 L39 24 M24 39 L39 24"/><g fill="currentColor" stroke="none"><circle cx="9" cy="14" r="3.5"/><circle cx="9" cy="34" r="3.5"/><circle cx="24" cy="9" r="3.5"/><circle cx="24" cy="24" r="3.5"/><circle cx="24" cy="39" r="3.5"/><circle cx="39" cy="24" r="4.5"/></g></svg>
             <h3>ML systems in production</h3>
-            <p>Fraud detection and credit-scoring models for a digital lender. I owned MLOps for them: Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</p>
+            <p>Fraud detection and credit-scoring models for a digital lender. I owned MLOps for them with Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</p>
             <ul class="tags" aria-label="Tools">
               <li>scikit-learn</li><li>Prefect</li><li>Optuna</li><li>Helm</li><li>Airflow</li><li>Pandas</li>
             </ul>
@@ -171,7 +172,7 @@
               <dl class="spec">
               <div><dt>Problem</dt><dd>The lender needed to catch fraudulent loan applications, from individual bad actors to coordinated fraud rings.</dd></div>
               <div><dt>What I built</dt><dd>A fraud detection system that scores every loan application, combining a machine learning model, rule-based checks, and scheduled ring detection.</dd></div>
-              <div><dt>How</dt><dd>RQ workers on Redis score each application with a scikit-learn classifier. Rule-based identity checks run alongside the model. A scheduled fraud-ring clustering job runs with Airflow and AWS Batch. I also owned MLOps for the fraud and credit models: Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</dd></div>
+              <div><dt>How</dt><dd>RQ workers on Redis score each application with a scikit-learn classifier. Rule-based identity checks run alongside the model. A scheduled fraud-ring clustering job runs with Airflow and AWS Batch. I also owned MLOps for the fraud and credit models, using Prefect on Kubernetes, Optuna tuning, and Helm-based releases.</dd></div>
               </dl>
             </details>
           </div>
@@ -195,7 +196,7 @@
               <summary>How it worked</summary>
               <dl class="spec">
               <div><dt>Problem</dt><dd>The billing API took 1.2 seconds to respond.</dd></div>
-              <div><dt>What I built</dt><dd>A reworked data model and request path for billing: faster reads on the hot paths and slow external work moved off the request.</dd></div>
+              <div><dt>What I built</dt><dd>A reworked data model and request path for billing, with faster reads on the hot paths and slow external work moved off the request.</dd></div>
               <div><dt>How</dt><dd>Moved status history into an append-only log, added composite indexes on hot lookup paths, and offloaded third-party calls to RQ workers with per-user Redis locks.</dd></div>
               </dl>
             </details>
@@ -325,6 +326,14 @@
           <p class="learn-label">Currently learning</p>
           <h3><svg class="doodle-inline" aria-hidden="true" focusable="false" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8 C9 6 13 7 16 10 C19 7 23 6 29 8 L29 25 C23 23 19 24 16 27 C13 24 9 23 3 25 Z M16 10 L16 27"/></svg>Inference engineering</h3>
           <p>Reading <cite>Inference Engineering</cite> by Philip Kiely and building small experiments on model serving, latency, and throughput.</p>
+
+          <p class="learn-label roadmap-label">Building next</p>
+          <!-- Update each status as you go: "Next", "In progress", or link the write-up when it ships. -->
+          <ol class="roadmap">
+            <li><span class="rm-status">Next</span><span class="rm-body"><strong>LLM inference benchmark.</strong> vLLM and llama.cpp under load, measuring time to first token, throughput, p95 latency, and cost per million tokens.</span></li>
+            <li><span class="rm-status">Planned</span><span class="rm-body"><strong>RAG service with evals.</strong> Hybrid search on Postgres and pgvector, caching, tracing, and a test set that measures retrieval and answer quality.</span></li>
+            <li><span class="rm-status">Planned</span><span class="rm-body"><strong>An agent as a backend service.</strong> Tool calls over MCP, run on Redis Streams with retries, cost budgets, human approval, and OpenTelemetry traces.</span></li>
+          </ol>
         </div>
 
         <div class="notes-card">
@@ -343,7 +352,7 @@
             </li>
             -->
           </ol>
-          <p class="notes-empty">The first write-ups are in progress: deep dives on systems I've built, and inference experiments with real numbers.</p>
+          <p class="notes-empty">The first write-ups are in progress, with deep dives on systems I've built and inference experiments with real numbers.</p>
           <p class="notes-more"><a href="notes/">Browse notes →</a></p>
         </div>
       </div>

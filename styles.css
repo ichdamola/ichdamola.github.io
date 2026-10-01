@@ -18,6 +18,7 @@
   --rule: #dcd7cc;
   --accent: #b33c0a;
   --accent-soft: #fbeadf;
+  --highlight-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40' preserveAspectRatio='none'%3E%3Cpath d='M6 14 C60 9 140 11 220 10 S360 8 396 12 C399 18 397 27 393 31 C320 34 230 31 150 33 S40 35 4 30 C1 24 2 18 6 14 Z' fill='%23f4a77a' fill-opacity='0.5'/%3E%3C/svg%3E");
   --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M0 6 Q15 0 30 6 T60 6' fill='none' stroke='%23b33c0a' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
   --on-accent: #ffffff;
   --focus: #1f5fd1;
@@ -41,6 +42,7 @@
     --rule: #34332f;
     --accent: #ff8a4c;
     --accent-soft: #2b1e17;
+    --highlight-stroke: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40' preserveAspectRatio='none'%3E%3Cpath d='M6 14 C60 9 140 11 220 10 S360 8 396 12 C399 18 397 27 393 31 C320 34 230 31 150 33 S40 35 4 30 C1 24 2 18 6 14 Z' fill='%23ff8a4c' fill-opacity='0.3'/%3E%3C/svg%3E");
     --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M0 6 Q15 0 30 6 T60 6' fill='none' stroke='%23ff8a4c' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
     --on-accent: #141416;
     --focus: #8ab4ff;
@@ -295,6 +297,22 @@ a:hover { text-decoration-thickness: 2px; }
   max-width: 58ch;
   font-size: 1.125rem;
   color: var(--muted);
+}
+
+/* current focus, marked with a highlighter pen */
+.now {
+  margin-top: 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.now mark {
+  padding: 0.05em 0.35em 0.1em;
+  color: var(--text);
+  background: var(--highlight-stroke) 0 85% / 100% 78% no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .actions {
@@ -679,6 +697,38 @@ main { counter-reset: section; }
 }
 .notes-card .notes-empty { border-top: 0; padding-block: 0.25rem 0; }
 .notes-card .notes-more { margin-top: auto; padding-top: 1rem; }
+.learning .roadmap-label { margin-top: 1.75rem; }
+.roadmap {
+  display: grid;
+  gap: 0.85rem;
+  font-size: 0.9375rem;
+}
+.roadmap li {
+  display: grid;
+  grid-template-columns: 4.75rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.rm-status {
+  justify-self: start;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+.planned {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  padding-left: 1.1rem;
+  list-style: disc;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.planned li::marker { color: var(--accent); }
+
 .learn-label {
   margin-bottom: 0.6rem;
   font-family: var(--mono);
