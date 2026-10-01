@@ -18,7 +18,6 @@
   --rule: #dcd7cc;
   --accent: #b33c0a;
   --accent-soft: #fbeadf;
-  --bar-muted: #948c7f;
   --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M0 6 Q15 0 30 6 T60 6' fill='none' stroke='%23b33c0a' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
   --on-accent: #ffffff;
   --focus: #1f5fd1;
@@ -42,7 +41,6 @@
     --rule: #34332f;
     --accent: #ff8a4c;
     --accent-soft: #2b1e17;
-    --bar-muted: #77726a;
     --squiggle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M0 6 Q15 0 30 6 T60 6' fill='none' stroke='%23ff8a4c' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
     --on-accent: #141416;
     --focus: #8ab4ff;
@@ -506,48 +504,75 @@ main { counter-reset: section; }
   color: var(--text);
 }
 
-/* Before/after bars: grey = before, accent = after, value at the bar tip */
-.chart { margin: 0; }
-.chart-title {
-  margin-bottom: 0.6rem;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.chart-row {
-  display: grid;
-  grid-template-columns: 3.25rem 1fr;
-  align-items: center;
-  gap: 0.6rem;
-  margin-top: 0.5rem;
-}
-.chart-key {
-  font-size: 0.8125rem;
-  color: var(--muted);
-}
-.chart-track {
+/* Results marked up like a printout: old value struck through, new value circled in pen */
+.mark { margin: 0; }
+.mark-row {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  min-height: 1.5rem;
-  border-left: 1px solid var(--text);
+  gap: 0.75rem;
+  min-height: 4rem;
+  font-family: var(--serif);
+  font-variant-numeric: lining-nums tabular-nums;
 }
-.chart-bar {
-  flex: none;
-  width: max(4px, calc(var(--w) * 0.72));
-  height: 14px;
-  border-radius: 0 4px 4px 0;
-  background: var(--bar-muted);
+.mark-before,
+.mark-after {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
 }
-.chart-bar.is-after { background: var(--accent); }
-.chart-val {
-  font-family: var(--mono);
-  font-size: 0.8125rem;
+.mark-before {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.mark-after {
+  padding: 0.6rem 1.05rem 0.65rem;
+  font-size: 2.5rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--text);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }
+.mark-label {
+  margin-top: 0.5rem;
+  max-width: 19rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.pen {
+  color: var(--accent);
+  overflow: visible;
+  pointer-events: none;
+}
+.pen path { stroke-width: 2; vector-effect: non-scaling-stroke; }
+.pen-strike {
+  position: absolute;
+  left: -4%;
+  top: 46%;
+  width: 108%;
+  height: 0.5rem;
+}
+.pen-ring {
+  position: absolute;
+  inset: -0.1rem -0.15rem;
+  width: 100%;
+  height: 100%;
+}
+.pen-arrow { flex: none; width: 1.9rem; height: 1rem; }
+.pen-down { flex: none; width: 1rem; height: 2rem; }
+
+/* draw-in: paths use pathLength="1", so a dash of 1 hides or shows the whole stroke */
+.pen path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+.mark.is-pending .pen path { stroke-dashoffset: 1; transition: none; }
+.pen-strike path { transition-delay: 0.15s; }
+.pen-arrow path, .pen-down path { transition-delay: 0.6s; }
+.pen-arrow path + path, .pen-down path + path { transition-delay: 0.95s; transition-duration: 0.25s; }
+.pen-ring path { transition-delay: 1.15s; transition-duration: 0.9s; }
+
 .case-details { margin-top: 0.9rem; }
 .case-details summary {
   display: inline-flex;
@@ -633,33 +658,6 @@ main { counter-reset: section; }
 }
 .tl-body p:last-child { margin-top: 0.35rem; }
 
-.edu {
-  margin-top: 2.5rem;
-  padding: 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius);
-}
-.edu h3 {
-  margin-bottom: 0.75rem;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.edu-grid {
-  display: grid;
-  gap: 1.25rem;
-}
-.edu-grid dt {
-  margin-bottom: 0.25rem;
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--accent);
-}
-.edu-grid li + li { margin-top: 0.25rem; }
 
 /* Learning */
 .learn-grid {
@@ -1061,7 +1059,6 @@ main { counter-reset: section; }
   .timeline { margin-left: 0; padding-left: 0; border-left: 0; }
   .timeline > li::before { display: none; }
   .hire-arrow { display: block; }
-  .edu-grid { grid-template-columns: 1fr 1fr 1.2fr; gap: 2rem; }
   .page-doodle { display: block; }
   .scribble path { stroke-width: 1.5; }
   .plot-caption { display: block; }

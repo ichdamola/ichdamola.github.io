@@ -36,7 +36,7 @@
 
   <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
   <!-- Bump ?v= whenever styles.css changes so browsers fetch the new file instead of a cached one. -->
-  <link rel="stylesheet" href="styles.css?v=2026-10-01k">
+  <link rel="stylesheet" href="styles.css?v=2026-10-01q">
 
   <script type="application/ld+json">
   {
@@ -158,16 +158,14 @@
         <li class="case">
           <article aria-labelledby="case-fraud">
           <span class="case-num" aria-hidden="true">01</span>
-          <div class="chart" role="img" aria-label="Fraud fell from an index of 100 to 82, an 18% reduction">
-            <p class="chart-title">Fraud (before = 100)</p>
-            <div class="chart-row" title="Before: 100"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">100</span></span></div>
-            <div class="chart-row" title="After: 82"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 82%"></span><span class="chart-val">82</span></span></div>
+          <div class="mark" role="img" aria-label="18% less fraud">
+            <p class="mark-row"><svg class="pen pen-down" viewBox="0 0 20 40" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M10 3 V35"/><path pathLength="1" d="M3 28 L10 36 L17 28"/></svg><span class="mark-after">18%<svg class="pen pen-ring" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M60 4 C84 5 97 17 96 31 C95 47 74 57 49 56 C24 55 4 46 4 30 C4 15 22 5 44 4 C52 3.6 58 4 64 5"/></svg></span></p>
+            <p class="mark-label">less fraud</p>
           </div>
           <div class="case-body">
             <p class="case-meta">Umba · Digital lending · 2023–24</p>
             <h3 id="case-fraud">Fraud detection for a digital lender</h3>
             <p class="case-summary">Scored every loan application with a scikit-learn model, rule-based identity checks, and scheduled fraud-ring detection.</p>
-            <p class="case-stat"><span class="stat-value">18%</span> less fraud</p>
             <details class="case-details">
               <summary>How it worked</summary>
               <dl class="spec">
@@ -184,10 +182,9 @@
         <li class="case">
           <article aria-labelledby="case-billing">
           <span class="case-num" aria-hidden="true">02</span>
-          <div class="chart" role="img" aria-label="Billing API response time fell from 1.2 seconds to 85 milliseconds">
-            <p class="chart-title">Billing API response time</p>
-            <div class="chart-row" title="Before: 1.2s"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">1.2s</span></span></div>
-            <div class="chart-row" title="After: 85ms"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 7.1%"></span><span class="chart-val">85ms</span></span></div>
+          <div class="mark" role="img" aria-label="Billing API response time went from 1.2 seconds to 85 milliseconds, about 14 times faster">
+            <p class="mark-row"><span class="mark-before">1.2s<svg class="pen pen-strike" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M2 6 C30 3 66 7 98 4"/></svg></span><svg class="pen pen-arrow" viewBox="0 0 40 20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M3 10 H35"/><path pathLength="1" d="M28 4 L36 10 L28 16"/></svg><span class="mark-after">85ms<svg class="pen pen-ring" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M60 4 C84 5 97 17 96 31 C95 47 74 57 49 56 C24 55 4 46 4 30 C4 15 22 5 44 4 C52 3.6 58 4 64 5"/></svg></span></p>
+            <p class="mark-label">billing API response time<br>about 14× faster</p>
           </div>
           <div class="case-body">
             <p class="case-meta">Umba · Payments · 2023–24</p>
@@ -208,10 +205,9 @@
         <li class="case">
           <article aria-labelledby="case-media">
           <span class="case-num" aria-hidden="true">03</span>
-          <div class="chart" role="img" aria-label="Uploads for a 10,000-recipient media send fell from 10,000 to 1">
-            <p class="chart-title">Uploads per 10K-recipient media send</p>
-            <div class="chart-row" title="Before: 10,000"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">10,000</span></span></div>
-            <div class="chart-row" title="After: 1"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 0.01%"></span><span class="chart-val">1</span></span></div>
+          <div class="mark" role="img" aria-label="Uploads for a 10,000-recipient media send went from 10,000 to 1">
+            <p class="mark-row"><span class="mark-before">10,000<svg class="pen pen-strike" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M2 6 C30 3 66 7 98 4"/></svg></span><svg class="pen pen-arrow" viewBox="0 0 40 20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M3 10 H35"/><path pathLength="1" d="M28 4 L36 10 L28 16"/></svg><span class="mark-after">1<svg class="pen pen-ring" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M60 4 C84 5 97 17 96 31 C95 47 74 57 49 56 C24 55 4 46 4 30 C4 15 22 5 44 4 C52 3.6 58 4 64 5"/></svg></span></p>
+            <p class="mark-label">uploads per 10K-recipient media send</p>
           </div>
           <div class="case-body">
             <p class="case-meta">360Dialog · WhatsApp messaging · 2026</p>
@@ -234,10 +230,9 @@
         <li class="case">
           <article aria-labelledby="case-uburu">
           <span class="case-num" aria-hidden="true">04</span>
-          <div class="chart" role="img" aria-label="Deployment cycle time fell from an index of 100 to 40, 60% shorter">
-            <p class="chart-title">Deployment cycle (before = 100)</p>
-            <div class="chart-row" title="Before: 100"><span class="chart-key">Before</span><span class="chart-track"><span class="chart-bar" style="--w: 100%"></span><span class="chart-val">100</span></span></div>
-            <div class="chart-row" title="After: 40"><span class="chart-key">After</span><span class="chart-track"><span class="chart-bar is-after" style="--w: 40%"></span><span class="chart-val">40</span></span></div>
+          <div class="mark" role="img" aria-label="60% shorter deployment cycles">
+            <p class="mark-row"><svg class="pen pen-down" viewBox="0 0 20 40" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M10 3 V35"/><path pathLength="1" d="M3 28 L10 36 L17 28"/></svg><span class="mark-after">60%<svg class="pen pen-ring" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M60 4 C84 5 97 17 96 31 C95 47 74 57 49 56 C24 55 4 46 4 30 C4 15 22 5 44 4 C52 3.6 58 4 64 5"/></svg></span></p>
+            <p class="mark-label">shorter deployment cycles</p>
           </div>
           <div class="case-body">
             <p class="case-meta">Uburu.ai · Healthcare data · 2023–24</p>
@@ -316,14 +311,6 @@
         </li>
       </ol>
 
-      <div class="edu">
-        <h3>Education &amp; recognition</h3>
-        <dl class="edu-grid">
-          <div><dt>Degree</dt><dd>B.Sc. Electronic &amp; Electrical Engineering, Obafemi Awolowo University, 2021</dd></div>
-          <div><dt>In progress</dt><dd>Postgraduate Diploma in Cybersecurity, Lead City University</dd></div>
-          <div><dt>Recognition</dt><dd><ul><li>PyCon Nigeria speaker (2019, 2024)</li><li>2nd nationally, IEEE Xtreme 15.0</li><li>Udacity Cloud &amp; AWS ML Nanodegrees</li></ul></dd></div>
-        </dl>
-      </div>
     </section>
 
     <!-- Learning & notes -->
@@ -396,6 +383,17 @@
     </div>
   </footer>
   <script>
+    // Pen marks on the results draw in as they scroll into view. Without JS they are simply shown.
+    (() => {
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const marks = document.querySelectorAll('.mark');
+      marks.forEach(m => m.classList.add('is-pending'));
+      const io = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.remove('is-pending'); io.unobserve(e.target); }
+      }), { threshold: 0.6 });
+      marks.forEach(m => io.observe(m));
+    })();
+
     // Replays the SVG line drawing on the portrait. The page works without this.
     (() => {
       const svg = document.querySelector('.scribble');
